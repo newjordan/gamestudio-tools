@@ -1,0 +1,103 @@
+{
+  "type": "map",
+  "width": 3,
+  "height": 3,
+  "tilewidth": 8,
+  "tileheight": 8,
+  "orientation": "orthogonal",
+  "renderorder": "right-down",
+  "infinite": false,
+  "tilesets": [
+    {
+      "name": "t",
+      "firstgid": 1,
+      "tilecount": 4,
+      "columns": 2,
+      "image": "tiles.png",
+      "imagewidth": 16,
+      "imageheight": 16,
+      "tilewidth": 8,
+      "tileheight": 8
+    }
+  ],
+  "layers": [
+    {
+      "type": "tilelayer",
+      "name": "ground",
+      "width": 3,
+      "height": 3,
+      "data": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "visible": true
+    },
+    {
+      "type": "objectgroup",
+      "name": "things",
+      "objects": [
+        {
+          "id": 1,
+          "name": "tree",
+          "gid": 2147483650,
+          "x": 8,
+          "y": 16,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "id": 2,
+          "name": "spin",
+          "gid": 536870915,
+          "x": 16,
+          "y": 16,
+          "width": 8,
+          "height": 8,
+          "rotation": 45
+        },
+        {
+          "id": 3,
+          "name": "zone",
+          "x": 0,
+          "y": 0,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "id": 4,
+          "name": "poly",
+          "x": 8,
+          "y": 8,
+          "polygon": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 8,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 8
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "mark",
+          "x": 4,
+          "y": 4,
+          "point": true
+        }
+      ]
+    }
+  ]
+}

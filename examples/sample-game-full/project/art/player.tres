@@ -1,0 +1,20 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3]
+
+[ext_resource type="Texture2D" path="res://art/player_frames/frame_0000.png" id="1_tex"]
+[ext_resource type="Texture2D" path="res://art/player_frames/frame_0001.png" id="2_tex"]
+[ext_resource type="Texture2D" path="res://art/player_frames/frame_0002.png" id="3_tex"]
+[ext_resource type="Texture2D" path="res://art/player_frames/frame_0003.png" id="4_tex"]
+[ext_resource type="Texture2D" path="res://art/player_frames/frame_0004.png" id="5_tex"]
+[ext_resource type="Texture2D" path="res://art/player_frames/frame_0005.png" id="6_tex"]
+[ext_resource type="Texture2D" path="res://art/player_frames/frame_0006.png" id="7_tex"]
+[ext_resource type="Texture2D" path="res://art/player_frames/frame_0007.png" id="8_tex"]
+[ext_resource type="Texture2D" path="res://art/player_frames/frame_0008.png" id="9_tex"]
+
+[resource]
+animations = [
+  { "frames": [{ "duration": 4.800000000000001, "texture": ExtResource("1_tex") }, { "duration": 4.800000000000001, "texture": ExtResource("2_tex") }], "loop": true, "name": &"idle", "speed": 12.0 },
+  { "frames": [{ "duration": 1.08, "texture": ExtResource("3_tex") }, { "duration": 1.08, "texture": ExtResource("4_tex") }, { "duration": 1.08, "texture": ExtResource("5_tex") }, { "duration": 1.08, "texture": ExtResource("6_tex") }], "loop": true, "name": &"run", "speed": 12.0 },
+  { "frames": [{ "duration": 1.2000000000000002, "texture": ExtResource("7_tex") }], "loop": true, "name": &"jump", "speed": 12.0 },
+  { "frames": [{ "duration": 1.2000000000000002, "texture": ExtResource("8_tex") }], "loop": true, "name": &"fall", "speed": 12.0 },
+  { "frames": [{ "duration": 1.4400000000000002, "texture": ExtResource("9_tex") }], "loop": true, "name": &"hurt", "speed": 12.0 }
+]

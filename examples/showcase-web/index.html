@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GST web showcase</title>
+  <style>
+    html, body {
+      margin: 0;
+      background: #0e1116;
+      color: #e8eaed;
+      font-family: ui-sans-serif, system-ui, sans-serif, "Segoe UI", sans-serif;
+    }
+    #wrap { padding: 16px; }
+    body.preview, body.preview #wrap { padding: 0; margin: 0; overflow: hidden; }
+    canvas#game {
+      display: block;
+      width: 640px;
+      height: 360px;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      background: #1a1a2e;
+    }
+    #help { color: #9aa0a6; font-size: 14px; max-width: 640px; }
+    #help a { color: #8ab4f8; }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <canvas id="game" width="320" height="180"></canvas>
+    <p id="help">WASD or arrow keys to walk. Collect the coin. Every texture, tile, map, atlas, WAV and BMFont glyph was produced by kit generators. Serve this folder over HTTP (ES-module-free classic scripts; <code>file://</code> may still block audio). Loader: <code>js/gst-loader.js</code>.</p>
+  </div>
+  <script src="js/gst-loader.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

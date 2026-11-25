@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Texture2D" path="res://art/tiles.png" id="tex_1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0"]
+atlas = ExtResource("tex_1")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1"]
+atlas = ExtResource("tex_1")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2"]
+atlas = ExtResource("tex_1")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3"]
+atlas = ExtResource("tex_1")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4"]
+animations = [{ "frames": [{ "duration": 1, "texture": SubResource("AtlasTexture_0") }, { "duration": 1, "texture": SubResource("AtlasTexture_1") }, { "duration": 1, "texture": SubResource("AtlasTexture_2") }, { "duration": 1, "texture": SubResource("AtlasTexture_3") }], "loop": true, "name": &"default", "speed": 8.333333 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5"]
+size = Vector2(16, 32)
+
+[node name="MapObjects" type="Node2D"]
+
+[node name="objects" type="Node2D" parent="."]
+
+[node name="spawn" type="Marker2D" parent="objects"]
+position = Vector2(40, 160)
+metadata/tiled_type = "spawn"
+metadata/tiled_id = 1
+
+[node name="patrol_1" type="Area2D" parent="objects"]
+position = Vector2(248, 152)
+metadata/tiled_type = "patrol"
+metadata/tiled_id = 2
+
+[node name="Line" type="Line2D" parent="objects/patrol_1"]
+points = PackedVector2Array(0, 0, 96, 0)
+width = 2
+closed = false
+
+[node name="Shape" type="CollisionPolygon2D" parent="objects/patrol_1"]
+polygon = PackedVector2Array(0, 0, 96, 0)
+build_mode = 1
+
+[node name="enemy_1" type="Marker2D" parent="objects"]
+position = Vector2(296, 160)
+metadata/tiled_type = "enemy"
+metadata/tiled_id = 3
+metadata/kind = "slime"
+metadata/patrol = "patrol_1"
+
+[node name="patrol_2" type="Area2D" parent="objects"]
+position = Vector2(520, 152)
+metadata/tiled_type = "patrol"
+metadata/tiled_id = 4
+
+[node name="Line" type="Line2D" parent="objects/patrol_2"]
+points = PackedVector2Array(0, 0, 112, 0)
+width = 2
+closed = false
+
+[node name="Shape" type="CollisionPolygon2D" parent="objects/patrol_2"]
+polygon = PackedVector2Array(0, 0, 112, 0)
+build_mode = 1
+
+[node name="enemy_2" type="Marker2D" parent="objects"]
+position = Vector2(568, 160)
+metadata/tiled_type = "enemy"
+metadata/tiled_id = 5
+metadata/kind = "slime_red"
+metadata/patrol = "patrol_2"
+
+[node name="gem" type="AnimatedSprite2D" parent="objects"]
+position = Vector2(432, 142)
+sprite_frames = SubResource("SpriteFrames_4")
+animation = &"default"
+autoplay = "default"
+centered = false
+metadata/tiled_type = "gem"
+metadata/gid = 6
+metadata/tiled_id = 6
+
+[node name="door_top" type="Sprite2D" parent="objects"]
+position = Vector2(736, 128)
+texture = ExtResource("tex_1")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 32, 16, 16)
+metadata/tiled_type = "door"
+metadata/gid = 10
+metadata/tiled_id = 7
+
+[node name="door_bottom" type="Sprite2D" parent="objects"]
+position = Vector2(736, 144)
+texture = ExtResource("tex_1")
+centered = false
+region_enabled = true
+region_rect = Rect2(32, 32, 16, 16)
+metadata/tiled_type = "door"
+metadata/gid = 11
+metadata/tiled_id = 8
+
+[node name="exit" type="Area2D" parent="objects"]
+position = Vector2(736, 128)
+metadata/tiled_type = "exit"
+metadata/tiled_id = 9
+
+[node name="Shape" type="CollisionShape2D" parent="objects/exit"]
+position = Vector2(8, 16)
+shape = SubResource("RectangleShape2D_5")
+

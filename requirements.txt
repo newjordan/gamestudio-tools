@@ -1,0 +1,4 @@
+Pillow>=10
+numpy>=1.24
+# optional: fonttools (font-check reads real font tables with it; without it font-check falls back to rendering)
+# optional: ffmpeg binary on PATH (audio-convert)

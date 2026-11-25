@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.venv/
+venv/
+.env
+.env.*
+.python-version
+
+# Tests / coverage / caches
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# Godot editor artefacts and binaries (never commit an editor binary)
+.godot/
+*.uid
+Godot_v*
+godot-official/
+
+# Release artefacts (cut beside the kit, not in the tree)
+*.tar.gz
+*.sha256
+release-bundles/
+contact_sheet.png
+
+# Local agent / session logs
+PROGRESS-*.md
+
+# Historical fuzz classification dumps (regenerated; contain machine paths)
+tests/fuzz/reports/
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+
+# Secrets and keys
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+credentials.json
+secrets.json
+
+# sample game intermediates (rebuilt by examples/sample-game-full/build.sh)
+examples/sample-game-full/work/

@@ -1,0 +1,9 @@
+title: Start
+---
+Alice: Hello there.
+-> Next
+===
+title: Next
+---
+Bob: Goodbye.
+===

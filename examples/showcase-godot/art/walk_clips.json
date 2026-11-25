@@ -1,0 +1,15 @@
+{
+ "clips": {
+  "walk": {
+   "frames": [
+    "walk_01",
+    "walk_02",
+    "walk_03"
+   ],
+   "fps": 8.0,
+   "loop": true,
+   "duration": 0.375
+  }
+ },
+ "unused": []
+}

@@ -1,0 +1,7 @@
+{
+  "rules": [
+    {"glob": "art/**/*.png", "preset": "pixel"},
+    {"glob": "font/**/*.png", "preset": "pixel"},
+    {"glob": "sfx/**/*.wav", "preset": "wav-oneshot"}
+  ]
+}

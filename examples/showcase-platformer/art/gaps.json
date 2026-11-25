@@ -1,0 +1,20 @@
+[
+  {
+    "takeoff": [
+      120.0,
+      159
+    ],
+    "land_min": 176,
+    "land_max": 272,
+    "floor_y": 160
+  },
+  {
+    "takeoff": [
+      264.0,
+      159
+    ],
+    "land_min": 320,
+    "land_max": 512,
+    "floor_y": 160
+  }
+]

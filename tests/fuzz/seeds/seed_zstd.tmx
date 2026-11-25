@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" orientation="orthogonal" width="20" height="20" tilewidth="8" tileheight="8" infinite="0">
+ <layer id="1" name="ground" width="20" height="20">
+  <data encoding="base64" compression="zstd">KLUv/WRABSUIAPJHCwvgGcYAICieraXcKeAAAJ+WouWj5/5xulJgxuDnpB+jRcv/d/11cCAOI2C+D2yoMd6lqbS/ATDIkCm6OxEgBAhGoBDRCAhpaaykMevwFWCcJH/FR+3OPLqvRvPSe/9bRhCPzGPTS/P+aXP4b3g5ye3+H2w9Tht68WXev7y4DTJn4EN45zaGu+BS/hw74OL1fRBDxlH6lV35H12HG5e6qAezywukh8pSvf/4zPcJDtvOdNn0n+S7BNOxQ1iwbBqyj/zntd0aWv/CcOc9gbAOdoncwS+FL+fLfMKWzz7Vi2w51S/L4xzuZLw+4qRMH3pxUOWp97tNvXhfTxYg3LznZEANCDF0iQ==</data>
+ </layer>
+</map>

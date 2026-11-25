@@ -1,0 +1,19 @@
+{
+ "points": 35,
+ "apex": [
+  154.0,
+  128.8
+ ],
+ "range_px": 68.0,
+ "landed": true,
+ "out_of_bounds": false,
+ "start": [
+  120.0,
+  159.0
+ ],
+ "end": [
+  188.0,
+  162.8
+ ],
+ "jumps": 1
+}

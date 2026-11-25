@@ -1,0 +1,3 @@
+id,display_key,speed,hp,damage,stomp_bounce,tint
+slime,ENEMY_SLIME,28,1,1,260,#7ad957
+slime_red,ENEMY_SLIME_RED,52,1,1,300,#e8574f

@@ -1,0 +1,6 @@
+{"rules": [
+  {"glob": "art/**/*.png", "preset": "pixel"},
+  {"glob": "art/*.png", "preset": "pixel"},
+  {"glob": "ui/*.png", "preset": "pixel"},
+  {"glob": "audio/music.wav", "preset": "wav-loop"}
+]}

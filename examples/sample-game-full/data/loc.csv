@@ -1,0 +1,12 @@
+id,en,de
+TITLE,Gem Runner,Edelstein-Lauf
+PRESS_START,Press Enter to start,Enter druecken zum Start
+LEVEL,Level,Welt
+GEMS,Gems,Steine
+LOCKED,Find the gem first,Finde zuerst den Stein
+HEARTS,Hearts,Herzen
+WIN,You win!,Gewonnen!
+THANKS,Thanks for playing,Danke fuers Spielen
+ENEMY_SLIME,Green slime,Gruener Schleim
+ENEMY_SLIME_RED,Red slime,Roter Schleim
+LANG_HINT,L: switch language,L: Sprache wechseln

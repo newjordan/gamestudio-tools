@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" orientation="orthogonal" width="4" height="3" tilewidth="8" tileheight="8" infinite="0">
+ <tileset firstgid="1" source="seed_atlas.tsx"/>
+ <tileset firstgid="10" source="seed_coll.tsx"/>
+ <layer id="1" name="ground" width="4" height="3"><data encoding="csv">
+1,2,3,4,
+0,0,0,0,
+10,11,0,0
+</data></layer>
+ <objectgroup id="2" name="things">
+  <object id="1" gid="1" x="0" y="8" width="8" height="8"/>
+  <object id="2" gid="10" x="16" y="8"/>
+ </objectgroup>
+</map>

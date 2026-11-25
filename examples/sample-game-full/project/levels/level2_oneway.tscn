@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0"]
+size = Vector2(64, 16)
+
+[node name="Colliders" type="StaticBody2D"]
+
+[node name="R0" type="CollisionShape2D" parent="."]
+position = Vector2(304, 120)
+shape = SubResource("RectangleShape2D_0")
+

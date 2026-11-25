@@ -1,0 +1,83 @@
+{
+  "type": "map",
+  "width": 4,
+  "height": 3,
+  "tilewidth": 8,
+  "tileheight": 8,
+  "orientation": "orthogonal",
+  "infinite": false,
+  "tilesets": [
+    {
+      "name": "t",
+      "firstgid": 1,
+      "tilecount": 4,
+      "columns": 2,
+      "image": "tiles.png",
+      "imagewidth": 16,
+      "imageheight": 16,
+      "tilewidth": 8,
+      "tileheight": 8,
+      "tiles": [
+        {
+          "id": 0,
+          "animation": [
+            {
+              "tileid": 0,
+              "duration": 100
+            },
+            {
+              "tileid": 1,
+              "duration": 300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "c",
+      "firstgid": 10,
+      "tilecount": 1,
+      "columns": 0,
+      "tilewidth": 8,
+      "tileheight": 8,
+      "tiles": [
+        {
+          "id": 0,
+          "image": "label.png",
+          "imagewidth": 16,
+          "imageheight": 16
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "type": "objectgroup",
+      "name": "things",
+      "objects": [
+        {
+          "id": 1,
+          "gid": 1,
+          "x": 0,
+          "y": 8,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "id": 2,
+          "gid": 2684354561,
+          "x": 8,
+          "y": 16,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "id": 3,
+          "gid": 10,
+          "x": 16,
+          "y": 8
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+; Engine configuration file.
+; Godot 4.7 side-view platformer showcase. Textures, map, SFX, font and
+; SpriteFrames are produced by the gamestudio-tools kit. Do not hand-edit
+; generated files under art/, sfx/, font/ or preview/; run ./build_showcase.sh.
+config_version=5
+
+[application]
+
+config/name="GST Platformer Showcase"
+config/description="Side-view platformer built entirely from gamestudio-tools generators; gaps validated by jump-arc"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=180
+window/size/window_width_override=640
+window/size/window_height_override=360
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+window/stretch/scale_mode="integer"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.43, 0.71, 0.9, 1)
+
+[physics]
+
+2d/default_gravity=800.0
+
+[layer_names]
+
+2d_physics/layer_1="world"

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/enemies.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+columns = PackedStringArray("id", "display_key", "speed", "hp", "damage", "stomp_bounce", "tint")
+rows = Array[Dictionary]([{ "id": "slime", "display_key": "ENEMY_SLIME", "speed": 28, "hp": 1, "damage": 1, "stomp_bounce": 260, "tint": "#7ad957" }, { "id": "slime_red", "display_key": "ENEMY_SLIME_RED", "speed": 52, "hp": 1, "damage": 1, "stomp_bounce": 300, "tint": "#e8574f" }])

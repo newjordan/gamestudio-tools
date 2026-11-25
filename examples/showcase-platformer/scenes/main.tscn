@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=3 uid="uid://gstplatformer"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="TileSet" path="res://art/tiles.tres" id="2_tiles"]
+[ext_resource type="SpriteFrames" path="res://art/player_frames.tres" id="3_frames"]
+[ext_resource type="Texture2D" path="res://art/coin.png" id="4_coin"]
+[ext_resource type="AudioStream" path="res://sfx/coin.wav" id="5_sfx"]
+[ext_resource type="FontFile" path="res://font/label.fnt" id="6_font"]
+[ext_resource type="Texture2D" path="res://art/parallax_far.png" id="7_far"]
+[ext_resource type="Texture2D" path="res://art/parallax_mid.png" id="8_mid"]
+[ext_resource type="Texture2D" path="res://art/parallax_near.png" id="9_near"]
+
+[sub_resource type="RectangleShape2D" id="Rect_player"]
+size = Vector2(10, 14)
+
+[sub_resource type="CircleShape2D" id="Circ_coin"]
+radius = 6.0
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Far" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.15, 0)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite" type="Sprite2D" parent="ParallaxBackground/Far"]
+texture = ExtResource("7_far")
+centered = false
+[node name="Mid" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 0)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite" type="Sprite2D" parent="ParallaxBackground/Mid"]
+texture = ExtResource("8_mid")
+centered = false
+
+[node name="Near" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 0)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite" type="Sprite2D" parent="ParallaxBackground/Near"]
+texture = ExtResource("9_near")
+centered = false
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_tiles")
+
+[node name="Platforms" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_tiles")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+collision_layer = 1
+collision_mask = 1
+motion_mode = 0
+floor_stop_on_slope = true
+safe_margin = 0.08
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = ExtResource("3_frames")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("Rect_player")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_top = 0
+limit_right = 512
+limit_bottom = 192
+position_smoothing_enabled = false
+
+[node name="Coin" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+monitorable = false
+
+[node name="Sprite" type="Sprite2D" parent="Coin"]
+texture = ExtResource("4_coin")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
+shape = SubResource("Circ_coin")
+
+[node name="CoinSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_sfx")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="HUD"]
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_font")
+text = "COINS 0"
