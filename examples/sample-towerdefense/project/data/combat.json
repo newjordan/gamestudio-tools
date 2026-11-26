@@ -1,0 +1,278 @@
+{
+ "build": [
+  {
+   "kind": "arrow",
+   "seq": 1,
+   "x": 6,
+   "y": 1
+  },
+  {
+   "kind": "arrow",
+   "seq": 2,
+   "x": 12,
+   "y": 1
+  },
+  {
+   "kind": "frost",
+   "seq": 3,
+   "x": 16,
+   "y": 4
+  },
+  {
+   "kind": "arrow",
+   "seq": 4,
+   "x": 9,
+   "y": 5
+  },
+  {
+   "kind": "arrow",
+   "seq": 5,
+   "x": 3,
+   "y": 7
+  },
+  {
+   "kind": "mortar",
+   "seq": 6,
+   "x": 8,
+   "y": 8
+  },
+  {
+   "kind": "arrow",
+   "seq": 7,
+   "x": 12,
+   "y": 10
+  },
+  {
+   "kind": "arrow",
+   "seq": 8,
+   "x": 17,
+   "y": 10
+  }
+ ],
+ "core": 16,
+ "creeps": {
+  "brute": {
+   "gold": 12,
+   "hp": 90,
+   "leak": 2,
+   "speed": 40.0
+  },
+  "grub": {
+   "gold": 6,
+   "hp": 40,
+   "leak": 1,
+   "speed": 58.0
+  },
+  "runner": {
+   "gold": 7,
+   "hp": 26,
+   "leak": 1,
+   "speed": 96.0
+  }
+ },
+ "events": [
+  {
+   "kind": "grub",
+   "step": 25,
+   "wave": 1
+  },
+  {
+   "kind": "grub",
+   "step": 54,
+   "wave": 1
+  },
+  {
+   "kind": "grub",
+   "step": 84,
+   "wave": 1
+  },
+  {
+   "kind": "grub",
+   "step": 115,
+   "wave": 1
+  },
+  {
+   "kind": "grub",
+   "step": 145,
+   "wave": 1
+  },
+  {
+   "kind": "grub",
+   "step": 175,
+   "wave": 1
+  },
+  {
+   "kind": "grub",
+   "step": 205,
+   "wave": 1
+  },
+  {
+   "kind": "grub",
+   "step": 235,
+   "wave": 1
+  },
+  {
+   "kind": "grub",
+   "step": 385,
+   "wave": 2
+  },
+  {
+   "kind": "grub",
+   "step": 412,
+   "wave": 2
+  },
+  {
+   "kind": "grub",
+   "step": 439,
+   "wave": 2
+  },
+  {
+   "kind": "grub",
+   "step": 466,
+   "wave": 2
+  },
+  {
+   "kind": "grub",
+   "step": 493,
+   "wave": 2
+  },
+  {
+   "kind": "runner",
+   "step": 519,
+   "wave": 2
+  },
+  {
+   "kind": "runner",
+   "step": 543,
+   "wave": 2
+  },
+  {
+   "kind": "runner",
+   "step": 567,
+   "wave": 2
+  },
+  {
+   "kind": "runner",
+   "step": 591,
+   "wave": 2
+  },
+  {
+   "kind": "brute",
+   "step": 735,
+   "wave": 3
+  },
+  {
+   "kind": "brute",
+   "step": 777,
+   "wave": 3
+  },
+  {
+   "kind": "brute",
+   "step": 819,
+   "wave": 3
+  },
+  {
+   "kind": "brute",
+   "step": 861,
+   "wave": 3
+  },
+  {
+   "kind": "brute",
+   "step": 903,
+   "wave": 3
+  },
+  {
+   "kind": "grub",
+   "step": 1065,
+   "wave": 4
+  },
+  {
+   "kind": "grub",
+   "step": 1089,
+   "wave": 4
+  },
+  {
+   "kind": "grub",
+   "step": 1113,
+   "wave": 4
+  },
+  {
+   "kind": "grub",
+   "step": 1137,
+   "wave": 4
+  },
+  {
+   "kind": "grub",
+   "step": 1161,
+   "wave": 4
+  },
+  {
+   "kind": "grub",
+   "step": 1185,
+   "wave": 4
+  },
+  {
+   "kind": "runner",
+   "step": 1209,
+   "wave": 4
+  },
+  {
+   "kind": "runner",
+   "step": 1230,
+   "wave": 4
+  },
+  {
+   "kind": "runner",
+   "step": 1251,
+   "wave": 4
+  },
+  {
+   "kind": "runner",
+   "step": 1272,
+   "wave": 4
+  },
+  {
+   "kind": "brute",
+   "step": 1293,
+   "wave": 4
+  },
+  {
+   "kind": "brute",
+   "step": 1329,
+   "wave": 4
+  }
+ ],
+ "gold": 320,
+ "length": 768.0,
+ "seed": 11,
+ "tile": 16,
+ "towers": {
+  "arrow": {
+   "cd": 0.28,
+   "cost": 40,
+   "dmg": 14,
+   "range": 72.0,
+   "slow": 1.0,
+   "slow_time": 0.0,
+   "splash": 0.0
+  },
+  "frost": {
+   "cd": 0.4,
+   "cost": 55,
+   "dmg": 5,
+   "range": 64.0,
+   "slow": 0.55,
+   "slow_time": 1.4,
+   "splash": 0.0
+  },
+  "mortar": {
+   "cd": 0.95,
+   "cost": 80,
+   "dmg": 18,
+   "range": 88.0,
+   "slow": 1.0,
+   "slow_time": 0.0,
+   "splash": 28.0
+  }
+ }
+}

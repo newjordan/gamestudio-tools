@@ -1,0 +1,5 @@
+{
+  "count": "type",
+  "defaults": {"spawn": 1, "core": 1, "waypoint": 6, "room": 3, "portal": 2, "route": 1},
+  "maps": {"causeway.json": {"spawn": 1, "core": 1, "waypoint": 6, "room": 3, "portal": 2, "route": 1}}
+}

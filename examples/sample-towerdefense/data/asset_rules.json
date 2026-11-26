@@ -1,0 +1,7 @@
+{
+  "rules": [
+    {"glob": "**/*.png", "max_size": 2048, "pot": false, "name": "^[a-z0-9_]+\\.png$", "max_kb": 2048},
+    {"glob": "**/*.wav", "sample_rates": [22050, 44100, 48000], "max_channels": 2, "name": "^[a-z0-9_]+\\.wav$", "max_kb": 1024},
+    {"glob": "**/* *", "forbid": "no spaces in paths"}
+  ]
+}

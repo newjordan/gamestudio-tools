@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """anim-retarget-fps: rewrite animation clip frame durations to a new fps grid while keeping each clip's total time.
-Reads anim-meta / ase-json-import clips JSON (a list of clips, or {"clips": [...], "animations": [...], "anims": [...]}).
+Reads anim-meta clips JSON. `clips` may be the anim-meta object
+`{"walk": {"frames": [...], "fps": 8}}` or a list of clip objects, and the same
+for `animations` / `anims`. A bare list of clips is accepted too.
 Each frame duration is snapped to a whole number of ticks of 1000/fps milliseconds (at least one tick). Any remainder
 is added to the last frame so the clip total matches the original as closely as one tick allows. The clip's fps field
 is updated. Writes a new JSON; refuses to overwrite the input.
@@ -9,10 +11,23 @@ import argparse, os, json, math, sys
 
 
 def clips_of(data):
-    if isinstance(data, list): return data, "list"
-    for k in ("clips", "animations", "anims", "anims"):
-        if isinstance(data.get(k), list): return data[k], k
-    raise SystemExit("no clips/animations array found")
+    """Return (clip list, container key). Dict-shaped anim-meta clips stay the same objects, so edits write back."""
+    if isinstance(data, list):
+        return data, "list"
+    if isinstance(data, dict):
+        for k in ("clips", "animations", "anims"):
+            block = data.get(k)
+            if isinstance(block, list):
+                return block, k
+            if isinstance(block, dict) and block:
+                clips = []
+                for name, clip in block.items():
+                    if not isinstance(clip, dict):
+                        raise SystemExit("clip %r is not an object" % name)
+                    clip.setdefault("name", name)
+                    clips.append(clip)
+                return clips, k
+    raise SystemExit("no clips/animations found")
 
 
 def durations_of(clip):

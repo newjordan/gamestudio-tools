@@ -1,0 +1,8 @@
+wave,seq,kind,count,gap
+1,1,grub,8,0.50
+2,1,grub,5,0.45
+2,2,runner,4,0.40
+3,1,brute,5,0.70
+4,1,grub,6,0.40
+4,2,runner,4,0.35
+4,3,brute,2,0.60

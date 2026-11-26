@@ -1,0 +1,25 @@
+id,en,de,fr
+title_name,Reed Causeway,Schilfdamm,Chaussée des Roseaux
+title_tagline,Hold the mill.,Haltet die Mühle.,Gardez le cœur.
+menu_new,New game,Neues Spiel,Nouvelle partie
+menu_continue,Continue,Weiter,Continuer
+menu_language,Language,Sprache,Langue
+menu_hint,E cycle  Space place,E Art  Space Bau,E cycle  Espace pose
+hud_gold,Gold %d,Gold %d,Or %d
+hud_core,Core %d,Kern %d,Cœur %d
+hud_wave,Wave %d,Welle %d,Vague %d
+hud_pause,Paused,Pause,Pause
+tower_arrow,Arrow,Pfeil,Flèche
+tower_frost,Frost,Frost,Givre
+tower_mortar,Mortar,Mörser,Mortier
+hud_place,Place,Bauen,Poser
+win_title,The mill stands,Die Mühle steht,Le moulin tient
+win_body,The dam holds.,Der Damm bleibt größer.,La chaussée tient.
+lose_title,The mill fell,Die Mühle fiel,Le moulin tombe
+lose_body,The road is lost.,Die Wächter fielen.,La route est à eux.
+brief_hold,Hold the causeway.,Haltet den Damm.,Tenez la chaussée.
+brief_road,Never build on the road.,Baut nie auf die Straße.,Ne construisez jamais sur la route.
+note_frost,Frost slows them.,Frost bremst sie.,Le givre ralentit.
+flavor,Cold fog.,Kälterer Nebel.,"Brume fraîche, ça glace."
+cheer,Hold fast.,Haltet aus.,À la fête.
+wave_n,"{n, plural, one {# wave} other {# waves}}","{n, plural, one {# Welle} other {# Wellen}}","{n, plural, one {# vague} many {# vagues} other {# vagues}}"

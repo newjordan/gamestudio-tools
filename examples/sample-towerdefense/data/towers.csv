@@ -1,0 +1,4 @@
+id,cost,range,dmg,cd,slow,slow_time,splash
+arrow,40,72.0,14,0.28,1.0,0.0,0.0
+frost,55,64.0,5,0.40,0.55,1.4,0.0
+mortar,80,88.0,18,0.95,1.0,0.0,28.0

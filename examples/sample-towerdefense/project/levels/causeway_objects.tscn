@@ -1,0 +1,117 @@
+[gd_scene load_steps=4 format=3]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0"]
+size = Vector2(96, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(64, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2"]
+size = Vector2(64, 48)
+
+[node name="MapObjects" type="Node2D"]
+
+[node name="objects" type="Node2D" parent="."]
+
+[node name="spawn" type="Marker2D" parent="objects"]
+position = Vector2(8, 40)
+metadata/tiled_type = "spawn"
+metadata/tiled_id = 1
+
+[node name="core" type="Marker2D" parent="objects"]
+position = Vector2(312, 152)
+metadata/tiled_type = "core"
+metadata/tiled_id = 2
+
+[node name="wp0" type="Marker2D" parent="objects"]
+position = Vector2(8, 40)
+metadata/tiled_type = "waypoint"
+metadata/tiled_id = 3
+metadata/order = 0
+
+[node name="wp1" type="Marker2D" parent="objects"]
+position = Vector2(248, 40)
+metadata/tiled_type = "waypoint"
+metadata/tiled_id = 4
+metadata/order = 1
+
+[node name="wp2" type="Marker2D" parent="objects"]
+position = Vector2(248, 104)
+metadata/tiled_type = "waypoint"
+metadata/tiled_id = 5
+metadata/order = 2
+
+[node name="wp3" type="Marker2D" parent="objects"]
+position = Vector2(72, 104)
+metadata/tiled_type = "waypoint"
+metadata/tiled_id = 6
+metadata/order = 3
+
+[node name="wp4" type="Marker2D" parent="objects"]
+position = Vector2(72, 152)
+metadata/tiled_type = "waypoint"
+metadata/tiled_id = 7
+metadata/order = 4
+
+[node name="wp5" type="Marker2D" parent="objects"]
+position = Vector2(312, 152)
+metadata/tiled_type = "waypoint"
+metadata/tiled_id = 8
+metadata/order = 5
+
+[node name="gate" type="Area2D" parent="objects"]
+position = Vector2(0, 16)
+metadata/tiled_type = "room"
+metadata/tiled_id = 9
+metadata/seg = "gate"
+
+[node name="Shape" type="CollisionShape2D" parent="objects/gate"]
+position = Vector2(48, 24)
+shape = SubResource("RectangleShape2D_0")
+
+[node name="bend" type="Area2D" parent="objects"]
+position = Vector2(208, 80)
+metadata/tiled_type = "room"
+metadata/tiled_id = 10
+metadata/seg = "bend"
+
+[node name="Shape" type="CollisionShape2D" parent="objects/bend"]
+position = Vector2(32, 24)
+shape = SubResource("RectangleShape2D_1")
+
+[node name="mill" type="Area2D" parent="objects"]
+position = Vector2(256, 128)
+metadata/tiled_type = "room"
+metadata/tiled_id = 11
+metadata/seg = "mill"
+
+[node name="Shape" type="CollisionShape2D" parent="objects/mill"]
+position = Vector2(32, 24)
+shape = SubResource("RectangleShape2D_2")
+
+[node name="to_bend" type="Marker2D" parent="objects"]
+position = Vector2(40, 40)
+metadata/tiled_type = "portal"
+metadata/tiled_id = 12
+metadata/target = "bend"
+
+[node name="to_mill" type="Marker2D" parent="objects"]
+position = Vector2(248, 104)
+metadata/tiled_type = "portal"
+metadata/tiled_id = 13
+metadata/target = "mill"
+
+[node name="route" type="Area2D" parent="objects"]
+position = Vector2(8, 40)
+metadata/tiled_type = "route"
+metadata/tiled_id = 14
+
+[node name="Line" type="Line2D" parent="objects/route"]
+points = PackedVector2Array(0, 0, 240, 0, 240, 64, 64, 64, 64, 112, 304, 112)
+width = 2
+closed = false
+
+[node name="Shape" type="CollisionPolygon2D" parent="objects/route"]
+polygon = PackedVector2Array(0, 0, 240, 0, 240, 64, 64, 64, 64, 112, 304, 112)
+build_mode = 1
+

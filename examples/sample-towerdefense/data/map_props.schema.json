@@ -1,0 +1,7 @@
+{
+  "objects": {
+    "waypoint": {"required": ["order"], "types": {"order": "int"}},
+    "portal": {"required": ["target"], "types": {"target": "string"}},
+    "room": {"required": ["seg"], "types": {"seg": "string"}}
+  }
+}
