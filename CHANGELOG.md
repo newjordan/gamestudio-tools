@@ -3,6 +3,44 @@
 All notable changes to gamestudio-tools are recorded here. The kit is versioned
 with a `VERSION` file and a reproducible `gst bundle` tarball.
 
+## 2.6.0 — 2026-11-26
+
+Fixes PCM tools that rewrote samples through a float round-trip, documents two
+CLI contracts, and corrects the 2.5.0 note about walkable maps. No new tools (262).
+
+### Fixed
+
+- `sfx-reverse`: 16/24/32-bit PCM is reversed as integers. Same-width output is
+  bit-exact, and reversing twice restores the file. `--bits` changes width by a
+  shift (8-bit input is still written as 16-bit). `smpl` loop points are remapped
+  as before; other RIFF chunks are still dropped.
+- The same integer path for edits that only rearrange or copy samples:
+  `wav-invert` (negation saturates the most-negative code, so -32768 becomes
+  32767), `wav-chan-swap`, `wav-chan-split` split and join, `wav-gain` at 0 dB,
+  `wav-mono` when the file is already mono or one channel is copied,
+  `audio-concat` when the peak ceiling does not scale the reel and there is no
+  slate, and `wav-dc-remove` when each channel's mean already rounds to 0.
+  Any other gain, a stereo mix-down, resampling, or a peak over the ceiling
+  still uses the float path.
+- `anim-retarget-fps` accepts the name-keyed `clips` object that `anim-meta`
+  and `anim-from-folder` write, and writes that shape back.
+- `examples/sample-topdown` `project/audio/sfx/stairs.wav` is regenerated. The
+  build reverses an `sfx-gen powerup --seed 7` take and then normalises to
+  -3 dBFS, so the bit-exact reverse changes those bytes.
+
+### Changed
+
+- `sfx-mix`: `--help` and the README list the recipe keys. `peak_db` is a
+  ceiling unless `"normalize": true`.
+- `audio-concat`: `--help` and the README state that `--peak-db` (default -1)
+  is a peak ceiling. A quieter reel is left as it is.
+- `loc-merge`: the README matches `--help`. The run exits 1 on collisions or
+  missing keys unless `--no-fail`.
+
+The 2.5.0 note below is corrected in place: `map-reach` and `nav-to-godot` do
+not read the tileset `dungeon-gen` used to omit, and they did not start seeing
+an all-walkable map in 2.5.0.
+
 ## 2.5.0 — 2026-11-25
 
 Adds a second complete sample game, a top-down roguelite that exercises 61 tools
@@ -38,11 +76,15 @@ in `gst bundle`). No new tools (262).
 
 ### Fixed
 
-- `dungeon-gen`: the JSON map had an empty tileset, so `map-to-godot` drew no
-  cells and `map-reach`/`nav-to-godot` saw an all-walkable map. It now embeds a
-  two-tile tileset (`<out>_tiles.png`, wall tile `solid=true`), layer ids,
+- `dungeon-gen`: the JSON map omitted the `tilesets` key entirely (it was
+  absent, not `"tilesets": []`), so `map-to-godot` resolved no GIDs and wrote
+  0 cells, and BSP room rectangles were dropped. It now embeds a two-tile
+  tileset (`<out>_tiles.png`, wall tile `solid=true`), layer ids,
   `nextlayerid`/`nextobjectid`, and in BSP mode a `rooms` object layer; new
-  `--tile`.
+  `--tile`. `map-reach` and `nav-to-godot` do not read that tileset: with
+  `--solid-ids 2` they report the same walls on 2.4.0 and 2.5.0, and with no
+  solid flag both versions treat every cell as walkable. Neither tool reads
+  the `solid=true` property unless the caller passes `--solid-ids`.
 - `atlas-to-godot`: trimmed atlas-pack frames lost their offset and original
   canvas (animations jittered and pivots moved). AtlasTextures now get
   `margin` from `spriteSourceSize`/`sourceSize`; verified in Godot 4.7.2 (a

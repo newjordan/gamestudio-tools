@@ -1,6 +1,6 @@
 # wav-gain
 
-Apply a fixed dB gain to a WAV (or a folder of WAVs). Optional `--max-true-peak` caps the gain so the 4x-oversampled true peak stays under a ceiling (the same uncertified meter as wav-batch-meta). `smpl` loop markers are preserved. Writes next to the source with `--suffix` or under `--outdir`. The input is never overwritten unless `--in-place`. PCM only, via audio-tidy.
+Apply a fixed dB gain to a WAV (or a folder of WAVs). Optional `--max-true-peak` caps the gain so the 4x-oversampled true peak stays under a ceiling (the same uncertified meter as wav-batch-meta). A gain of 0 dB copies the PCM integers (bit-exact at the same width). `smpl` loop markers are preserved. Writes next to the source with `--suffix` or under `--outdir`. The input is never overwritten unless `--in-place`.
 
 ## Usage
 

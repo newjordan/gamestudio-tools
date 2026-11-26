@@ -1,6 +1,6 @@
 # wav-chan-swap
 
-Swap or reorder channels in a multi-channel WAV. `--swap` flips the first two channels (typical stereo L/R). `--order` is a comma list of 0-based indices or of labels `L,R,C,LFE,Ls,Rs,Lb,Rb` (the same names as wav-chan-split). `smpl` loop markers are preserved. The input is never overwritten unless `--in-place`.
+Swap or reorder channels in a multi-channel WAV. `--swap` flips the first two channels (typical stereo L/R). `--order` is a comma list of 0-based indices or of labels `L,R,C,LFE,Ls,Rs,Lb,Rb` (the same names as wav-chan-split). The samples move as integers, so a same-width file is bit-exact (swapping twice restores the file's PCM). `smpl` loop markers are preserved. The input is never overwritten unless `--in-place`.
 
 ## Usage
 

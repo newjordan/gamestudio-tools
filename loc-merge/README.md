@@ -1,6 +1,6 @@
 # loc-merge
 
-Combine two localisation CSVs by key. Language columns are unioned (A's order first, then any new columns from B). Keys present in only one file are kept and listed as missing. When the same key has different values in a shared language, `--prefer a|b` picks a side (default `a`) and the run exits 1 unless `--no-fail`. `--prefer fail` refuses to write when any collision is present. Inputs are never overwritten unless `--in-place`.
+Combine two localisation CSVs by key. Language columns are unioned (A's order first, then any new columns from B). Keys present in only one file are kept and listed as missing. When the same key has different values in a shared language, `--prefer a|b` picks a side (default `a`). The run exits 1 when there are collisions or missing keys, unless `--no-fail` (exit 0 even then, matching `--help`). `--prefer fail` refuses to write when any collision is present. Inputs are never overwritten unless `--in-place`.
 
 ## Usage
 

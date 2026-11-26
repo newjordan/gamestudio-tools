@@ -1,6 +1,6 @@
 # wav-dc-remove
 
-Strip DC offset from PCM WAVs by subtracting each channel's mean, writing new files and a before/after report (DC, peak). Inputs may be files or folders. The input path is never overwritten (pass `--outdir` or `--suffix`). PCM only, via audio-tidy; other RIFF chunks are dropped.
+Strip DC offset from PCM WAVs by subtracting each channel's mean (rounded to a whole sample), writing new files and a before/after report (DC, peak). A file whose mean already rounds to 0 is copied bit-exact. Inputs may be files or folders. The input path is never overwritten (pass `--outdir` or `--suffix`). Other RIFF chunks are dropped.
 
 ## Usage
 

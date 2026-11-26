@@ -1,6 +1,6 @@
 # wav-mono
 
-Fold a WAV (or a folder of WAVs) to mono. `--mode mix` (default) averages the channels; `left` / `right` keep one channel. Already-mono files are copied. `smpl` loop markers are preserved. Writes next to the source with `--suffix` or under `--outdir`. The input is never overwritten unless `--in-place`. PCM only, via audio-tidy.
+Fold a WAV (or a folder of WAVs) to mono. `--mode mix` (default) averages the channels; `left` / `right` keep one channel. Already-mono files, and `left` / `right`, copy the integer samples (bit-exact at the same width). `smpl` loop markers are preserved. Writes next to the source with `--suffix` or under `--outdir`. The input is never overwritten unless `--in-place`.
 
 ## Usage
 

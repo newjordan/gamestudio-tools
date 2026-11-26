@@ -2,30 +2,19 @@
 """sfx-reverse: reverse a PCM WAV in time (last sample becomes first). When the file has a
 RIFF `smpl` loop, the markers are remapped so they still cover the same audio after the reverse
 (`start' = (n-1)-end`, `end' = (n-1)-start`, inclusive smpl convention) unless `--no-remap-loops`
-is passed (the chunk is then dropped). Uses the shared audio-tidy PCM reader (paths must be
-str()). Writes a new WAV; the input is never overwritten unless `--in-place`.
+is passed (the chunk is then dropped). PCM is reversed as integers, so a file written back at
+the same width (8/16/24/32-bit) is bit-exact; a wider or narrower `--bits` is a shift, not a
+float round-trip. Writes a new WAV; the input is never overwritten unless `--in-place`.
 """
-import argparse, os, json, sys, wave
+import argparse, os, json, sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "audio-tidy"))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "wav-loop-meta"))
-import safe_out, audio_tidy, wav_loop_meta  # noqa: E402
-
-
-def wav_bits(path):
-    with wave.open(path, "rb") as wf:
-        return wf.getsampwidth() * 8
+import safe_out, wav_loop_meta, pcm_frames  # noqa: E402
 
 
 def remap_loop(start, end, n):
     return (n - 1) - end, (n - 1) - start
-
-
-def reverse_pcm(x):
-    if x.ndim == 1:
-        x = x[:, None]
-    return x[::-1].copy()
 
 
 def main(argv=None):
@@ -35,23 +24,22 @@ def main(argv=None):
     ap.add_argument("--no-remap-loops", action="store_true",
                     help="drop any smpl loop chunk instead of remapping it")
     ap.add_argument("--bits", type=int, choices=(16, 24, 32),
-                    help="output bit depth (default: same as the input, 16 if unknown)")
+                    help="output bit depth (default: same as the input, 16 if the input is 8-bit)")
     ap.add_argument("--json")
     safe_out.add_flag(ap)
     a = ap.parse_args(argv)
     safe_out.check(a.wav, a.out, a.in_place)
     if a.json:
         safe_out.check(a.wav, a.json, a.in_place)
-    raw = open(a.wav, "rb").read()
-    loops = wav_loop_meta.read_loops(raw)
-    x, sr = audio_tidy.read_wav(str(a.wav))
-    y = reverse_pcm(x)
-    n = int(y.shape[0])
-    bits = a.bits or wav_bits(str(a.wav))
+    file_bytes = open(a.wav, "rb").read()
+    loops = wav_loop_meta.read_loops(file_bytes)
+    samples, sr, src_bits = pcm_frames.read_frames(str(a.wav))
+    bits = a.bits or src_bits
     if bits not in (16, 24, 32):
         bits = 16
-    os.makedirs(os.path.dirname(os.path.abspath(a.out)) or ".", exist_ok=True)
-    audio_tidy.write_wav(str(a.out), y, sr, bits=bits)
+    y, bits = pcm_frames.to_bits(samples[::-1], src_bits, bits)
+    n = int(y.shape[0])
+    pcm_frames.write_frames(str(a.out), y, sr, bits)
     written_loops = []
     if loops and not a.no_remap_loops:
         lp = loops[0]

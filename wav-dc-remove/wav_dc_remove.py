@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """wav-dc-remove: strip DC offset from PCM WAVs by subtracting each channel's mean, writing new files and a
 before/after report (DC, peak). Inputs may be files or folders. The input path is never overwritten (pass --outdir
-or --suffix). PCM only, via audio-tidy; other RIFF chunks are dropped.
+or --suffix). The mean is subtracted in integer PCM, so a file whose mean
+already rounds to 0 is copied bit-exact. Other RIFF chunks are dropped.
 """
 import argparse, os, csv, json, sys
 
 import numpy as np
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "audio-tidy"))
-import audio_tidy  # noqa: E402
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
+import pcm_frames  # noqa: E402
 
 
 def collect(paths):
@@ -30,14 +31,6 @@ def dest_for(src, outdir, suffix):
     return os.path.join(outdir or os.path.dirname(os.path.abspath(src)), name)
 
 
-def dc_of(x):
-    return [float(x[:, c].mean()) for c in range(x.shape[1])]
-
-
-def peak(x):
-    return float(np.max(np.abs(x))) if len(x) else 0.0
-
-
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Strip DC offset from PCM WAV files.")
     ap.add_argument("inputs", nargs="+")
@@ -57,14 +50,21 @@ def main(argv=None):
         dest = dest_for(f, a.outdir, a.suffix)
         if not a.dry_run and os.path.abspath(dest) == os.path.abspath(f):
             sys.exit(f"refusing to overwrite the input: {dest} or pass --in-place")
-        x, sr = audio_tidy.read_wav(f)
-        before = dc_of(x)
-        y = x - np.array(before, dtype=x.dtype)
-        rec = {"file": f, "out": dest, "rate": sr, "channels": x.shape[1],
-               "dc_before": [round(v, 8) for v in before], "dc_after": [round(v, 8) for v in dc_of(y)],
-               "peak_before": round(peak(x), 6), "peak_after": round(peak(y), 6)}
+        samples, sr, src_bits = pcm_frames.read_frames(f)
+        full = float(1 << ((src_bits if src_bits in (8, 16, 24, 32) else 16) - 1))
+        means = samples.astype(np.float64).mean(axis=0) if len(samples) else np.zeros(samples.shape[1])
+        before = [float(m / full) for m in means]
+        offsets = np.rint(means).astype(np.int64)
+        y = samples - offsets
+        after_means = y.astype(np.float64).mean(axis=0) if len(y) else means
+        after = [float(m / full) for m in after_means]
+        written, out_bits = pcm_frames.to_bits(y, src_bits, a.bits)
+        rec = {"file": f, "out": dest, "rate": sr, "channels": int(samples.shape[1]),
+               "dc_before": [round(v, 8) for v in before], "dc_after": [round(v, 8) for v in after],
+               "peak_before": round(float(np.max(np.abs(samples)) / full) if len(samples) else 0.0, 6),
+               "peak_after": round(float(np.max(np.abs(y)) / full) if len(y) else 0.0, 6)}
         if not a.dry_run:
-            audio_tidy.write_wav(dest, y, sr, bits=a.bits)
+            pcm_frames.write_frames(dest, written, sr, out_bits)
         rows.append(rec)
         print(f"{os.path.basename(f)}: DC {rec['dc_before']} -> {rec['dc_after']}")
     if a.json: json.dump(rows, open(a.json, "w"), indent=1)

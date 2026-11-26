@@ -35,7 +35,7 @@ def test_dungeon_gen_json_is_a_usable_tiled_map(tmp_path, capsys):
     out = tmp_path / "d"
     assert dungeon_gen.main(["--mode", "bsp", "--size", "30x20", "--seed", "5", "-o", str(out)]) in (0, None)
     m = json.loads((tmp_path / "d.json").read_text())
-    # 2.4.0 wrote "tilesets": [] so every kit consumer saw an empty or all-walkable map
+    # 2.4.0 omitted the tilesets key (KeyError), so map-to-godot drew 0 cells
     assert m["tilesets"] and m["tilesets"][0]["firstgid"] == 1
     ts = m["tilesets"][0]
     assert (tmp_path / ts["image"]).is_file() and ts["tilecount"] == 2

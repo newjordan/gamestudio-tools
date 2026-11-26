@@ -11,7 +11,8 @@ import argparse, os, csv, glob, json, re, sys
 import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "audio-tidy"))
-import audio_tidy  # noqa: E402
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
+import audio_tidy, pcm_frames  # noqa: E402
 
 
 def natural(s): return [int(t) if t.isdigit() else t.lower() for t in re.split(r"(\d+)", s)]
@@ -39,6 +40,44 @@ def beep(sr, ch, ms=40, freq=1000, amp=0.3):
     return np.repeat((amp * env * np.sin(2 * np.pi * freq * t))[:, None], ch, 1)
 
 
+def integer_reel(paths, rate, channels, gap_ms, bits):
+    """Concatenate as integers when nothing resamples, mixes down, or scales.
+
+    Returns (samples, sr) or None when the float path has to run (slate, a rate
+    change, a stereo fold, or a peak over the ceiling). Silence gaps are exact zeros.
+    """
+    loaded = []
+    for p in paths:
+        samples, sr, src_bits = pcm_frames.read_frames(p)
+        loaded.append((p, samples, sr, src_bits))
+    sr = rate or loaded[0][2]
+    if any(item[2] != sr for item in loaded):
+        return None
+    ch = channels or min(2, max(item[1].shape[1] for item in loaded))
+    parts = []
+    for _p, samples, _sr, src_bits in loaded:
+        if samples.shape[1] == ch:
+            y = samples
+        elif samples.shape[1] == 1 and ch == 2:
+            y = np.repeat(samples, 2, axis=1)
+        else:
+            return None
+        y, _bits = pcm_frames.to_bits(y, src_bits, bits)
+        parts.append(y)
+    gap_n = int(round(sr * gap_ms / 1000)) if gap_ms else 0
+    if gap_n:
+        gap = np.zeros((gap_n, ch), dtype=np.int64)
+        joined = []
+        for i, part in enumerate(parts):
+            if i:
+                joined.append(gap)
+            joined.append(part)
+        out = np.concatenate(joined, 0) if joined else np.zeros((0, ch), dtype=np.int64)
+    else:
+        out = np.concatenate(parts, 0) if parts else np.zeros((0, ch), dtype=np.int64)
+    return out, sr
+
+
 def concat(paths, rate=None, channels=None, gap_ms=0, slate_ms=0, peak_db=-1.0):
     loaded = [(p, *audio_tidy.read_wav(p)) for p in paths]
     sr = rate or loaded[0][2]; ch = channels or min(2, max(x.shape[1] for _, x, _ in loaded))
@@ -62,7 +101,10 @@ def main(argv=None):
     ap.add_argument("inputs", nargs="+"); ap.add_argument("-o", "--out", required=True)
     ap.add_argument("--rate", type=int); ap.add_argument("--channels", type=int, choices=[1, 2])
     ap.add_argument("--gap-ms", type=float, default=0); ap.add_argument("--slate-ms", type=float, default=0)
-    ap.add_argument("--peak-db", type=float, default=-1.0); ap.add_argument("--bits", type=int, choices=[16, 24, 32], default=16)
+    ap.add_argument("--peak-db", type=float, default=-1.0,
+                    help="peak ceiling in dBFS (default -1). The reel is turned down when louder "
+                         "and left unchanged when quieter")
+    ap.add_argument("--bits", type=int, choices=[16, 24, 32], default=16)
     ap.add_argument("--cues"); ap.add_argument("--cues-json")
     ap.add_argument("--in-place", action="store_true", help="allow overwriting the input")
     a = ap.parse_args(argv)
@@ -92,8 +134,15 @@ def main(argv=None):
             if _s and _d and os.path.abspath(str(_s)) == os.path.abspath(str(_d)) and not a.in_place:
                 sys.exit("refusing to overwrite the input; pick a different output path or pass --in-place")
 
-    y, sr, cues, info = concat(collect(a.inputs), a.rate, a.channels, a.gap_ms, a.slate_ms, a.peak_db)
-    audio_tidy.write_wav(a.out, y, sr, a.bits)
+    paths = collect(a.inputs)
+    y, sr, cues, info = concat(paths, a.rate, a.channels, a.gap_ms, a.slate_ms, a.peak_db)
+    exact = None
+    if info["scale_db"] == 0.0 and not a.slate_ms:
+        exact = integer_reel(paths, a.rate, a.channels, a.gap_ms, a.bits)
+    if exact is not None:
+        pcm_frames.write_frames(a.out, exact[0], exact[1], a.bits)
+    else:
+        audio_tidy.write_wav(a.out, y, sr, a.bits)
     dest = a.cues or os.path.splitext(a.out)[0] + ".cues.csv"
     with open(dest, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=["rel", "start_s", "end_s", "duration_s", "file"]); w.writeheader(); w.writerows(cues)

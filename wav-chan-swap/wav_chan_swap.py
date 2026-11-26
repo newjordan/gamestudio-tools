@@ -3,17 +3,15 @@
 first two channels (typical stereo L/R). `--order` is a comma list of 0-based indices
 or of labels L,R,C,LFE,Ls,Rs,Lb,Rb (same names as wav-chan-split). `smpl` loop markers
 are preserved. Writes `-o` or `--suffix` / `--outdir`. The input is never overwritten
-unless `--in-place`. PCM only, via audio-tidy.
+unless `--in-place`. PCM only. Channel order changes are integer moves, so a
+same-width file is bit-exact.
 """
 import argparse, os, json, sys
 
-import numpy as np
-
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "audio-tidy"))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "wav-loop-meta"))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "wav-chan-split"))
-import safe_out, audio_tidy, wav_loop_meta, wav_chan_split  # noqa: E402
+import safe_out, wav_loop_meta, wav_chan_split, pcm_frames  # noqa: E402
 
 
 def collect(paths):
@@ -64,9 +62,7 @@ def dest_of(src, outdir, suffix, out_file):
 
 
 def process(path, dest, order_spec, do_swap, bits):
-    x, sr = audio_tidy.read_wav(path)
-    if x.ndim == 1:
-        x = x[:, None]
+    x, sr, src_bits = pcm_frames.read_frames(path)
     n = x.shape[1]
     if do_swap:
         if n < 2:
@@ -74,11 +70,10 @@ def process(path, dest, order_spec, do_swap, bits):
         order = [1, 0] + list(range(2, n))
     else:
         order = parse_order(order_spec, n)
-    y = x[:, order]
+    y, bits = pcm_frames.to_bits(x[:, order], src_bits, bits)
     raw = open(path, "rb").read()
     loops = wav_loop_meta.read_loops(raw)
-    os.makedirs(os.path.dirname(os.path.abspath(dest)) or ".", exist_ok=True)
-    audio_tidy.write_wav(dest, y, sr, bits=bits)
+    pcm_frames.write_frames(dest, y, sr, bits)
     if loops:
         lp = loops[0]
         patched = wav_loop_meta.set_loop(open(dest, "rb").read(), lp["start"], lp["end"])

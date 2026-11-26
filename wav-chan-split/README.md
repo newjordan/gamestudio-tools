@@ -1,6 +1,6 @@
 # wav-chan-split
 
-Split a multi-channel WAV into mono stems (default names L/R, or 5.1 / 7.1, or `--names`) plus a cue/index JSON or CSV. `--join` interleaves mono stems back into one multi-channel WAV. Inputs may be files or folders. The input path is never overwritten (pass `--outdir` or `--suffix`).
+Split a multi-channel WAV into mono stems (default names L/R, or 5.1 / 7.1, or `--names`) plus a cue/index JSON or CSV. `--join` interleaves mono stems back into one multi-channel WAV. Split and join move integer samples, so a same-width round trip is bit-exact. Inputs may be files or folders. The input path is never overwritten (pass `--outdir` or `--suffix`).
 
 ## Usage
 
