@@ -2,10 +2,12 @@
 and sfx-mix --help must name the normalize recipe key."""
 import os, struct, subprocess, sys, wave
 
+import numpy as np
 import pytest
 
 import anim_retarget_fps
 import audio_concat
+import loop_finder
 import sfx_mix
 import wav_dc_remove
 import sfx_reverse
@@ -215,3 +217,30 @@ def test_sfx_mix_normalize_raises_a_quiet_layer(tmp_path):
     assert sfx_mix.main([str(plain), "-o", str(ceiling)]) == 0
     # peak_db without normalize is a ceiling: a quiet layer is not turned up
     assert max(abs(s) for s in _read(ceiling)[0]) < 2000
+
+
+def test_loop_finder_tied_scores_pick_earliest_then_shortest():
+    # Differences past 4 decimal places are the same rank. The later start's
+    # slightly higher raw score must not win, and the same start keeps the shorter loop.
+    chosen = loop_finder.pick_candidate([
+        (1.00004, 500, 8000),
+        (0.99996, 100, 12000),
+        (0.99995, 100, 4000),
+        (0.5, 0, 100),
+    ])
+    assert chosen[0] == 10000
+    assert (chosen[1], chosen[2]) == (100, 4000)
+    # A genuinely higher score still beats an earlier, shorter loop.
+    higher = loop_finder.pick_candidate([(0.9, 0, 10), (1.0, 50, 8000)])
+    assert (higher[1], higher[2]) == (50, 8000)
+    # A repeated buffer has many perfect loops. The search must settle on one
+    # pair, and a second run must return that same pair.
+    sr, period = 8000, 400
+    cycle = np.sin(2 * np.pi * np.arange(period) / period)
+    x = np.tile(cycle, 80).astype(np.float32)[:, None]
+    first = loop_finder.find_loop(x, sr, window_s=0.2, min_len_s=0.4, tail_s=1.0, head_frac=0.5, candidates=12)
+    second = loop_finder.find_loop(x, sr, window_s=0.2, min_len_s=0.4, tail_s=1.0, head_frac=0.5, candidates=12)
+    assert first == second
+    assert first["score"] == 1.0
+    assert first["start"] < first["end"]
+    assert (first["end"] - first["start"]) % period == 0

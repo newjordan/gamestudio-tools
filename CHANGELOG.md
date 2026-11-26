@@ -24,6 +24,10 @@ CLI contracts, and corrects the 2.5.0 note about walkable maps. No new tools (26
   still uses the float path.
 - `anim-retarget-fps` accepts the name-keyed `clips` object that `anim-meta`
   and `anim-from-folder` write, and writes that shape back.
+- `loop-finder` quantizes correlation scores to 4 decimal places before
+  ranking. Tied scores take the earliest start, then the shortest loop, so
+  the winner no longer depends on FFT rounding. The platformer `music.wav`
+  `smpl` points are regenerated from that choice.
 - `examples/sample-topdown` `project/audio/sfx/stairs.wav` is regenerated. The
   build reverses an `sfx-gen powerup --seed 7` take and then normalises to
   -3 dBFS, so the bit-exact reverse changes those bytes.

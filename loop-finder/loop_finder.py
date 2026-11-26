@@ -5,7 +5,9 @@ loop or print engine loop points (samples and seconds; Godot loop_begin/loop_end
 Method: the audio *after* the loop end should continue like the audio *after* the loop start. For several
 candidate end points near the tail, normalised cross-correlation (FFT) against the head finds the best
 matching start; both are snapped to the nearest rising zero crossing. Score 0..1 (1 = identical continuation).
-CPU only; no models. Typical use: MiniMax Music exports that start with an intro and fade at the end.
+Scores are quantized to 4 decimal places before ranking, so FFT rounding cannot change the winner.
+Tied scores take the earliest start, then the shortest loop. CPU only; no models.
+Typical use: MiniMax Music exports that start with an intro and fade at the end.
 """
 import argparse, json, os, wave
 import numpy as np
@@ -38,6 +40,30 @@ def write_wav(path, x, sr):
         wf.writeframes(pcm.tobytes())
 
 
+# Ranking ignores anything past 4 decimal places, which is also how the score is printed.
+SCORE_DECIMALS = 4
+_SCORE_SCALE = 10 ** SCORE_DECIMALS
+
+
+def quantize_score(score):
+    """Integer rank key. Values that print as the same 4-decimal score compare equal."""
+    return int(np.round(float(score) * _SCORE_SCALE))
+
+
+def pick_candidate(cands):
+    """Choose (score, start, length). Highest quantized score, then earliest start, then shortest length.
+
+    `cands` is an iterable of (score, start, length). Returns (quantized, start, length, score)
+    or None when there is nothing to rank.
+    """
+    best = None
+    for score, start, length in cands:
+        q = quantize_score(score)
+        if best is None or q > best[0] or (q == best[0] and (start < best[1] or (start == best[1] and length < best[2]))):
+            best = (q, int(start), int(length), float(score))
+    return best
+
+
 def zero_cross(m, i, radius):
     lo, hi = max(1, i - radius), min(len(m) - 1, i + radius)
     cand = np.where((m[lo - 1:hi - 1] <= 0) & (m[lo:hi] > 0))[0]
@@ -54,12 +80,14 @@ def find_loop(x, sr, window_s=0.5, min_len_s=2.0, tail_s=None, head_frac=0.5, ca
         raise SystemExit("clip too short for loop search")
     tail = int((tail_s if tail_s else n / sr * 0.25) * sr)
     head = m[: int(n * head_frac)]
-    best = (-2, 0, 0)
     ends = np.linspace(n - W - tail, n - W, candidates).astype(int)
     csum = np.concatenate([[0], np.cumsum(head ** 2)])
     energy = csum[W:] - csum[:-W]                      # sliding energy of head windows
     L = len(head) - W + 1
+    rad = int(0.01 * sr)
+    ranked = []
     for e in ends:
+        e = int(e)
         ref = m[e:e + W]
         re = float(np.sum(ref ** 2))
         if re < 1e-9:
@@ -68,13 +96,19 @@ def find_loop(x, sr, window_s=0.5, min_len_s=2.0, tail_s=None, head_frac=0.5, ca
         cc = np.fft.irfft(np.fft.rfft(head, size) * np.conj(np.fft.rfft(ref, size)), size)[:L]
         score = cc / np.sqrt(np.maximum(energy[:L], 1e-12) * re)
         lim = np.arange(L) <= e - int(min_len_s * sr)
-        score = np.where(lim, score, -2)
-        s = int(np.argmax(score))
-        if score[s] > best[0]:
-            best = (float(score[s]), s, int(e))
-    score, s, e = best
-    rad = int(0.01 * sr)
-    s2, e2 = zero_cross(m, s, rad), zero_cross(m, e, rad)
+        score = np.where(lim, score, -2.0)
+        # Quantize first so a 1-ulp FFT difference cannot move the peak, then take the earliest start.
+        qscore = np.round(score * _SCORE_SCALE)
+        s = int(np.argmax(qscore))
+        if float(score[s]) <= -2.0:
+            continue
+        s2, e2 = zero_cross(m, s, rad), zero_cross(m, e, rad)
+        ranked.append((float(score[s]), s2, e2 - s2))
+    chosen = pick_candidate(ranked)
+    if chosen is None:
+        score, s2, e2 = -2.0, zero_cross(m, 0, rad), zero_cross(m, 0, rad)
+    else:
+        score, s2, e2 = chosen[3], chosen[1], chosen[1] + chosen[2]
     return {"start": s2, "end": e2, "score": round(score, 4), "sr": sr,
             "start_s": round(s2 / sr, 4), "end_s": round(e2 / sr, 4), "length_s": round((e2 - s2) / sr, 4)}
 

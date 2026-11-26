@@ -1,6 +1,6 @@
 # loop-finder
 
-Find seamless loop points in music/ambience WAVs (cross-correlation of the audio after candidate end vs start points, snapped to zero crossings), print engine loop_begin/loop_end sample values, and optionally render a crossfaded loop WAV.
+Find seamless loop points in music/ambience WAVs (cross-correlation of the audio after candidate end vs start points, snapped to zero crossings), print engine loop_begin/loop_end sample values, and optionally render a crossfaded loop WAV. Scores are quantized to 4 decimal places before ranking. When those scores tie, the earliest start wins, then the shortest loop, so the same file picks the same points on every machine.
 
 ## Usage
 
