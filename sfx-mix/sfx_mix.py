@@ -74,8 +74,27 @@ def mix(recipe, base="."):
     return out, sr, {"timeline": timeline, "duration_s": round(total / sr, 3), "channels": ch, "scale_db": round(20 * math.log10(scale), 2), "peak_db": round(audio_tidy.db(float(np.abs(out).max())), 2)}
 
 
+_HELP = """\
+Recipe keys (JSON object):
+  sample_rate   output rate (default 44100)
+  channels      1 or 2 (default: widest layer, or 2 if any layer sets pan)
+  tail_ms       silence appended after the last layer (default 0)
+  master_gain_db  gain applied to the sum before the peak stage (default 0)
+  peak_db       peak ceiling in dBFS (default -1). The mix is scaled down when
+                it is louder than this and left alone when it is quieter.
+  normalize     false (default) or true. true also scales a quieter mix up so
+                the peak lands on peak_db. Omit it and peak_db is only a ceiling.
+  soft_clip     false (default) or true. true applies tanh before the peak stage.
+  layers        list of layer objects. Each layer:
+                  file (required, path relative to the recipe),
+                  offset_ms, gain_db, pitch_semitones, reverse,
+                  trim_ms, fade_in_ms, fade_out_ms, lowpass_hz, highpass_hz, pan
+"""
+
+
 def main(argv=None):
-    ap = argparse.ArgumentParser(description="Mix WAV layers into one SFX from a JSON recipe.")
+    ap = argparse.ArgumentParser(description="Mix WAV layers into one SFX from a JSON recipe.",
+                                 formatter_class=argparse.RawDescriptionHelpFormatter, epilog=_HELP)
     ap.add_argument("recipe"); ap.add_argument("-o", "--out"); ap.add_argument("--bits", type=int, choices=[16, 24, 32], default=16); ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--in-place", action="store_true", help="allow overwriting the input")
     a = ap.parse_args(argv)

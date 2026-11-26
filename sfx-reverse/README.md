@@ -20,7 +20,7 @@ Original code. Part of gamestudio-tools, custom-built for the game studio projec
 
 ## Known gaps
 
-Only the first `smpl` loop is remapped (a second loop is reported and dropped). `audio-tidy` re-encodes the PCM, so other RIFF chunks besides the remapped `smpl` are not preserved. Reversing twice with remapped loops is identity for the PCM and the first loop.
+Only the first `smpl` loop is remapped (a second loop is reported and dropped). The file is rewritten, so other RIFF chunks besides the remapped `smpl` are not preserved. The PCM itself is reversed as integers: 16, 24 and 32-bit files written back at the same width are bit-exact (a second reverse restores every sample), and `--bits` changes width by a shift. Reversing twice with remapped loops is identity for the PCM and the first loop.
 
 ## Tests
 

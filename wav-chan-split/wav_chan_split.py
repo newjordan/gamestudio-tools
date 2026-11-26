@@ -2,14 +2,15 @@
 """wav-chan-split: split a multi-channel WAV into mono stems (default names L/R, or 5.1 / 7.1, or --names) plus a
 cue/index JSON or CSV, and optionally interleave mono stems back into one multi-channel WAV (--join). Inputs may be
 files or folders. Stems are written under --outdir (or next to the source with --suffix). The input path is never
-overwritten. PCM only, via audio-tidy.
+overwritten. PCM only. Split and join move integer samples, so a same-width
+round trip is bit-exact.
 """
 import argparse, os, csv, json, sys
 
 import numpy as np
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "audio-tidy"))
-import audio_tidy  # noqa: E402
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
+import pcm_frames  # noqa: E402
 
 DEFAULT = {1: ["M"], 2: ["L", "R"], 3: ["L", "R", "C"], 4: ["L", "R", "Ls", "Rs"],
            5: ["L", "R", "C", "Ls", "Rs"], 6: ["L", "R", "C", "LFE", "Ls", "Rs"],
@@ -45,17 +46,18 @@ def stem_path(src, outdir, suffix, label):
 
 
 def split_one(path, outdir, suffix, custom, bits, dry):
-    x, sr = audio_tidy.read_wav(path)
+    x, sr, src_bits = pcm_frames.read_frames(path)
     labels = names_for(x.shape[1], custom)
-    rec = {"file": path, "rate": sr, "channels": x.shape[1], "frames": len(x),
+    rec = {"file": path, "rate": sr, "channels": int(x.shape[1]), "frames": len(x),
            "duration_s": round(len(x) / sr, 3), "stems": []}
     if outdir and not dry: os.makedirs(outdir, exist_ok=True)
     for i, lab in enumerate(labels):
         dest = stem_path(path, outdir, suffix, lab)
-        if os.path.abspath(dest) == os.path.abspath(path) and not a.in_place:
+        if os.path.abspath(dest) == os.path.abspath(path):
             raise SystemExit(f"refusing to overwrite the input: {dest}")
         if not dry:
-            audio_tidy.write_wav(dest, x[:, i:i + 1], sr, bits=bits)
+            col, out_bits = pcm_frames.to_bits(x[:, i:i + 1], src_bits, bits)
+            pcm_frames.write_frames(dest, col, sr, out_bits)
         rec["stems"].append({"channel": i, "name": lab, "out": dest})
     return rec
 
@@ -63,23 +65,23 @@ def split_one(path, outdir, suffix, custom, bits, dry):
 def join_files(paths, out, names, bits):
     if os.path.abspath(out) in {os.path.abspath(p) for p in paths}:
         sys.exit("refusing to overwrite an input; pick a different -o or pass --in-place")
-    loaded = [audio_tidy.read_wav(p) for p in paths]
-    srs = {sr for _, sr in loaded}
+    loaded = [pcm_frames.read_frames(p) for p in paths]
+    srs = {sr for _, sr, _b in loaded}
     if len(srs) != 1: sys.exit("join: all stems must share the same sample rate")
     sr = loaded[0][1]
-    lens = {len(x) for x, _ in loaded}
+    lens = {len(x) for x, _, _b in loaded}
     if len(lens) != 1: sys.exit("join: all stems must have the same length")
     cols = []
-    for x, _ in loaded:
+    for x, _sr, src_bits in loaded:
         if x.ndim == 1: x = x[:, None]
         if x.shape[1] != 1:
             sys.exit("join: each input must be mono (a multi-channel file would be ambiguous)")
-        cols.append(x[:, 0])
+        col, _out_bits = pcm_frames.to_bits(x[:, 0:1], src_bits, bits)
+        cols.append(col[:, 0])
     y = np.stack(cols, axis=1)
-    os.makedirs(os.path.dirname(os.path.abspath(out)) or ".", exist_ok=True)
-    audio_tidy.write_wav(out, y, sr, bits=bits)
+    pcm_frames.write_frames(out, y, sr, bits)
     labels = names_for(y.shape[1], names)
-    rec = {"out": out, "rate": sr, "channels": y.shape[1], "frames": len(y),
+    rec = {"out": out, "rate": sr, "channels": int(y.shape[1]), "frames": int(len(y)),
            "duration_s": round(len(y) / sr, 3), "names": labels,
            "sources": list(paths)}
     return rec

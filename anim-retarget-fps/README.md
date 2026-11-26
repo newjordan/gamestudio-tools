@@ -1,6 +1,6 @@
 # anim-retarget-fps
 
-Rewrite animation clip frame durations to a new fps grid while keeping each clip's total time. Reads anim-meta / ase-json-import clips JSON. Each duration is snapped to a whole number of ticks of 1000/fps milliseconds (at least one tick); any remainder is added to the last frame. The clip's `fps` field is updated. Writes a new JSON; refuses to overwrite the input.
+Rewrite animation clip frame durations to a new fps grid while keeping each clip's total time. Reads anim-meta / ase-json-import clips JSON, including the name-keyed `clips` object that `anim-meta` and `anim-from-folder` write. Each duration is snapped to a whole number of ticks of 1000/fps milliseconds (at least one tick); any remainder is added to the last frame. The clip's `fps` field is updated. Writes a new JSON; refuses to overwrite the input.
 
 ## Usage
 

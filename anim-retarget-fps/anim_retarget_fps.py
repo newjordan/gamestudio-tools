@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """anim-retarget-fps: rewrite animation clip frame durations to a new fps grid while keeping each clip's total time.
-Reads anim-meta / ase-json-import clips JSON (a list of clips, or {"clips": [...], "animations": [...], "anims": [...]}).
+Reads anim-meta / ase-json-import clips JSON. `clips` (also `animations` / `anims`) may be a
+list of clip objects or the name-keyed object anim-meta and anim-from-folder write
+(`{"clips": {"walk": {"frames": [...], "fps": 12, "loop": true}}}`). A bare list is accepted too.
 Each frame duration is snapped to a whole number of ticks of 1000/fps milliseconds (at least one tick). Any remainder
 is added to the last frame so the clip total matches the original as closely as one tick allows. The clip's fps field
 is updated. Writes a new JSON; refuses to overwrite the input.
@@ -9,9 +11,22 @@ import argparse, os, json, math, sys
 
 
 def clips_of(data):
-    if isinstance(data, list): return data, "list"
-    for k in ("clips", "animations", "anims", "anims"):
-        if isinstance(data.get(k), list): return data[k], k
+    """Return the clip dicts, mutating name-keyed maps in place so the file shape is kept."""
+    if isinstance(data, list):
+        return data
+    if isinstance(data, dict):
+        for k in ("clips", "animations", "anims"):
+            v = data.get(k)
+            if isinstance(v, list):
+                return v
+            if isinstance(v, dict):
+                found = []
+                for name, clip in v.items():
+                    if isinstance(clip, dict):
+                        clip.setdefault("name", name)
+                        found.append(clip)
+                if found:
+                    return found
     raise SystemExit("no clips/animations array found")
 
 
@@ -59,7 +74,7 @@ def main(argv=None):
     if a.fps <= 0: sys.exit("--fps must be positive")
     if os.path.abspath(a.out) == os.path.abspath(a.input) and not a.in_place:
         sys.exit("refusing to overwrite the input; pick a different -o or pass --in-place")
-    data = json.load(open(a.input)); clips, key = clips_of(data)
+    data = json.load(open(a.input)); clips = clips_of(data)
     report = []
     for c in clips:
         durs, kind = durations_of(c)

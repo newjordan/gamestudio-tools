@@ -3,7 +3,8 @@
 averages the channels; `left` / `right` keep one channel. Already-mono files are
 copied. `smpl` loop markers are preserved. Writes next to the source with
 `--suffix` or under `--outdir`. The input is never overwritten unless
-`--in-place`. PCM only, via audio-tidy.
+`--in-place`. Already-mono files and `--mode left` / `right` copy integer PCM
+(bit-exact at the same width). `--mode mix` on a multi-channel file averages.
 """
 import argparse, os, json, sys
 
@@ -13,7 +14,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "audio-tidy"))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "wav-loop-meta"))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "sfx-normalize"))
-import safe_out, audio_tidy, wav_loop_meta, sfx_normalize  # noqa: E402
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
+import safe_out, audio_tidy, wav_loop_meta, sfx_normalize, pcm_frames  # noqa: E402
 
 
 def fold(x, mode):
@@ -31,18 +33,39 @@ def fold(x, mode):
     raise SystemExit(f"unknown mode {mode}")
 
 
+def _integer_pick(samples, mode):
+    """Copy a channel. None means the caller should average in float."""
+    ch = samples.shape[1]
+    if ch == 1:
+        return samples, "already-mono"
+    if mode == "left":
+        return samples[:, 0:1], "ok"
+    if mode == "right":
+        return samples[:, 1:2], "ok"
+    return None
+
+
 def process(path, dest, mode, bits):
-    x, sr = audio_tidy.read_wav(path)
     raw = open(path, "rb").read()
     loops = wav_loop_meta.read_loops(raw)
-    y, status = fold(x, mode)
-    os.makedirs(os.path.dirname(os.path.abspath(dest)) or ".", exist_ok=True)
-    audio_tidy.write_wav(dest, y, sr, bits=bits)
+    samples, sr, src_bits = pcm_frames.read_frames(path)
+    picked = _integer_pick(samples, mode)
+    if picked is not None:
+        y, status = picked
+        y, bits = pcm_frames.to_bits(y, src_bits, bits)
+        pcm_frames.write_frames(dest, y, sr, bits)
+        ch_in = int(samples.shape[1])
+    else:
+        x, sr = audio_tidy.read_wav(path)
+        y, status = fold(x, mode)
+        os.makedirs(os.path.dirname(os.path.abspath(dest)) or ".", exist_ok=True)
+        audio_tidy.write_wav(dest, y, sr, bits=bits)
+        ch_in = int(x.shape[1] if x.ndim > 1 else 1)
     if loops:
         lp = loops[0]
         patched = wav_loop_meta.set_loop(open(dest, "rb").read(), lp["start"], lp["end"])
         open(dest, "wb").write(patched)
-    return {"file": path, "out": dest, "rate": sr, "channels_in": int(x.shape[1] if x.ndim > 1 else 1),
+    return {"file": path, "out": dest, "rate": sr, "channels_in": ch_in,
             "channels_out": 1, "status": status, "mode": mode,
             "loop": ({"start": loops[0]["start"], "end": loops[0]["end"]} if loops else None)}
 

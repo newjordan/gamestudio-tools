@@ -1,6 +1,6 @@
 # wav-invert
 
-Invert the polarity of a WAV (or a folder of WAVs) by multiplying samples by -1. `smpl` loop markers are preserved. Writes next to the source with `--suffix` or under `--outdir`. The input is never overwritten unless `--in-place`. PCM only, via audio-tidy.
+Invert the polarity of a WAV (or a folder of WAVs) by negating each PCM sample. A same-width file is bit-exact except the most-negative code, which saturates because it has no positive twin. `smpl` loop markers are preserved. Writes next to the source with `--suffix` or under `--outdir`. The input is never overwritten unless `--in-place`.
 
 ## Usage
 

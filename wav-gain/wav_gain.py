@@ -3,7 +3,8 @@
 `--max-true-peak` caps the gain so the 4x-oversampled true peak stays under a
 ceiling (the same uncertified meter as wav-batch-meta). `smpl` loop markers are
 preserved. Writes next to the source with `--suffix` or under `--outdir`. The
-input is never overwritten unless `--in-place`. PCM only, via audio-tidy.
+input is never overwritten unless `--in-place`. A gain of 0 dB copies the PCM
+integers (bit-exact at the same width). Any other gain goes through audio-tidy.
 """
 import argparse, os, json, sys
 
@@ -14,7 +15,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "wav-loop-meta"))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "sfx-normalize"))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "wav-batch-meta"))
-import safe_out, audio_tidy, wav_loop_meta, sfx_normalize, wav_batch_meta  # noqa: E402
+import safe_out, audio_tidy, wav_loop_meta, sfx_normalize, wav_batch_meta, pcm_frames  # noqa: E402
 
 
 def process(path, dest, gain_db, max_tp, bits):
@@ -31,9 +32,15 @@ def process(path, dest, gain_db, max_tp, bits):
         if gain > headroom + 1e-9:
             gain = headroom
             status = "peak-capped"
-    y = np.clip(x * (10.0 ** (gain / 20.0)), -1.0, 1.0)
-    os.makedirs(os.path.dirname(os.path.abspath(dest)) or ".", exist_ok=True)
-    audio_tidy.write_wav(dest, y, sr, bits=bits)
+    if gain == 0.0:
+        samples, sr_i, src_bits = pcm_frames.read_frames(path)
+        y, bits = pcm_frames.to_bits(samples, src_bits, bits)
+        pcm_frames.write_frames(dest, y, sr_i, bits)
+        sr = sr_i
+    else:
+        y = np.clip(x * (10.0 ** (gain / 20.0)), -1.0, 1.0)
+        os.makedirs(os.path.dirname(os.path.abspath(dest)) or ".", exist_ok=True)
+        audio_tidy.write_wav(dest, y, sr, bits=bits)
     if loops:
         lp = loops[0]
         patched = wav_loop_meta.set_loop(open(dest, "rb").read(), lp["start"], lp["end"])

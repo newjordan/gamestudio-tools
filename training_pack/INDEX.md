@@ -10,6 +10,6 @@
 | `build/build.sh` | verbatim copy of `examples/sample-topdown/build.sh` |
 | `build/build.annotated.sh` | same script plus a `# [gst <tool>] produces ...` line above each of its 121 gst calls (86 tools); comments only (`annotate.py` regenerates it) |
 | `build/verify_result.txt` | the `build.sh --verify` run |
-| `eval/` | independent eval: `cases.py` (source of truth) / `cases.jsonl` (148 cases, 113 tools: prompt, command, checks), `fixtures.py`, `run_eval.py` (`python3 run_eval.py [--only ID] [-v]`), `results.json`, `found_bugs.jsonl` |
+| `eval/` | independent eval: `cases.py` (source of truth) / `cases.jsonl` (221 cases, 178 tools: prompt, command, checks), `fixtures.py`, `run_eval.py` (`python3 run_eval.py [--only ID] [-v]`), `results.json`, `found_bugs.jsonl`. 2.6.0 added 73 cases for tools that had none or one, and locked the PCM round-trips. |
 
 The eval was written from `gst help`, `gst info`, tool READMEs, the sample's data files and observed CLI output. No tool `.py` was read for it. The only kit source seen while building this pack was the six 2.5.0 fix diffs used in the transcripts.

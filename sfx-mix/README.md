@@ -1,6 +1,8 @@
 # sfx-mix
 
-Layer several WAV files into one sound effect from a JSON recipe: offset, gain, pitch (resample), reverse, trim, fades, first-order low/high-pass and pan per layer; tail, master gain, peak normalisation and optional soft clip for the mix. Prints a timeline; --dry-run writes nothing.
+Layer several WAV files into one sound effect from a JSON recipe: offset, gain, pitch (resample), reverse, trim, fades, first-order low/high-pass and pan per layer; tail, master gain and an optional soft clip for the mix. Prints a timeline; --dry-run writes nothing.
+
+Recipe keys: `sample_rate`, `channels`, `tail_ms`, `master_gain_db`, `peak_db`, `normalize`, `soft_clip`, and `layers`. `peak_db` (default -1) is a ceiling: the mix is turned down when it is louder and left as it is when it is quieter. `"normalize": true` also turns a quieter mix up so the peak lands on `peak_db`. `tail_ms` is silence after the last layer. Each layer may set `file` (required), `offset_ms`, `gain_db`, `pitch_semitones`, `reverse`, `trim_ms`, `fade_in_ms`, `fade_out_ms`, `lowpass_hz`, `highpass_hz` and `pan`. The same list is printed by `--help`.
 
 ## Usage
 

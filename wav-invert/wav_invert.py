@@ -1,27 +1,25 @@
 #!/usr/bin/env python3
 """wav-invert: invert the polarity of a WAV (or a folder of WAVs) by multiplying
-samples by -1. `smpl` loop markers are preserved. Writes next to the source with
-`--suffix` or under `--outdir`. The input is never overwritten unless `--in-place`.
-PCM only, via audio-tidy.
+samples by -1. Samples are negated as integers, so a same-width file is bit-exact
+except the most-negative code, which saturates (it has no positive twin). `smpl`
+loop markers are preserved. Writes next to the source with `--suffix` or under
+`--outdir`. The input is never overwritten unless `--in-place`.
 """
 import argparse, os, json, sys
 
-import numpy as np
-
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "audio-tidy"))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "wav-loop-meta"))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "sfx-normalize"))
-import safe_out, audio_tidy, wav_loop_meta, sfx_normalize  # noqa: E402
+import safe_out, wav_loop_meta, sfx_normalize, pcm_frames  # noqa: E402
 
 
 def process(path, dest, bits):
-    x, sr = audio_tidy.read_wav(path)
+    samples, sr, src_bits = pcm_frames.read_frames(path)
     raw = open(path, "rb").read()
     loops = wav_loop_meta.read_loops(raw)
-    y = np.clip(-x, -1.0, 1.0)
-    os.makedirs(os.path.dirname(os.path.abspath(dest)) or ".", exist_ok=True)
-    audio_tidy.write_wav(dest, y, sr, bits=bits)
+    y = pcm_frames.negate(samples, src_bits if src_bits in (8, 16, 24, 32) else 16)
+    y, bits = pcm_frames.to_bits(y, src_bits, bits)
+    pcm_frames.write_frames(dest, y, sr, bits)
     if loops:
         lp = loops[0]
         patched = wav_loop_meta.set_loop(open(dest, "rb").read(), lp["start"], lp["end"])

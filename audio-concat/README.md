@@ -1,6 +1,6 @@
 # audio-concat
 
-Concatenate WAV files into one reel: optional silence gaps, an optional slate beep before each clip, resample and channel match, a peak cap, and a cue list in CSV and/or JSON (start, end, duration, source path). 16/24/32-bit PCM out.
+Concatenate WAV files into one reel: optional silence gaps, an optional slate beep before each clip, resample and channel match, a peak ceiling, and a cue list in CSV and/or JSON (start, end, duration, source path). `--peak-db` (default -1) only turns the reel down when it is louder than that ceiling; a quieter reel is not turned up. When nothing is resampled, folded, slated, or scaled, the PCM samples are copied as integers (a same-width reel is bit-exact, including exact silence for `--gap-ms`). 16/24/32-bit PCM out.
 
 ## Usage
 
