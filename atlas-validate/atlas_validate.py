@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """atlas-validate: check an atlas JSON (hash or array layout, as written by atlas-pack) against its PNG.
-Errors: frame outside the image, overlapping frames, duplicate names, missing image. Warnings: fully
+Errors: frame outside the image, overlapping frames, duplicate names, missing image.
+Identical rectangles that resolve to the same frame through alias_of (sprite-sheet-optimize
+stores one copy of a repeated frame; several names may point at that copy) are one
+region, not an overlap. Warnings: fully
 transparent frame, frames closer than --padding px (texture bleeding when filtered), trim metadata that
 does not add up (spriteSourceSize vs frame vs sourceSize), non-power-of-two atlas, wasted area above --max-waste.
 """
@@ -25,21 +28,37 @@ def validate(meta, image, padding=1, max_waste=0.5):
         r = v["frame"]; x, y, w, h = r["x"], r["y"], r["w"], r["h"]
         if x < 0 or y < 0 or x + w > W or y + h > H: add("error", n, f"frame {x},{y} {w}x{h} outside atlas {W}x{H}"); continue
         if w <= 0 or h <= 0: add("error", n, "zero-size frame"); continue
-        rects.append((n, x, y, w, h))
+        rects.append((n, x, y, w, h, v))
         if not (a[y:y + h, x:x + w] > 0).any(): add("warn", n, "frame is fully transparent")
         s, o = v.get("spriteSourceSize"), v.get("sourceSize")
         if s and o:
             if (s["w"], s["h"]) != (w, h): add("warn", n, f"spriteSourceSize {s['w']}x{s['h']} != frame {w}x{h}")
             if s["x"] + s["w"] > o["w"] or s["y"] + s["h"] > o["h"]: add("warn", n, "trimmed frame does not fit inside sourceSize")
-    for i, (n1, x1, y1, w1, h1) in enumerate(rects):
-        for n2, x2, y2, w2, h2 in rects[i + 1:]:
+    by_name = {n: v for n, _, _, _, _, v in rects}
+
+    def canon(name):
+        seen = set()
+        while name not in seen:
+            seen.add(name)
+            nxt = (by_name.get(name) or {}).get("alias_of")
+            if not nxt:
+                break
+            name = nxt
+        return name
+
+    for i, (n1, x1, y1, w1, h1, v1) in enumerate(rects):
+        for n2, x2, y2, w2, h2, v2 in rects[i + 1:]:
             gx = max(x1, x2) - min(x1 + w1, x2 + w2); gy = max(y1, y2) - min(y1 + h1, y2 + h2)     # negative = overlap on that axis
-            if gx < 0 and gy < 0: add("error", n1, f"overlaps {n2}")
+            if gx < 0 and gy < 0:
+                same = (x1, y1, w1, h1) == (x2, y2, w2, h2)
+                if same and canon(n1) == canon(n2):
+                    continue
+                add("error", n1, f"overlaps {n2}")
             else:
                 gap = gy if gx < 0 else gx if gy < 0 else max(gx, gy)    # distance between the nearest facing edges
                 if gap < padding: add("warn", n1, f"only {gap}px from {n2} (padding {padding})")
     if (W & (W - 1)) or (H & (H - 1)): out.append({"level": "warn", "frame": "", "msg": f"atlas {W}x{H} is not power-of-two"})
-    used = sum(w * h for _, _, _, w, h in rects)
+    used = sum(w * h for _, _, _, w, h, _ in rects)
     if W * H and 1 - used / (W * H) > max_waste: out.append({"level": "warn", "frame": "", "msg": f"{1 - used / (W * H):.0%} of the atlas is unused"})
     return out
 

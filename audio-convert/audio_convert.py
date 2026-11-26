@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """audio-convert: batch WAV -> OGG Vorbis / Opus / MP3 / FLAC with sensible game presets, via the local
 `ffmpeg` binary (arguments are passed as a list, no shell). Optional EBU R128 loudness normalisation.
+`-bitexact` and `-map_metadata -1` keep the encoded file free of the encoder version and the
+wall-clock date, so the same WAV encodes to the same bytes.
 Presets: music (vorbis q5), sfx (vorbis q4, mono), voice (opus 48k mono), mp3 (lame q2), flac.
 Runs locally on whatever machine you run it on; it only reads your files and writes the outputs.
 """
@@ -17,7 +19,8 @@ PRESETS = {
 
 def command(src, dst, preset, loudnorm=None, rate=None, overwrite=True):
     ext, args = PRESETS[preset]
-    cmd = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y" if overwrite else "-n", "-i", src, "-vn"]
+    cmd = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y" if overwrite else "-n", "-i", src,
+           "-vn", "-bitexact", "-map_metadata", "-1"]
     filters = []
     if loudnorm is not None:
         filters.append(f"loudnorm=I={loudnorm}:TP=-1.5:LRA=11")

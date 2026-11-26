@@ -30,8 +30,14 @@ def make(old_manifest, new_dir, out, ignore=None):
     patch = {"schema": "gst.patch-pack/1", "ops": ops, "base": {k: o[k]["sha256"] for k in d["changed"] + d["removed"] + [a for a, _ in d["renamed"]]},
              "result": {k: v["sha256"] for k, v in n.items()}}
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
-        z.writestr("patch.json", json.dumps(patch, indent=1, sort_keys=True))
-        for k in d["added"] + d["changed"]: z.write(os.path.join(new_dir, k), "files/" + k)
+        # ZipInfo defaults to the current time, so two packs of the same bytes used to differ.
+        def put(name, data):
+            info = zipfile.ZipInfo(filename=name, date_time=(1980, 1, 1, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            z.writestr(info, data)
+        put("patch.json", json.dumps(patch, indent=1, sort_keys=True).encode("utf-8"))
+        for k in d["added"] + d["changed"]:
+            put("files/" + safe(k), open(os.path.join(new_dir, k), "rb").read())
     return patch, os.path.getsize(out)
 
 

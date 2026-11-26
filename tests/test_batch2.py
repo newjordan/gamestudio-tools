@@ -69,6 +69,13 @@ def test_sprite_fx(tmp_path):
     assert sorted(os.listdir(tmp_path / "o")) == ["a.png", "a_flash.png", "b.png", "b_flash.png"]
     pad2 = sprite_fx.pad_for(2, (1, 1, 0.4, 1))
     assert Image.open(tmp_path / "o" / "a.png").size == (8 + 2 * pad2, 8 + 2 * pad2)
+    assert sprite_fx.parse_color("#fff1e8") == (255, 241, 232, 255)
+    assert sprite_fx.parse_color("fff1e8") == (255, 241, 232, 255)
+    with pytest.raises(SystemExit):
+        sprite_fx.parse_color("red")
+    sprite_fx.main([str(d / "a.png"), "-o", str(tmp_path / "hash"), "--outline", "1", "--outline-color", "#fff1e8"])
+    hashed = Image.open(tmp_path / "hash" / "a.png")
+    assert hashed.getpixel((sprite_fx.pad_for(1, None) + 1, sprite_fx.pad_for(1, None) + 2))[:3] == (255, 241, 232)
 
 
 # ---------- glb-lod

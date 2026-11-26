@@ -115,6 +115,10 @@ def test_audio_convert(tmp_path):
         info = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "stream=codec_name:format=duration", "-of", "json", str(f)], capture_output=True, text=True)
         j = json.loads(info.stdout)
         assert j["streams"][0]["codec_name"] == codec and abs(float(j["format"]["duration"]) - 1.0) < 0.15
+    # the same WAV must encode to the same bytes; a wall-clock vendor string used to change the hash
+    assert audio_convert.main([str(tmp_path / "tone.wav"), "-o", str(tmp_path / "sfx_a"), "--preset", "sfx"]) == 0
+    assert audio_convert.main([str(tmp_path / "tone.wav"), "-o", str(tmp_path / "sfx_b"), "--preset", "sfx"]) == 0
+    assert (tmp_path / "sfx_a" / "tone.ogg").read_bytes() == (tmp_path / "sfx_b" / "tone.ogg").read_bytes()
     assert audio_convert.main([str(tmp_path / "tone.wav"), "-o", str(tmp_path / "d"), "--dry-run"]) == 0 and not (tmp_path / "d" / "tone.ogg").exists()
 
 

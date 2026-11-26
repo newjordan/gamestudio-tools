@@ -11,5 +11,6 @@
 | `build/build.annotated.sh` | same script plus a `# [gst <tool>] produces ...` line above each of its 121 gst calls (86 tools); comments only (`annotate.py` regenerates it) |
 | `build/verify_result.txt` | the `build.sh --verify` run |
 | `eval/` | independent eval: `cases.py` (source of truth) / `cases.jsonl` (148 cases, 113 tools: prompt, command, checks), `fixtures.py`, `run_eval.py` (`python3 run_eval.py [--only ID] [-v]`), `results.json`, `found_bugs.jsonl` |
+| `trajectories/` | verified tool-use trajectories. `catalog.py` is the request list. `generate.py` runs each one in a temp project and writes `shards/*.jsonl` (one shard per family, each under 5 MB), `stats.json`, and `dropped.jsonl`. `python3 generate.py --verify` re-runs the stored commands and compares exit codes, stdout, stderr and sha256. Counts live in `stats.json`. |
 
 The eval was written from `gst help`, `gst info`, tool READMEs, the sample's data files and observed CLI output. No tool `.py` was read for it. The only kit source seen while building this pack was the six 2.5.0 fix diffs used in the transcripts.
