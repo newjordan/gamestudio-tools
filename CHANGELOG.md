@@ -3,6 +3,68 @@
 All notable changes to gamestudio-tools are recorded here. The kit is versioned
 with a `VERSION` file and a reproducible `gst bundle` tarball.
 
+## 2.5.0 — 2026-11-25
+
+Adds a second complete sample game, a top-down roguelite that exercises 61 tools
+the platformer did not touch, and fixes six kit bugs (five exposed by the game, one
+in `gst bundle`). No new tools (262).
+
+### Added
+
+- `examples/sample-topdown/`: *Ember Crypt*, a top-down action roguelite for
+  Godot 4.7. Two procedurally generated floors (`dungeon-gen` BSP, seeded from
+  the run seed) autotiled by `map-auto-layer` with a 47-tile blob sheet from
+  `tileset-gen`, plus a boss arena built with `map-blank`, `map-fill` and
+  `map-stamp`. Five enemy kinds with chase, shoot and boss behaviours on a
+  generated NavigationRegion2D, pickups rolled from `drop-sim`-checked loot
+  tables, a HUD (nine-slice panel, atlas-unpacked icons, BMFont labels),
+  save/load between floors (the written save is linted by `game-data-lint`),
+  en/de/fr text through `loc-check`, `loc-key-lint`, `loc-placeholder-lint`,
+  `loc-fit`, `pseudoloc`, `font-subset`, `bmfont-gen` and `loc-to-godot`,
+  keyboard plus gamepad on every action (`input-map-lint --parity --strict`),
+  12 SFX from `sfx-gen`/`sfx-pitch`/`sfx-variants`/`sfx-envelope`/`sfx-reverse`/
+  `sfx-mix` and a 16 s music loop mixed by `sfx-mix`, levelled by
+  `wav-loud-apply` and cut by `wav-loop-snap`. `build.sh` runs 86 gst tools and
+  the README maps every generated file to its command. A seeded autoplay run
+  clears both floors and the boss identically every time; `build.sh --movie`
+  records a 73.6 s software-GL `--write-movie` capture to `media/gameplay.gif`
+  and `media/gameplay.mp4`.
+- `tests/test_v25.py`: eight regression tests for the bugs below (all fail on
+  2.4.0 code; three load the result in Godot when `GODOT_BIN` is set) and three
+  sample tests: the README maps every generated asset and tool, the asset build
+  is reproducible byte for byte, and (with `GODOT_BIN`) the project imports with
+  zero errors and the autoplay clears the run in two locales with identical
+  gameplay.
+
+### Fixed
+
+- `dungeon-gen`: the JSON map had an empty tileset, so `map-to-godot` drew no
+  cells and `map-reach`/`nav-to-godot` saw an all-walkable map. It now embeds a
+  two-tile tileset (`<out>_tiles.png`, wall tile `solid=true`), layer ids,
+  `nextlayerid`/`nextobjectid`, and in BSP mode a `rooms` object layer; new
+  `--tile`.
+- `atlas-to-godot`: trimmed atlas-pack frames lost their offset and original
+  canvas (animations jittered and pivots moved). AtlasTextures now get
+  `margin` from `spriteSourceSize`/`sourceSize`; verified in Godot 4.7.2 (a
+  6x4 trimmed frame reports 16x16).
+- `anim-from-folder`: `--fps` matched exact clip names only and a repeated
+  `--fps` silently replaced the earlier one. Keys may now be globs, exact names
+  win, and `--fps`/`--once` are repeatable.
+- `asset-unused`: `project.godot` was listed as unused and its references
+  (icon, main scene, autoloads, translations) were ignored, as were BMFont
+  page images. Both are now read.
+- `nav-to-godot`: each rectangle had private vertices, and Godot links
+  navigation polygons only across identical edges, so rooms meeting a corridor
+  at a T-junction were islands and `map_get_path` returned nothing. Vertices
+  are welded and T-junctions split; verified with a Godot path query.
+  `examples/sample-game-full/project/levels/level2_nav.tscn` is regenerated
+  with the fix (two platforms now share edges); the platformer autoplay still
+  wins in 22.3 s.
+- `gst bundle`: it walked `examples/<game>/work/`, the gitignored scratch that
+  `build.sh` leaves behind, so a bundle cut after `build.sh --movie` grew from
+  about 8 MB to 45 MB (a 43 MB movie AVI and raw WAVs). Those folders are now
+  skipped; a `work` folder anywhere else is still shipped.
+
 ## 2.4.0 — 2026-11-25
 
 Adds a complete sample game and fixes two kit bugs it exposed. No new tools (262).

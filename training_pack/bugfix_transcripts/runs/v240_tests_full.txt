@@ -1,0 +1,213 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.7.0 -- /usr/bin/python3
+rootdir: /tmp/gst240
+collecting ... collected 11 items / 3 deselected / 8 selected
+
+tests/test_v25.py::test_dungeon_gen_json_is_a_usable_tiled_map FAILED    [ 12%]
+tests/test_v25.py::test_atlas_to_godot_restores_trimmed_canvas FAILED    [ 25%]
+tests/test_v25.py::test_atlas_to_godot_trimmed_frame_keeps_source_size_in_godot FAILED [ 37%]
+tests/test_v25.py::test_anim_from_folder_fps_accepts_globs_and_repeats FAILED [ 50%]
+tests/test_v25.py::test_asset_unused_reads_project_godot_and_bmfont_pages FAILED [ 62%]
+tests/test_v25.py::test_nav_to_godot_welds_t_junctions FAILED            [ 75%]
+tests/test_v25.py::test_nav_to_godot_t_junction_path_in_godot FAILED     [ 87%]
+tests/test_v25.py::test_bundle_skips_example_work_dirs FAILED            [100%]
+
+=================================== FAILURES ===================================
+_________________ test_dungeon_gen_json_is_a_usable_tiled_map __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-box/pytest-384/test_dungeon_gen_json_is_a_usa0')
+capsys = <_pytest.capture.CaptureFixture object at 0x7f9de8329550>
+
+    def test_dungeon_gen_json_is_a_usable_tiled_map(tmp_path, capsys):
+        out = tmp_path / "d"
+        assert dungeon_gen.main(["--mode", "bsp", "--size", "30x20", "--seed", "5", "-o", str(out)]) in (0, None)
+        m = json.loads((tmp_path / "d.json").read_text())
+        # 2.4.0 wrote "tilesets": [] so every kit consumer saw an empty or all-walkable map
+>       assert m["tilesets"] and m["tilesets"][0]["firstgid"] == 1
+               ^^^^^^^^^^^^^
+E       KeyError: 'tilesets'
+
+tests/test_v25.py:39: KeyError
+----------------------------- Captured stdout call -----------------------------
+bsp 30x20 seed=5: 6 rooms, 1 connected region(s) -> /tmp/pytest-of-box/pytest-384/test_dungeon_gen_json_is_a_usa0/d.txt/.png/.json
+_________________ test_atlas_to_godot_restores_trimmed_canvas __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-box/pytest-384/test_atlas_to_godot_restores_t0')
+capsys = <_pytest.capture.CaptureFixture object at 0x7f9dd1345e50>
+
+    def test_atlas_to_godot_restores_trimmed_canvas(tmp_path, capsys):
+        a = _trimmed_atlas(tmp_path)
+        assert atlas_to_godot.main([str(a), "-o", str(tmp_path / "f.tres"), "--res", "res://a.png"]) in (0, None)
+        t = (tmp_path / "f.tres").read_text()
+        # 2.4.0 wrote only region = Rect2(0, 0, 6, 4): frames shrank to 6x4 and lost their 5,9 offset
+        assert "region = Rect2(0, 0, 6, 4)" in t
+>       assert "margin = Rect2(5, 9, 10, 12)" in t
+E       assert 'margin = Rect2(5, 9, 10, 12)' in '[gd_resource type="SpriteFrames" load_steps=3 format=3]\n\n[ext_resource type="Texture2D" path="res://a.png" id="1_tex"]\n\n[sub_resource type="AtlasTexture" id="AtlasTexture_0"]\natlas = ExtResource("1_tex")\nregion = Rect2(0, 0, 6, 4)\n\n[resource]\nanimations = [\n  { "frames": [{ "duration": 1.0, "texture": SubResource("AtlasTexture_0") }], "loop": true, "name": &"default", "speed": 12.0 }\n]\n'
+
+tests/test_v25.py:81: AssertionError
+----------------------------- Captured stdout call -----------------------------
+1 texture(s), 1 animation(s) -> /tmp/pytest-of-box/pytest-384/test_atlas_to_godot_restores_t0/f.tres
+_________ test_atlas_to_godot_trimmed_frame_keeps_source_size_in_godot _________
+
+tmp_path = PosixPath('/tmp/pytest-of-box/pytest-384/test_atlas_to_godot_trimmed_fr0')
+
+    @pytest.mark.skipif(not godot_bin(), reason="GODOT_BIN not set")
+    def test_atlas_to_godot_trimmed_frame_keeps_source_size_in_godot(tmp_path):
+        proj = tmp_path / "p"; proj.mkdir()
+        (proj / "project.godot").write_text("config_version=5\n")
+        a = _trimmed_atlas(proj)
+        assert atlas_to_godot.main([str(a), "-o", str(proj / "f.tres"), "--res", "res://a.png"]) in (0, None)
+        out = _run_godot_script(tmp_path, proj, 'extends SceneTree\nfunc _initialize():\n'
+                                '\tvar sf: SpriteFrames = load("res://f.tres")\n'
+                                '\tvar t: Texture2D = sf.get_frame_texture(sf.get_animation_names()[0], 0)\n'
+                                '\tprint("SIZE %dx%d" % [t.get_width(), t.get_height()])\n\tquit()\n')
+>       assert "SIZE 16x16" in out, out[-1500:]
+E       AssertionError: Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+E         
+E         SIZE 6x4
+E         
+E       assert 'SIZE 16x16' in 'Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nSIZE 6x4\n'
+
+tests/test_v25.py:95: AssertionError
+----------------------------- Captured stdout call -----------------------------
+1 texture(s), 1 animation(s) -> /tmp/pytest-of-box/pytest-384/test_atlas_to_godot_trimmed_fr0/p/f.tres
+_____________ test_anim_from_folder_fps_accepts_globs_and_repeats ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-box/pytest-384/test_anim_from_folder_fps_acce0')
+capsys = <_pytest.capture.CaptureFixture object at 0x7f9dd13474d0>
+
+    def test_anim_from_folder_fps_accepts_globs_and_repeats(tmp_path, capsys):
+        for clip in ("walk-down", "walk-up", "idle"):
+            for i in range(2):
+                Image.new("RGBA", (4, 4), (9, 9, 9, 255)).save(tmp_path / ("%s_%d.png" % (clip, i)))
+        out = tmp_path / "clips.json"
+        assert anim_from_folder.main([str(tmp_path), "-o", str(out), "--pattern", "{clip}_{frame}.png",
+                                      "--default-fps", "8", "--fps", "walk-*=10", "--fps", "idle=4",
+                                      "--once", "idl*"]) in (0, None)
+        c = json.loads(out.read_text())["clips"]
+        # 2.4.0 treated 'walk-*' as a literal clip name and kept only the last --fps flag
+>       assert c["walk-down"]["fps"] == 10 and c["walk-up"]["fps"] == 10
+E       assert (8.0 == 10)
+
+tests/test_v25.py:109: AssertionError
+----------------------------- Captured stdout call -----------------------------
+idle: 2 frames @ 4 fps, loop, 0.5s
+walk-down: 2 frames @ 8 fps, loop, 0.25s
+walk-up: 2 frames @ 8 fps, loop, 0.25s
+WARN override for unknown clip 'idl*'
+____________ test_asset_unused_reads_project_godot_and_bmfont_pages ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-box/pytest-384/test_asset_unused_reads_projec0')
+capsys = <_pytest.capture.CaptureFixture object at 0x7f9dd0edc2b0>
+
+    def test_asset_unused_reads_project_godot_and_bmfont_pages(tmp_path, capsys):
+        (tmp_path / "art").mkdir(); (tmp_path / "ui").mkdir(); (tmp_path / "i18n").mkdir()
+        (tmp_path / "project.godot").write_text(
+            'config_version=5\n[application]\nrun/main_scene="res://main.tscn"\nconfig/icon="res://art/icon.png"\n'
+            '[autoload]\nGame="*res://game.gd"\n[internationalization]\n'
+            'locale/translations=PackedStringArray("res://i18n/s.en.translation")\n')
+        (tmp_path / "main.tscn").write_text('[gd_scene format=3]\n[ext_resource type="Theme" path="res://ui/theme.tres" id="1"]\n'
+                                            '[node name="M" type="Node"]\n')
+        (tmp_path / "ui" / "theme.tres").write_text('[gd_resource type="Theme" format=3]\n'
+                                                    '[ext_resource type="FontFile" path="res://ui/f.fnt" id="1"]\n[resource]\n')
+        (tmp_path / "ui" / "f.fnt").write_text('info face="x" size=11\ncommon lineHeight=13 base=10 scaleW=64 scaleH=64 pages=1\n'
+                                               'page id=0 file="f.png"\nchars count=0\n')
+        for p in ("art/icon.png", "ui/f.png", "art/orphan.png"):
+            Image.new("RGBA", (2, 2)).save(tmp_path / p)
+        (tmp_path / "game.gd").write_text("extends Node\n")
+        (tmp_path / "i18n" / "s.en.translation").write_bytes(b"RSRC")
+        rep = tmp_path.parent / "unused.json"
+        asset_unused.main([str(tmp_path), "--json", str(rep)])
+        unused = json.loads(rep.read_text())["unused"]
+        # 2.4.0 listed project.godot, the icon, the translation and the font page as unused
+>       assert unused == ["art/orphan.png"], unused
+E       AssertionError: ['art/icon.png', 'art/orphan.png', 'i18n/s.en.translation', 'project.godot', 'ui/f.png']
+E       assert ['art/icon.pn...', 'ui/f.png'] == ['art/orphan.png']
+E         
+E         At index 0 diff: 'art/icon.png' != 'art/orphan.png'
+E         Left contains 4 more items, first extra item: 'art/orphan.png'
+E         
+E         Full diff:
+E           [
+E         +     'art/icon.png',...
+E         
+E         ...Full output truncated (5 lines hidden), use '-vv' to show
+
+tests/test_v25.py:139: AssertionError
+----------------------------- Captured stdout call -----------------------------
+UNUSED  art/icon.png
+UNUSED  art/orphan.png
+UNUSED  i18n/s.en.translation
+UNUSED  project.godot
+UNUSED  ui/f.png
+9 file(s) scanned, 4 referenced, 5 unused
+_____________________ test_nav_to_godot_welds_t_junctions ______________________
+
+    def test_nav_to_godot_welds_t_junctions():
+        rects = [(0, 0, 64, 16), (0, 16, 16, 48)]   # corridor below the left end of a wider room strip
+>       verts, polys, _ = nav_to_godot.weld_polygons(rects)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'nav_to_godot' has no attribute 'weld_polygons'
+
+tests/test_v25.py:145: AttributeError
+__________________ test_nav_to_godot_t_junction_path_in_godot __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-box/pytest-384/test_nav_to_godot_t_junction_p0')
+
+    @pytest.mark.skipif(not godot_bin(), reason="GODOT_BIN not set")
+    def test_nav_to_godot_t_junction_path_in_godot(tmp_path):
+        proj = tmp_path / "p"; proj.mkdir()
+        (proj / "project.godot").write_text("config_version=5\n[navigation]\nworld/map_use_async_iterations=false\n")
+        nav_to_godot.write_scene(str(proj / "nav.tscn"), [(0, 0, 64, 16), (0, 16, 16, 48)])
+        out = _run_godot_script(tmp_path, proj, 'extends SceneTree\nfunc _initialize():\n'
+                                '\troot.add_child(load("res://nav.tscn").instantiate())\n'
+                                '\tfor i in 4:\n\t\tawait physics_frame\n'
+                                '\tvar m = root.get_world_2d().navigation_map\n'
+                                '\tvar p = NavigationServer2D.map_get_path(m, Vector2(56, 8), Vector2(8, 40), true)\n'
+                                '\tprint("PATH_END %s" % [p[p.size() - 1] if p.size() else Vector2(-1, -1)])\n\tquit()\n')
+>       assert "PATH_END (8.0, 40.0)" in out, out[-1500:]
+E       AssertionError: Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+E         
+E         PATH_END (8.0, 16.0)
+E         
+E       assert 'PATH_END (8.0, 40.0)' in 'Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nPATH_END (8.0, 16.0)\n'
+
+tests/test_v25.py:165: AssertionError
+_____________________ test_bundle_skips_example_work_dirs ______________________
+
+tmp_path = PosixPath('/tmp/pytest-of-box/pytest-384/test_bundle_skips_example_work0')
+
+    def test_bundle_skips_example_work_dirs(tmp_path):
+        """gst bundle walked examples/<game>/work (build.sh scratch: movie AVI, raw WAVs); 2.5.0 skips it."""
+        root = tmp_path / "kit"
+        (root / "examples" / "demo" / "work" / "movie").mkdir(parents=True)
+        (root / "examples" / "demo" / "work" / "movie" / "big.avi").write_bytes(b"x" * 64)
+        (root / "examples" / "demo" / "build.sh").write_text("#!/bin/sh\n")
+        (root / "tool" / "work").mkdir(parents=True)                    # a 'work' folder outside examples/ is kept
+        (root / "tool" / "work" / "keep.txt").write_text("k")
+        shutil.copy(os.path.join(ROOT, "gst"), root / "gst")
+        (root / "VERSION").write_text("9.9.9\n")
+        out = tmp_path / "out"
+        r = subprocess.run([sys.executable, str(root / "gst"), "bundle", "-o", str(out)], stdout=subprocess.PIPE,
+                           stderr=subprocess.STDOUT, text=True, timeout=60)
+        assert r.returncode == 0, r.stdout
+        import tarfile
+        names = tarfile.open(next(out.glob("*.tar.gz"))).getnames()
+        assert any(n.endswith("examples/demo/build.sh") for n in names)
+        assert any(n.endswith("tool/work/keep.txt") for n in names)
+>       assert not any("/examples/demo/work/" in n for n in names), names
+E       AssertionError: ['gamestudio-tools-9.9.9/VERSION', 'gamestudio-tools-9.9.9/gst', 'gamestudio-tools-9.9.9/examples/demo/build.sh', 'gamestudio-tools-9.9.9/examples/demo/work/movie/big.avi', 'gamestudio-tools-9.9.9/tool/work/keep.txt']
+E       assert not True
+E        +  where True = any(<generator object test_bundle_skips_example_work_dirs.<locals>.<genexpr> at 0x7f9dd138b780>)
+
+tests/test_v25.py:270: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_v25.py::test_dungeon_gen_json_is_a_usable_tiled_map - KeyEr...
+FAILED tests/test_v25.py::test_atlas_to_godot_restores_trimmed_canvas - asser...
+FAILED tests/test_v25.py::test_atlas_to_godot_trimmed_frame_keeps_source_size_in_godot
+FAILED tests/test_v25.py::test_anim_from_folder_fps_accepts_globs_and_repeats
+FAILED tests/test_v25.py::test_asset_unused_reads_project_godot_and_bmfont_pages
+FAILED tests/test_v25.py::test_nav_to_godot_welds_t_junctions - AttributeErro...
+FAILED tests/test_v25.py::test_nav_to_godot_t_junction_path_in_godot - Assert...
+FAILED tests/test_v25.py::test_bundle_skips_example_work_dirs - AssertionErro...
+======================= 8 failed, 3 deselected in 8.86s ========================

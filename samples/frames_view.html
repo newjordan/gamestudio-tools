@@ -1,0 +1,34 @@
+<!doctype html><meta charset=utf-8><title>walk_frames</title>
+<style>html,body{margin:0;height:100%;background:#1e1e22;color:#ddd;font:13px system-ui}#bar{position:fixed;top:0;left:0;right:0;padding:6px 10px;background:#0009;z-index:2}
+canvas{display:block;image-rendering:pixelated}button{margin-left:6px}</style>
+<div id=bar><b>walk_frames</b> <span id=info></span> <button id=fit>fit</button><button id=one>1:1</button><button id=play style=display:none>play</button></div>
+<canvas id=c></canvas>
+<script>
+const DATA={"mode": "frames", "frames": [{"name": "frame_000", "b64": "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAANklEQVR4nO3OsREAIAgEQbQuy7cvrMAxICBwN2b4iwAAAH43XgcZK+sj+7ozq8+rBAhoD2h3AKtrAw4sgI1/AAAAAElFTkSuQmCC"}, {"name": "frame_001", "b64": "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAOklEQVR4nO3OMREAIAwEQUAISpCPEowEBQxFCgp260z+SgEAgN/V20H0EemRNY87Lfs8S4AAAc8Dnttv/wQSoVbmyAAAAABJRU5ErkJggg=="}, {"name": "frame_002", "b64": "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAOElEQVR4nO3OsREAIAgEQbUuyqcvrcAxICBwN2b4GwMAgN/N18GO2OWRzOvOqj6vEiBAgID2gHYHll8EFtnWfZcAAAAASUVORK5CYII="}, {"name": "frame_003", "b64": "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAPElEQVR4nO3OMREAIAwEQUAXShCIEnwFBQxFCgp260z+SgEA+F29HcTokR6Z67jTss+zBAgQIEDA84DnNsDHBBr1Y3NCAAAAAElFTkSuQmCC"}, {"name": "frame_004", "b64": "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAPUlEQVR4nO3OMREAIAwEQUAXwpCAMHwFBQxFCgp260z+SgEAfldvBzF6pEfmOu607PMsAQIECBAg4HnAcxvvNwQeNOnwVQAAAABJRU5ErkJggg=="}, {"name": "frame_005", "b64": "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAPklEQVR4nO3OMREAIAwEQUAXihCEInwFBQxFCgp260z+SgGA39XbQcwe6ZGxjjst+zxLgAABAgQIEPA84LkNIb4EIvlGIOIAAAAASUVORK5CYII="}, {"name": "frame_006", "b64": "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAP0lEQVR4nO3OMREAIAwEQUAXEpCLBHwFBQxFCgr26kx+S5Ek/V69HcTskR4Z67jTss+zAQAAAAAAAAA8BzxvA1g+BCbe8oUmAAAAAElFTkSuQmCC"}, {"name": "frame_007", "b64": "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAP0lEQVR4nO3OMREAIAwEQUAQCpCPAgwFBQxFCgr26kx+S5Gk36u3g1gj0iN9Hnda9nk2AAAAAAAAAACA54DnbZLGBColx6lpAAAAAElFTkSuQmCC"}], "cell": 38, "cols": 8, "fps": 10, "image": null};
+const cv=document.getElementById('c'),ctx=cv.getContext('2d'),info=document.getElementById('info');
+let scale=1,ox=0,oy=0,img=null,tileimg=null,anim=0,animT=null;
+function resize(){cv.width=innerWidth;cv.height=innerHeight;draw()}
+function loadImg(b64){return new Promise(r=>{if(!b64)return r(null);const i=new Image();i.onload=()=>r(i);i.src='data:image/png;base64,'+b64})}
+function hue(id){return 'hsl('+(id*47%360)+',55%,'+(35+id*13%35)+'%)'}
+function size(){if(DATA.mode==='atlas')return[img.width,img.height];if(DATA.mode==='map')return[DATA.w*DATA.tw,DATA.h*DATA.th];
+ const c=DATA.cols,r=Math.ceil(DATA.frames.length/c);return[c*DATA.cell,r*(DATA.cell+14)]}
+function fit(){const[w,h]=size();scale=Math.max(0.05,Math.min((cv.width-20)/w,(cv.height-60)/h));ox=(cv.width-w*scale)/2;oy=50;draw()}
+function draw(){ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,cv.width,cv.height);ctx.imageSmoothingEnabled=false;ctx.setTransform(scale,0,0,scale,ox,oy);
+ if(DATA.mode==='atlas'){ctx.fillStyle='#2a2a30';ctx.fillRect(0,0,img.width,img.height);ctx.drawImage(img,0,0);ctx.lineWidth=1/scale;ctx.strokeStyle='#0f0';
+  for(const f of DATA.frames)ctx.strokeRect(f.x+.5/scale,f.y+.5/scale,f.w,f.h)}
+ else if(DATA.mode==='map'){const{w,h,tw,th,data,tcols}=DATA;for(let y=0;y<h;y++)for(let x=0;x<w;x++){const id=data[y*w+x];if(!id)continue;
+  if(tileimg){const t=id-1;ctx.drawImage(tileimg,(t%tcols)*tw,Math.floor(t/tcols)*th,tw,th,x*tw,y*th,tw,th)}else{ctx.fillStyle=hue(id);ctx.fillRect(x*tw,y*th,tw,th)}}}
+ else{const c=DATA.cols,cell=DATA.cell;ctx.font='9px sans-serif';DATA.frames.forEach((f,i)=>{const x=(i%c)*cell,y=Math.floor(i/c)*(cell+14);
+  ctx.fillStyle=i===anim&&animT?'#345':'#2a2a30';ctx.fillRect(x+1,y+1,cell-2,cell+12);const k=Math.min(1,(cell-6)/Math.max(f.img.width,f.img.height));
+  ctx.drawImage(f.img,x+3,y+3,f.img.width*k,f.img.height*k);ctx.fillStyle='#ccc';ctx.fillText(f.name,x+3,y+cell+8)})}}
+cv.onwheel=e=>{e.preventDefault();const k=e.deltaY<0?1.15:1/1.15,mx=e.offsetX,my=e.offsetY;ox=mx-(mx-ox)*k;oy=my-(my-oy)*k;scale*=k;draw()};
+let drag=null;cv.onmousedown=e=>drag=[e.clientX-ox,e.clientY-oy];onmouseup=()=>drag=null;
+cv.onmousemove=e=>{if(drag){ox=e.clientX-drag[0];oy=e.clientY-drag[1];draw();return}const x=(e.offsetX-ox)/scale,y=(e.offsetY-oy)/scale;
+ if(DATA.mode==='atlas'){const f=DATA.frames.find(f=>x>=f.x&&x<f.x+f.w&&y>=f.y&&y<f.y+f.h);info.textContent=f?f.name+' '+f.w+'x'+f.h+' @'+f.x+','+f.y:''}
+ else if(DATA.mode==='map'){const cx=Math.floor(x/DATA.tw),cy=Math.floor(y/DATA.th);info.textContent=(cx>=0&&cy>=0&&cx<DATA.w&&cy<DATA.h)?'cell '+cx+','+cy+' tile '+DATA.data[cy*DATA.w+cx]:''}};
+document.getElementById('fit').onclick=fit;document.getElementById('one').onclick=()=>{scale=1;ox=10;oy=50;draw()};
+(async()=>{img=await loadImg(DATA.image);tileimg=await loadImg(DATA.tileset);
+ if(DATA.mode==='frames'){for(const f of DATA.frames)f.img=await loadImg(f.b64);const b=document.getElementById('play');b.style.display='';
+  b.onclick=()=>{if(animT){clearInterval(animT);animT=null;b.textContent='play';draw();return}b.textContent='stop';animT=setInterval(()=>{anim=(anim+1)%DATA.frames.length;draw()},1000/DATA.fps)}}
+ info.textContent=DATA.mode+' - scroll to zoom, drag to pan';addEventListener('resize',resize);resize();fit()})();
+</script>

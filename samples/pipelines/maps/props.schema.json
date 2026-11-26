@@ -1,0 +1,12 @@
+{
+  "objects": {
+    "Door": {
+      "required": [
+        "dest"
+      ],
+      "types": {
+        "dest": "string"
+      }
+    }
+  }
+}

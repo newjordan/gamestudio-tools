@@ -1,0 +1,8 @@
+UNUSED  art/icon.png
+UNUSED  art/orphan.png
+UNUSED  i18n/s.en.translation
+UNUSED  project.godot
+UNUSED  ui/f.png
+9 file(s) scanned, 4 referenced, 5 unused
+unused: ['art/icon.png', 'art/orphan.png', 'i18n/s.en.translation', 'project.godot', 'ui/f.png']
+exit=0

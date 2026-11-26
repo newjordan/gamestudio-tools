@@ -1,0 +1,78 @@
+[
+ {
+  "file": "laser_0000.wav",
+  "seed": 0,
+  "params": {
+   "wave": "sine",
+   "freq": 1123.7440565166444,
+   "slide": -2.9262476569148497,
+   "attack": 0.0,
+   "sustain": 0.051652763552852914,
+   "decay": 0.17199053588004087,
+   "duty": 0.5,
+   "vib_depth": 0.0,
+   "vib_speed": 0.0,
+   "arp_mult": 1.0,
+   "arp_time": 0.0,
+   "lpf": 1.0,
+   "volume": 0.5
+  }
+ },
+ {
+  "file": "laser_0001.wav",
+  "seed": 1,
+  "params": {
+   "wave": "saw",
+   "freq": 1940.5564355911224,
+   "slide": -2.740512697104659,
+   "attack": 0.0,
+   "sustain": 0.14486494471372438,
+   "decay": 0.09677471780157282,
+   "duty": 0.5,
+   "vib_depth": 0.0,
+   "vib_speed": 0.0,
+   "arp_mult": 1.0,
+   "arp_time": 0.0,
+   "lpf": 1.0,
+   "volume": 0.5
+  }
+ },
+ {
+  "file": "laser_0002.wav",
+  "seed": 2,
+  "params": {
+   "wave": "sine",
+   "freq": 1158.1893720969479,
+   "slide": -1.5343936669302953,
+   "attack": 0.0,
+   "sustain": 0.059191594213509696,
+   "decay": 0.1400150788948481,
+   "duty": 0.5,
+   "vib_depth": 0.0,
+   "vib_speed": 0.0,
+   "arp_mult": 1.0,
+   "arp_time": 0.0,
+   "lpf": 1.0,
+   "volume": 0.5
+  }
+ },
+ {
+  "file": "laser_0003.wav",
+  "seed": 3,
+  "params": {
+   "wave": "sine",
+   "freq": 1084.1726079153195,
+   "slide": -1.5577059626284855,
+   "attack": 0.0,
+   "sustain": 0.10821620360643677,
+   "decay": 0.06411929633605988,
+   "duty": 0.5,
+   "vib_depth": 0.0,
+   "vib_speed": 0.0,
+   "arp_mult": 1.0,
+   "arp_time": 0.0,
+   "lpf": 1.0,
+   "volume": 0.5
+  }
+ }
+]

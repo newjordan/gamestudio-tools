@@ -1,0 +1,73 @@
+{
+ "files": [
+  {
+   "file": "samples/grid.glb",
+   "materials": [
+    {
+     "name": "m",
+     "index": 0,
+     "baseColorFactor": null,
+     "metallicFactor": null,
+     "roughnessFactor": null,
+     "emissiveFactor": null,
+     "alphaMode": null,
+     "doubleSided": null,
+     "textures": [
+      {
+       "slot": "baseColorTexture",
+       "texture": 0,
+       "image": 0,
+       "kind": "embedded",
+       "uri": null,
+       "ok": true,
+       "name": null
+      }
+     ],
+     "extensions": []
+    }
+   ],
+   "images": 1,
+   "textures": 1,
+   "missing": [],
+   "orphan_images": []
+  },
+  {
+   "file": "samples/tri.glb",
+   "materials": [
+    {
+     "name": "m",
+     "index": 0,
+     "baseColorFactor": null,
+     "metallicFactor": null,
+     "roughnessFactor": null,
+     "emissiveFactor": null,
+     "alphaMode": null,
+     "doubleSided": null,
+     "textures": [],
+     "extensions": []
+    }
+   ],
+   "images": 1,
+   "textures": 0,
+   "missing": [],
+   "orphan_images": [
+    {
+     "index": 0,
+     "kind": "embedded",
+     "uri": null,
+     "ok": true,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "unique_materials": {
+  "m": {
+   "count": 2,
+   "files": [
+    "grid.glb",
+    "tri.glb"
+   ]
+  }
+ }
+}

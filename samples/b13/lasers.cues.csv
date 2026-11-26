@@ -1,0 +1,5 @@
+rel,start_s,end_s,duration_s,file
+laser_0000.wav,0.08,0.3037,0.2237,samples/sfx/laser_0000.wav
+laser_0001.wav,0.4637,0.7053,0.2417,samples/sfx/laser_0001.wav
+laser_0002.wav,0.8653,1.0645,0.1992,samples/sfx/laser_0002.wav
+laser_0003.wav,1.2245,1.3969,0.1723,samples/sfx/laser_0003.wav

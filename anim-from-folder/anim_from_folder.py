@@ -7,6 +7,7 @@ filename). Output matches anim-meta: `{"clips": {"walk": {"frames": [...], "fps"
 anim-hold / anim-rename. Writes a new JSON; the input folder is never overwritten unless
 `--in-place` (only relevant if `-o` points at a file inside the folder with the same path).
 """
+import fnmatch
 import argparse, os, json, re, sys
 from pathlib import Path
 
@@ -80,14 +81,25 @@ def from_globs(folder, specs):
     return clips, warn
 
 
+def _lookup(table, clip, default):
+    """Exact clip name first, then the first fnmatch glob key (walk-*, *_idle) that matches."""
+    if clip in table:
+        return table[clip]
+    for k, v in table.items():
+        if any(ch in k for ch in "*?[") and fnmatch.fnmatchcase(clip, k):
+            return v
+    return default
+
+
 def pack(clips, default_fps, fps, once):
     out, warn = {}, []
+    once_t = {k: True for k in once}
     for k, frames in clips.items():
-        f = float(fps.get(k, default_fps))
-        out[k] = {"frames": frames, "fps": f, "loop": k not in once,
+        f = float(_lookup(fps, k, default_fps))
+        out[k] = {"frames": frames, "fps": f, "loop": not _lookup(once_t, k, False),
                   "duration": round((len(frames) / f) if f else 0.0, 4)}
     for k in list(fps) + list(once):
-        if k not in out:
+        if not any(k == c or fnmatch.fnmatchcase(c, k) for c in out):
             warn.append(f"override for unknown clip {k!r}")
     return out, warn
 
@@ -99,9 +111,11 @@ def main(argv=None):
     ap.add_argument("--pattern", help="filename pattern with {clip} and {frame}, e.g. {clip}_{frame}.png")
     ap.add_argument("--clip", action="append", default=[], metavar="NAME=GLOB",
                     help="repeatable: gather one clip from a glob (sorted by the number in the name)")
-    ap.add_argument("--fps", default="", help="per-clip fps, walk=12,idle=4")
+    ap.add_argument("--fps", action="append", default=[],
+                    help="per-clip fps, walk=12,idle=4; keys may be globs (walk-*=10); repeatable")
     ap.add_argument("--default-fps", type=float, default=12)
-    ap.add_argument("--once", default="", help="comma-separated clips that should not loop")
+    ap.add_argument("--once", action="append", default=[],
+                    help="comma-separated clips (or globs) that should not loop; repeatable")
     ap.add_argument("--json")
     safe_out.add_flag(ap)
     a = ap.parse_args(argv)
@@ -113,8 +127,14 @@ def main(argv=None):
     if a.json:
         safe_out.check(a.folder, a.json, a.in_place)
         safe_out.check(a.out, a.json, a.in_place)
-    fps = {k: float(v) for k, v in (x.split("=") for x in a.fps.split(",") if x)}
-    once = set(filter(None, a.once.split(",")))
+    fps = {}
+    for x in ",".join(a.fps).split(","):
+        if x.strip():
+            if "=" not in x:
+                sys.exit(f"--fps entries are CLIP=FPS, got {x!r}")
+            k, v = x.rsplit("=", 1)
+            fps[k.strip()] = float(v)
+    once = set(filter(None, (x.strip() for x in ",".join(a.once).split(","))))
     warn, unused = [], []
     clips = {}
     if a.pattern:

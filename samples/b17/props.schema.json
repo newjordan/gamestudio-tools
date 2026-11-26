@@ -1,0 +1,14 @@
+{
+ "objects": {
+  "enemy": {
+   "required": [
+    "hp",
+    "speed"
+   ],
+   "types": {
+    "hp": "int",
+    "speed": "float"
+   }
+  }
+ }
+}

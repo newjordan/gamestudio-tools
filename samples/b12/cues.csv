@@ -1,0 +1,7 @@
+rel,class,bus,duration_s,rate,channels,bits,peak_db,rms_db,lufs,loop,loop_start,loop_end,file
+laser_0000.wav,oneshot,oneshot,0.224,44100,1,16,-6.02,-13.18,-13.11,False,,,samples/sfx/laser_0000.wav
+laser_0001.wav,oneshot,oneshot,0.242,44100,1,16,-6.02,-12.47,-10.07,False,,,samples/sfx/laser_0001.wav
+laser_0002.wav,oneshot,oneshot,0.199,44100,1,16,-6.02,-12.62,-12.36,False,,,samples/sfx/laser_0002.wav
+laser_0003.wav,oneshot,oneshot,0.172,44100,1,16,-6.02,-10.57,-10.52,False,,,samples/sfx/laser_0003.wav
+song.wav,music,music,17.3,22050,1,16,-7.96,-15.66,-15.39,False,,,samples/song.wav
+song_loop.wav,music,music,8.0,22050,1,16,-7.96,-15.23,-15.02,False,,,samples/loops/song_loop.wav

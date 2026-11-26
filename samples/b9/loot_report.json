@@ -1,0 +1,125 @@
+{
+ "goblin": {
+  "dagger": {
+   "p_exact": 0.0396,
+   "qty_exact": 0.04,
+   "p_sim": 0.04002,
+   "ci95": [
+    0.038302,
+    0.041738
+   ],
+   "qty_sim": 0.0403,
+   "kills_for_50": 18,
+   "kills_for_90": 57,
+   "longest_dry_streak": 152
+  },
+  "gold": {
+   "p_exact": 0.75,
+   "qty_exact": 3.0,
+   "p_sim": 0.74974,
+   "ci95": [
+    0.745943,
+    0.753537
+   ],
+   "qty_sim": 2.9787,
+   "kills_for_50": 1,
+   "kills_for_90": 2,
+   "longest_dry_streak": 7
+  },
+  "opal": {
+   "p_exact": 0.144375,
+   "qty_exact": 0.15,
+   "p_sim": 0.1485,
+   "ci95": [
+    0.145383,
+    0.151617
+   ],
+   "qty_sim": 0.1546,
+   "kills_for_50": 5,
+   "kills_for_90": 15,
+   "longest_dry_streak": 54
+  },
+  "ruby": {
+   "p_exact": 0.049375,
+   "qty_exact": 0.05,
+   "p_sim": 0.05114,
+   "ci95": [
+    0.049209,
+    0.053071
+   ],
+   "qty_sim": 0.0519,
+   "kills_for_50": 14,
+   "kills_for_90": 46,
+   "longest_dry_streak": 206
+  }
+ },
+ "gems": {
+  "opal": {
+   "p_exact": 0.75,
+   "qty_exact": 0.75,
+   "p_sim": 0.74926,
+   "ci95": [
+    0.745461,
+    0.753059
+   ],
+   "qty_sim": 0.7493,
+   "kills_for_50": 1,
+   "kills_for_90": 2,
+   "longest_dry_streak": 8
+  },
+  "ruby": {
+   "p_exact": 0.25,
+   "qty_exact": 0.25,
+   "p_sim": 0.25074,
+   "ci95": [
+    0.246941,
+    0.254539
+   ],
+   "qty_sim": 0.2507,
+   "kills_for_50": 3,
+   "kills_for_90": 9,
+   "longest_dry_streak": 29
+  }
+ },
+ "boss": {
+  "crown": {
+   "p_exact": 0.029701,
+   "qty_exact": 0.03,
+   "p_sim": 0.04318,
+   "ci95": [
+    0.041398,
+    0.044962
+   ],
+   "qty_sim": 0.0436,
+   "kills_for_50": 23,
+   "kills_for_90": 77,
+   "longest_dry_streak": 39
+  },
+  "gold": {
+   "p_exact": 1.0,
+   "qty_exact": 100.0,
+   "p_sim": 1.0,
+   "ci95": [
+    1.0,
+    1
+   ],
+   "qty_sim": 100.0,
+   "kills_for_50": 1,
+   "kills_for_90": 1,
+   "longest_dry_streak": 0
+  },
+  "potion": {
+   "p_exact": 0.488,
+   "qty_exact": 0.6,
+   "p_sim": 0.4898,
+   "ci95": [
+    0.485418,
+    0.494182
+   ],
+   "qty_sim": 0.6012,
+   "kills_for_50": 2,
+   "kills_for_90": 4,
+   "longest_dry_streak": 15
+  }
+ }
+}

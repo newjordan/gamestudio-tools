@@ -1,0 +1,4 @@
+id,kind,value,sfx
+coin,currency,1,coin
+heart,heal,2,powerup
+key,key,1,powerup

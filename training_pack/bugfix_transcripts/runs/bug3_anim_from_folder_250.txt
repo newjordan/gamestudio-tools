@@ -1,0 +1,7 @@
+idle: 2 frames @ 4 fps, once, 0.5s
+walk-down: 2 frames @ 10 fps, loop, 0.2s
+walk-up: 2 frames @ 10 fps, loop, 0.2s
+idle fps=4.0 loop=False
+walk-down fps=10.0 loop=True
+walk-up fps=10.0 loop=True
+exit=0

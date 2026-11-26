@@ -1,0 +1,9 @@
+bsp 34x22 seed=701: 8 rooms, 1 connected region(s) -> f1.txt/.png/.json (+ f1_tiles.png)
+tilesets: [{"firstgid": 1, "name": "dungeon", "image": "f1_tiles.png", "imagewidth": 32, "imageheight": 16, "t
+layers: ['dungeon', 'rooms']
+1 layer(s), 748 cell(s) -> f1.tscn
+start (4, 2): 352 of 352 walkable tiles reachable, 0 cut-off area(s)
+8 of 8 object(s) reachable
+start (4, 2): 748 of 748 walkable tiles reachable, 0 cut-off area(s)
+8 of 8 object(s) reachable
+exit=0

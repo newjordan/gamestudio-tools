@@ -1,0 +1,34 @@
+[
+ {
+  "id": "greet",
+  "lang": "en",
+  "lines": 2,
+  "width_px": 229.0,
+  "limit_px": 120.0,
+  "changed": true
+ },
+ {
+  "id": "greet",
+  "lang": "fr",
+  "lines": 3,
+  "width_px": 236.0,
+  "limit_px": 120.0,
+  "changed": true
+ },
+ {
+  "id": "greet",
+  "lang": "de",
+  "lines": 2,
+  "width_px": 220.0,
+  "limit_px": 120.0,
+  "changed": true
+ },
+ {
+  "id": "save",
+  "lang": "fr",
+  "lines": 2,
+  "width_px": 219.0,
+  "limit_px": 120.0,
+  "changed": true
+ }
+]

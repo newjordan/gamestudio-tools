@@ -1,0 +1,27 @@
+{
+ "frames": {
+  "red.png": {
+   "frame": {
+    "x": 2,
+    "y": 2,
+    "w": 8,
+    "h": 8
+   }
+  },
+  "green.png": {
+   "frame": {
+    "x": 2,
+    "y": 14,
+    "w": 8,
+    "h": 8
+   }
+  }
+ },
+ "meta": {
+  "size": {
+   "w": 12,
+   "h": 24
+  },
+  "image": "padded.png"
+ }
+}

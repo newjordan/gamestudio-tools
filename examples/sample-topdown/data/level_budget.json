@@ -1,0 +1,4 @@
+{"count": "type",
+ "defaults": {"enemy": 5, "coin": 4, "heart": 2, "key": 1, "stairs": 1, "portal": 0},
+ "maps": {"floor1.json": {"heart": 0}, "boss.json": {"enemy": 1, "key": 0, "stairs": 0, "portal": 1, "coin": 0}},
+ "ignore": ["spawn"]}

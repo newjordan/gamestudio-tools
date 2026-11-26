@@ -1,0 +1,13 @@
+[
+ {
+  "status": "squeezed",
+  "before_s": 0.7,
+  "after_s": 0.28,
+  "squeezed_ms": 420,
+  "gaps": 1,
+  "file": "samples/b17/vo_gap.wav",
+  "out": "samples/b17/tight/vo_gap.wav",
+  "rate": 8000,
+  "channels": 1
+ }
+]

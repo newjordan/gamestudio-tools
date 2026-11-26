@@ -1,0 +1,5 @@
+out/gamestudio-tools-9.9.9.tar.gz  (4 files, 7161 bytes)
+sha256 08c921dbabdc100fb851b479a1fecf07879a82d5ef7a017d1c563a5b2d0cc44e
+tarball bytes: 7161
+packed: gamestudio-tools-9.9.9/tool/work/keep.txt
+exit=0

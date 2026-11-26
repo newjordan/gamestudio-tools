@@ -1,0 +1,9 @@
+{
+ "file": "samples/b10/cube_pivot.obj",
+ "out": "samples/b15/cube_weld.obj",
+ "vertices_before": 8,
+ "vertices_after": 8,
+ "faces_before": 5,
+ "faces_after": 5,
+ "dropped_degenerate": 0
+}

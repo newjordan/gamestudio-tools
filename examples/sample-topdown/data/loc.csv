@@ -1,0 +1,23 @@
+id,en,de,fr
+title_name,Ember Crypt,Glutgruft,Crypte des Braises
+title_tagline,A seeded crypt crawl,Ein Gruftlauf mit festem Seed,Une crypte générée à partir d'une graine
+menu_new,New run,Neuer Lauf,Nouvelle partie
+menu_continue,Continue,Fortsetzen,Continuer
+menu_language,Language: English,Sprache: Deutsch,Langue : français
+menu_hint,Enter / A: start   L / Y: language,Eingabe / A: Start   L / Y: Sprache,Entrée / A : jouer   L / Y : langue
+hud_floor,Floor {n},Ebene {n},Étage {n}
+hud_boss,Warden's lair,Höhle des Wächters,Antre du gardien
+hud_key,Key found!,Schlüssel gefunden!,Clé trouvée !
+hud_locked,The stairs are locked.,Die Treppe ist verschlossen.,L'escalier est verrouillé.
+hud_saved,Game saved,Spielstand gespeichert,Partie sauvegardée
+hud_loaded,Save loaded,Spielstand geladen,Sauvegarde chargée
+hud_retry,You fell. Retrying...,Du bist gefallen. Neuer Versuch...,Vous êtes tombé. Nouvel essai...
+hud_portal,The portal opens!,Das Portal öffnet sich!,Le portail s'ouvre !
+enemy_bat,Bat,Fledermaus,Chauve-souris
+enemy_bat_red,Blood bat,Blutfledermaus,Chauve-souris sanglante
+enemy_wizard,Wizard,Zauberer,Sorcier
+enemy_warlock,Warlock,Hexenmeister,Mage noir
+enemy_boss,Great stone warden,Großer Steinwächter,Grand gardien de pierre
+win_title,The crypt is cleansed!,Die Gruft ist gereinigt!,La crypte est purifiée !
+win_stats,Coins: {coins}   Time: {time} s,Münzen: {coins}   Zeit: {time} s,Pièces : {coins}   Temps : {time} s
+hud_paused,Paused,Pausiert,En pause

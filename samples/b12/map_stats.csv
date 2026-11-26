@@ -1,0 +1,4 @@
+file,width,height,orientation,infinite,objects,empty_layers,hidden_layers,unused_tilesets
+cave.json,64,40,orthogonal,False,0,,,
+bsp.json,64,40,orthogonal,False,0,,,
+cave_v2.json,64,40,orthogonal,False,1,,,

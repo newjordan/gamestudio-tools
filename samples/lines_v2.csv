@@ -1,0 +1,4 @@
+id,file,line,node,kind,speaker,text,tags,words,est_seconds
+L09ad93c9,intro2.yarn,3,Start,line,Ava,Welcome aboard.,,2,0.8
+Leaa3f1ce,intro2.yarn,4,Start,choice,,Who are you?,,3,1.2
+L46825a5c,intro2.yarn,5,Start,line,Ava,Just the graveyard shift.,,4,1.6

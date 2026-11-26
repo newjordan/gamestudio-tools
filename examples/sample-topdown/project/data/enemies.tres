@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/enemies.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+columns = PackedStringArray("id", "name_key", "behaviour", "hp", "speed", "damage", "aggro", "fire_cd", "shot_speed", "drop", "anim")
+rows = Array[Dictionary]([{ "id": "bat", "name_key": "enemy_bat", "behaviour": "chase", "hp": 2, "speed": 44, "damage": 1, "aggro": 120, "fire_cd": 0, "shot_speed": 0, "drop": "common", "anim": "bat-fly" }, { "id": "bat_red", "name_key": "enemy_bat_red", "behaviour": "chase", "hp": 3, "speed": 60, "damage": 1, "aggro": 140, "fire_cd": 0, "shot_speed": 0, "drop": "elite", "anim": "batred-fly" }, { "id": "wizard", "name_key": "enemy_wizard", "behaviour": "shoot", "hp": 2, "speed": 28, "damage": 1, "aggro": 150, "fire_cd": 1.7, "shot_speed": 85, "drop": "common", "anim": "wizard" }, { "id": "warlock", "name_key": "enemy_warlock", "behaviour": "shoot", "hp": 3, "speed": 32, "damage": 1, "aggro": 160, "fire_cd": 1.2, "shot_speed": 100, "drop": "elite", "anim": "warlock" }, { "id": "boss", "name_key": "enemy_boss", "behaviour": "boss", "hp": 14, "speed": 42, "damage": 1, "aggro": 400, "fire_cd": 2.4, "shot_speed": 90, "drop": "boss", "anim": "boss" }])

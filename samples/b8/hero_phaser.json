@@ -1,0 +1,50 @@
+{
+ "anims": [
+  {
+   "key": "idle",
+   "frames": [
+    {
+     "key": "atlas",
+     "frame": "hero_0"
+    },
+    {
+     "key": "atlas",
+     "frame": "hero_1"
+    }
+   ],
+   "frameRate": 10.0,
+   "repeat": -1
+  },
+  {
+   "key": "run",
+   "frames": [
+    {
+     "key": "atlas",
+     "frame": "hero_2"
+    },
+    {
+     "key": "atlas",
+     "frame": "hero_3"
+    },
+    {
+     "key": "atlas",
+     "frame": "hero_4"
+    },
+    {
+     "key": "atlas",
+     "frame": "hero_5"
+    },
+    {
+     "key": "atlas",
+     "frame": "hero_4"
+    },
+    {
+     "key": "atlas",
+     "frame": "hero_3"
+    }
+   ],
+   "frameRate": 10.0,
+   "repeat": -1
+  }
+ ]
+}

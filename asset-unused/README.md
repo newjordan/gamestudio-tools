@@ -10,6 +10,10 @@ python3 asset-unused/asset_unused.py ./assets --json unused.json --strict
 
 Run `python3 asset-unused/asset_unused.py --help` (or `gst asset-unused --help`) for every option. Requires Python 3.10+.
 
+Since 2.5.0 `project.godot` and `.cfg` files are read for `res://` references (main scene, icon, autoloads,
+translations) instead of being listed as unused, and BMFont `.fnt` files (text or XML) reference their page images.
+Paths built at run time (`"res://sfx/%s.wav" % name`) are still invisible; list them literally.
+
 ## Inspiration (catalogue entry)
 
 None (new).

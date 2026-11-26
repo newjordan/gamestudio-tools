@@ -1,0 +1,9 @@
+[
+ {
+  "id": "greet",
+  "lang": "de",
+  "msg": "named mismatch, missing ['name'], unexpected ['nam']",
+  "source": "Hello {name}, you have %d <b>gold</b>.",
+  "text": "Hallo {nam}, du hast %d Gold."
+ }
+]

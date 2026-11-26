@@ -1,0 +1,76 @@
+
+atlas.png
+size: 256, 256
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+orb_0
+  rotate: false
+  xy: 0, 0
+  size: 41, 41
+  orig: 48, 48
+  offset: 4, 3
+  index: -1
+orb_1
+  rotate: false
+  xy: 0, 43
+  size: 39, 41
+  orig: 48, 48
+  offset: 5, 3
+  index: -1
+orb_2
+  rotate: false
+  xy: 0, 86
+  size: 37, 41
+  orig: 48, 48
+  offset: 6, 3
+  index: -1
+orb_3
+  rotate: false
+  xy: 0, 129
+  size: 35, 41
+  orig: 48, 48
+  offset: 7, 3
+  index: -1
+orb_4
+  rotate: false
+  xy: 0, 172
+  size: 33, 41
+  orig: 48, 48
+  offset: 8, 3
+  index: -1
+orb_5
+  rotate: false
+  xy: 35, 172
+  size: 31, 41
+  orig: 48, 48
+  offset: 9, 3
+  index: -1
+orb_6
+  rotate: false
+  xy: 37, 129
+  size: 29, 41
+  orig: 48, 48
+  offset: 10, 3
+  index: -1
+orb_7
+  rotate: false
+  xy: 39, 86
+  size: 27, 41
+  orig: 48, 48
+  offset: 11, 3
+  index: -1
+orb_8
+  rotate: false
+  xy: 41, 43
+  size: 25, 41
+  orig: 48, 48
+  offset: 12, 3
+  index: -1
+orb_9
+  rotate: false
+  xy: 43, 0
+  size: 23, 41
+  orig: 48, 48
+  offset: 13, 3
+  index: -1

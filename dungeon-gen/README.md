@@ -11,6 +11,11 @@ python3 dungeon-gen/dungeon_gen.py --mode caves --size 96x64 --seed 3 -o levels/
 
 Run `python3 dungeon-gen/dungeon_gen.py --help` for every option. Requires Python 3.10+ with Pillow and numpy (gltf-inspect needs only the stdlib; Pillow is optional for texture sizes).
 
+Since 2.5.0 the JSON map embeds a two-tile tileset (`<out>_tiles.png`: floor id 0, wall id 1 with
+`solid=true`), layer ids, and in BSP mode a `rooms` object layer (one `room` rectangle per room with index,
+cx, cy, w, h), so map-to-godot, map-reach (`--solid-ids 2`), nav-to-godot and map-auto-layer can use it directly.
+`--tile` sets the tile size (default 16).
+
 ## Inspiration (catalogue entry)
 
 Catalogue: Tiled / LDtk level pipelines, RogueBasin generators.

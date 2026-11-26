@@ -1,0 +1,19 @@
+{
+  "clips": {
+    "walk": {
+      "frames": [
+        "walk_01.png",
+        "walk_02.png"
+      ],
+      "fps": 10,
+      "loop": true
+    },
+    "idle": {
+      "frames": [
+        "idle_01.png"
+      ],
+      "fps": 6,
+      "loop": true
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+ "clips": {
+  "idle": {
+   "frames": 2,
+   "durations_ms": [
+    100,
+    100
+   ],
+   "fps": 10.0
+  },
+  "run": {
+   "frames": 6,
+   "durations_ms": [
+    80,
+    80,
+    120,
+    120,
+    120,
+    80
+   ],
+   "fps": 10.0
+  }
+ },
+ "findings": [
+  {
+   "severity": "error",
+   "clip": "run",
+   "code": "off-grid",
+   "message": "frame 0 is 80 ms, not a multiple of 100.000 ms (fps 10) by 20.00 ms"
+  },
+  {
+   "severity": "error",
+   "clip": "run",
+   "code": "off-grid",
+   "message": "frame 1 is 80 ms, not a multiple of 100.000 ms (fps 10) by 20.00 ms"
+  },
+  {
+   "severity": "error",
+   "clip": "run",
+   "code": "off-grid",
+   "message": "frame 2 is 120 ms, not a multiple of 100.000 ms (fps 10) by 20.00 ms"
+  },
+  {
+   "severity": "error",
+   "clip": "run",
+   "code": "off-grid",
+   "message": "frame 3 is 120 ms, not a multiple of 100.000 ms (fps 10) by 20.00 ms"
+  },
+  {
+   "severity": "error",
+   "clip": "run",
+   "code": "off-grid",
+   "message": "frame 4 is 120 ms, not a multiple of 100.000 ms (fps 10) by 20.00 ms"
+  },
+  {
+   "severity": "error",
+   "clip": "run",
+   "code": "off-grid",
+   "message": "frame 5 is 80 ms, not a multiple of 100.000 ms (fps 10) by 20.00 ms"
+  }
+ ]
+}

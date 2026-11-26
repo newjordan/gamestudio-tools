@@ -1,0 +1,1160 @@
+{
+ "cases": 148,
+ "passed": 147,
+ "failed": 1,
+ "tools": [
+  "alpha-bleed",
+  "anim-from-folder",
+  "asset-manifest",
+  "asset-rename",
+  "asset-unused",
+  "atlas-merge",
+  "atlas-pack",
+  "atlas-to-godot",
+  "atlas-unpack",
+  "atlas-validate",
+  "bmfont-gen",
+  "channel-pack",
+  "colorblind-sim",
+  "contact-sheet",
+  "cue-sheet",
+  "data-to-godot",
+  "drop-sim",
+  "dungeon-gen",
+  "font-check",
+  "font-preview",
+  "font-subset",
+  "font-to-godot",
+  "frame-timing-check",
+  "frames-to-sheet",
+  "game-data-lint",
+  "gif-optimize",
+  "gif-to-frames",
+  "gltf-inspect",
+  "godot-import-presets",
+  "godot-res-lint",
+  "hitbox-gen",
+  "hitbox-to-godot",
+  "icon-gen",
+  "image-diff",
+  "input-map-lint",
+  "level-budget",
+  "loc-check",
+  "loc-fit",
+  "loc-key-lint",
+  "loc-merge",
+  "loc-placeholder-lint",
+  "loc-sort",
+  "loc-stats",
+  "loc-to-godot",
+  "lut-tool",
+  "map-auto-layer",
+  "map-blank",
+  "map-crop",
+  "map-fill",
+  "map-mirror",
+  "map-objects-to-godot",
+  "map-path",
+  "map-reach",
+  "map-rotate",
+  "map-stamp",
+  "map-to-godot",
+  "nav-to-godot",
+  "nine-slice",
+  "nine-slice-to-godot",
+  "normal-bake",
+  "obj-bounds",
+  "obj-to-glb",
+  "obj-triangulate",
+  "obj-validate",
+  "onion-skin",
+  "palette-apply",
+  "palette-extract",
+  "palette-swap",
+  "pixel-lint",
+  "pseudoloc",
+  "sfx-bank",
+  "sfx-envelope",
+  "sfx-gen",
+  "sfx-mix",
+  "sfx-normalize",
+  "sfx-pitch",
+  "sfx-reverse",
+  "sfx-spectrogram",
+  "sfx-variants",
+  "sprite-angles",
+  "sprite-canvas",
+  "sprite-flip-sheet",
+  "sprite-outline-gen",
+  "sprite-pad",
+  "sprite-scale",
+  "sprite-shadow",
+  "sprite-slice",
+  "sprite-trim",
+  "spritesheet-gif",
+  "team-outline",
+  "tex-gen",
+  "texture-budget",
+  "texture-resize",
+  "tile-colliders",
+  "tile-colliders-to-godot",
+  "tile-dedupe",
+  "tile-preview",
+  "tilemap-stats",
+  "tileset-gen",
+  "tmx-gid-usage",
+  "tmx-objects-csv",
+  "tmx-props-lint",
+  "tmx-to-json",
+  "wav-batch-meta",
+  "wav-fade",
+  "wav-gain",
+  "wav-loop-meta",
+  "wav-loop-snap",
+  "wav-loud-apply",
+  "wav-mono",
+  "wav-pad",
+  "wav-resample",
+  "wav-trim"
+ ],
+ "results": [
+  {
+   "id": "sprite_scale_x2",
+   "tool": "sprite-scale",
+   "exit": 0,
+   "secs": 0.21,
+   "ok": true
+  },
+  {
+   "id": "sprite_scale_size",
+   "tool": "sprite-scale",
+   "exit": 0,
+   "secs": 0.2,
+   "ok": true
+  },
+  {
+   "id": "sprite_canvas_center",
+   "tool": "sprite-canvas",
+   "exit": 0,
+   "secs": 0.17,
+   "ok": true
+  },
+  {
+   "id": "sprite_pad_uniform",
+   "tool": "sprite-pad",
+   "exit": 0,
+   "secs": 0.15,
+   "ok": true
+  },
+  {
+   "id": "sprite_pad_ltrb",
+   "tool": "sprite-pad",
+   "exit": 0,
+   "secs": 0.19,
+   "ok": true
+  },
+  {
+   "id": "sprite_trim",
+   "tool": "sprite-trim",
+   "exit": 0,
+   "secs": 0.19,
+   "ok": true
+  },
+  {
+   "id": "sprite_trim_padding",
+   "tool": "sprite-trim",
+   "exit": 0,
+   "secs": 0.16,
+   "ok": true
+  },
+  {
+   "id": "outline_outer_keep",
+   "tool": "sprite-outline-gen",
+   "exit": 0,
+   "secs": 0.18,
+   "ok": true
+  },
+  {
+   "id": "shadow_drop_keep",
+   "tool": "sprite-shadow",
+   "exit": 0,
+   "secs": 0.25,
+   "ok": true
+  },
+  {
+   "id": "palette_apply_builtin",
+   "tool": "palette-apply",
+   "exit": 0,
+   "secs": 0.22,
+   "ok": true
+  },
+  {
+   "id": "palette_apply_hexfile",
+   "tool": "palette-apply",
+   "exit": 0,
+   "secs": 0.28,
+   "ok": true
+  },
+  {
+   "id": "palette_swap_hue",
+   "tool": "palette-swap",
+   "exit": 0,
+   "secs": 0.48,
+   "ok": true
+  },
+  {
+   "id": "palette_extract",
+   "tool": "palette-extract",
+   "exit": 0,
+   "secs": 0.35,
+   "ok": true
+  },
+  {
+   "id": "team_outline",
+   "tool": "team-outline",
+   "exit": 0,
+   "secs": 0.38,
+   "ok": true
+  },
+  {
+   "id": "alpha_bleed",
+   "tool": "alpha-bleed",
+   "exit": 0,
+   "secs": 0.25,
+   "ok": true
+  },
+  {
+   "id": "pixel_lint_clean",
+   "tool": "pixel-lint",
+   "exit": 0,
+   "secs": 0.42,
+   "ok": true
+  },
+  {
+   "id": "pixel_lint_upscaled_warns",
+   "tool": "pixel-lint",
+   "exit": 1,
+   "secs": 0.4,
+   "ok": true
+  },
+  {
+   "id": "pixel_lint_too_many_colours",
+   "tool": "pixel-lint",
+   "exit": 1,
+   "secs": 0.42,
+   "ok": true
+  },
+  {
+   "id": "image_diff_same",
+   "tool": "image-diff",
+   "exit": 0,
+   "secs": 0.41,
+   "ok": true
+  },
+  {
+   "id": "image_diff_changed",
+   "tool": "image-diff",
+   "exit": 1,
+   "secs": 0.36,
+   "ok": true
+  },
+  {
+   "id": "texture_resize_max",
+   "tool": "texture-resize",
+   "exit": 0,
+   "secs": 0.15,
+   "ok": true
+  },
+  {
+   "id": "texture_resize_pot",
+   "tool": "texture-resize",
+   "exit": 0,
+   "secs": 0.24,
+   "ok": true
+  },
+  {
+   "id": "lut_identity_roundtrip",
+   "tool": "lut-tool",
+   "exit": 0,
+   "secs": 0.71,
+   "ok": true
+  },
+  {
+   "id": "lut_make_darker",
+   "tool": "lut-tool",
+   "exit": 0,
+   "secs": 0.81,
+   "ok": true
+  },
+  {
+   "id": "colorblind_sim",
+   "tool": "colorblind-sim",
+   "exit": 0,
+   "secs": 0.29,
+   "ok": true
+  },
+  {
+   "id": "channel_pack_orm",
+   "tool": "channel-pack",
+   "exit": 0,
+   "secs": 0.43,
+   "ok": true
+  },
+  {
+   "id": "normal_bake",
+   "tool": "normal-bake",
+   "exit": 0,
+   "secs": 0.27,
+   "ok": true
+  },
+  {
+   "id": "tex_gen_bricks",
+   "tool": "tex-gen",
+   "exit": 0,
+   "secs": 0.41,
+   "ok": true
+  },
+  {
+   "id": "tex_gen_deterministic",
+   "tool": "tex-gen",
+   "exit": 0,
+   "secs": 0.85,
+   "ok": true
+  },
+  {
+   "id": "tileset_gen_blob",
+   "tool": "tileset-gen",
+   "exit": 0,
+   "secs": 0.29,
+   "ok": true
+  },
+  {
+   "id": "tile_dedupe",
+   "tool": "tile-dedupe",
+   "exit": 0,
+   "secs": 0.3,
+   "ok": true
+  },
+  {
+   "id": "nine_slice_bake",
+   "tool": "nine-slice",
+   "exit": 0,
+   "secs": 0.19,
+   "ok": true
+  },
+  {
+   "id": "nine_slice_to_godot",
+   "tool": "nine-slice-to-godot",
+   "exit": 0,
+   "secs": 0.33,
+   "ok": true
+  },
+  {
+   "id": "icon_gen",
+   "tool": "icon-gen",
+   "exit": 0,
+   "secs": 0.97,
+   "ok": true
+  },
+  {
+   "id": "contact_sheet",
+   "tool": "contact-sheet",
+   "exit": 0,
+   "secs": 0.31,
+   "ok": true
+  },
+  {
+   "id": "onion_skin",
+   "tool": "onion-skin",
+   "exit": 0,
+   "secs": 0.24,
+   "ok": true
+  },
+  {
+   "id": "frames_to_sheet",
+   "tool": "frames-to-sheet",
+   "exit": 0,
+   "secs": 0.37,
+   "ok": true
+  },
+  {
+   "id": "sprite_slice_grid",
+   "tool": "sprite-slice",
+   "exit": 0,
+   "secs": 0.29,
+   "ok": true
+  },
+  {
+   "id": "gif_to_frames",
+   "tool": "gif-to-frames",
+   "exit": 0,
+   "secs": 0.28,
+   "ok": true
+  },
+  {
+   "id": "gif_optimize",
+   "tool": "gif-optimize",
+   "exit": 0,
+   "secs": 0.3,
+   "ok": true
+  },
+  {
+   "id": "atlas_pack",
+   "tool": "atlas-pack",
+   "exit": 0,
+   "secs": 0.23,
+   "ok": true
+  },
+  {
+   "id": "atlas_pack_notrim",
+   "tool": "atlas-pack",
+   "exit": 0,
+   "secs": 0.16,
+   "ok": true
+  },
+  {
+   "id": "atlas_validate",
+   "tool": "atlas-validate",
+   "exit": 0,
+   "secs": 0.21,
+   "ok": true
+  },
+  {
+   "id": "atlas_unpack_untrim",
+   "tool": "atlas-unpack",
+   "exit": 0,
+   "secs": 0.13,
+   "ok": true
+  },
+  {
+   "id": "atlas_roundtrip_pixels",
+   "tool": "atlas-unpack",
+   "exit": 0,
+   "secs": 0.1,
+   "ok": true
+  },
+  {
+   "id": "atlas_merge",
+   "tool": "atlas-merge",
+   "exit": 0,
+   "secs": 0.11,
+   "ok": true
+  },
+  {
+   "id": "atlas_to_godot",
+   "tool": "atlas-to-godot",
+   "exit": 0,
+   "secs": 0.11,
+   "ok": true
+  },
+  {
+   "id": "atlas_to_godot_clips",
+   "tool": "atlas-to-godot",
+   "exit": 0,
+   "secs": 0.1,
+   "ok": true
+  },
+  {
+   "id": "atlas_to_godot_trim_margin",
+   "tool": "atlas-to-godot",
+   "exit": 0,
+   "secs": 0.09,
+   "ok": true
+  },
+  {
+   "id": "anim_from_folder",
+   "tool": "anim-from-folder",
+   "exit": 0,
+   "secs": 0.15,
+   "ok": true
+  },
+  {
+   "id": "anim_from_folder_glob",
+   "tool": "anim-from-folder",
+   "exit": 0,
+   "secs": 0.09,
+   "ok": true
+  },
+  {
+   "id": "frame_timing_check",
+   "tool": "frame-timing-check",
+   "exit": 0,
+   "secs": 0.08,
+   "ok": true
+  },
+  {
+   "id": "spritesheet_gif",
+   "tool": "spritesheet-gif",
+   "exit": 0,
+   "secs": 0.3,
+   "ok": true
+  },
+  {
+   "id": "sprite_angles",
+   "tool": "sprite-angles",
+   "exit": 0,
+   "secs": 0.12,
+   "ok": true
+  },
+  {
+   "id": "sprite_flip_sheet",
+   "tool": "sprite-flip-sheet",
+   "exit": 0,
+   "secs": 0.18,
+   "ok": true
+  },
+  {
+   "id": "hitbox_gen",
+   "tool": "hitbox-gen",
+   "exit": 0,
+   "secs": 0.24,
+   "ok": true
+  },
+  {
+   "id": "hitbox_to_godot",
+   "tool": "hitbox-to-godot",
+   "exit": 0,
+   "secs": 0.14,
+   "ok": true
+  },
+  {
+   "id": "dungeon_gen_bsp",
+   "tool": "dungeon-gen",
+   "exit": 0,
+   "secs": 0.17,
+   "ok": true
+  },
+  {
+   "id": "dungeon_gen_deterministic",
+   "tool": "dungeon-gen",
+   "exit": 0,
+   "secs": 0.29,
+   "ok": true
+  },
+  {
+   "id": "dungeon_gen_caves",
+   "tool": "dungeon-gen",
+   "exit": 0,
+   "secs": 0.13,
+   "ok": true
+  },
+  {
+   "id": "map_blank",
+   "tool": "map-blank",
+   "exit": 0,
+   "secs": 0.11,
+   "ok": true
+  },
+  {
+   "id": "map_fill_rect",
+   "tool": "map-fill",
+   "exit": 0,
+   "secs": 0.14,
+   "ok": true
+  },
+  {
+   "id": "map_mirror_h",
+   "tool": "map-mirror",
+   "exit": 0,
+   "secs": 0.11,
+   "ok": true
+  },
+  {
+   "id": "map_rotate_90",
+   "tool": "map-rotate",
+   "exit": 0,
+   "secs": 0.08,
+   "ok": true
+  },
+  {
+   "id": "map_crop",
+   "tool": "map-crop",
+   "exit": 0,
+   "secs": 0.08,
+   "ok": true
+  },
+  {
+   "id": "map_stamp",
+   "tool": "map-stamp",
+   "exit": 0,
+   "secs": 0.27,
+   "ok": true
+  },
+  {
+   "id": "map_path_found",
+   "tool": "map-path",
+   "exit": 0,
+   "secs": 0.36,
+   "ok": true
+  },
+  {
+   "id": "map_path_blocked",
+   "tool": "map-path",
+   "exit": 1,
+   "secs": 0.28,
+   "ok": true
+  },
+  {
+   "id": "map_reach_all",
+   "tool": "map-reach",
+   "exit": 0,
+   "secs": 0.47,
+   "ok": true
+  },
+  {
+   "id": "map_reach_islands",
+   "tool": "map-reach",
+   "exit": 1,
+   "secs": 0.3,
+   "ok": true
+  },
+  {
+   "id": "tile_colliders",
+   "tool": "tile-colliders",
+   "exit": 0,
+   "secs": 0.18,
+   "ok": true
+  },
+  {
+   "id": "tile_colliders_to_godot",
+   "tool": "tile-colliders-to-godot",
+   "exit": 0,
+   "secs": 0.18,
+   "ok": true
+  },
+  {
+   "id": "nav_to_godot",
+   "tool": "nav-to-godot",
+   "exit": 0,
+   "secs": 0.3,
+   "ok": true
+  },
+  {
+   "id": "map_to_godot",
+   "tool": "map-to-godot",
+   "exit": 0,
+   "secs": 0.09,
+   "ok": true
+  },
+  {
+   "id": "map_objects_to_godot",
+   "tool": "map-objects-to-godot",
+   "exit": 0,
+   "secs": 0.09,
+   "ok": true
+  },
+  {
+   "id": "tile_preview",
+   "tool": "tile-preview",
+   "exit": 0,
+   "secs": 0.15,
+   "ok": true
+  },
+  {
+   "id": "tile_preview_scale",
+   "tool": "tile-preview",
+   "exit": 0,
+   "secs": 0.11,
+   "ok": true
+  },
+  {
+   "id": "tmx_gid_usage",
+   "tool": "tmx-gid-usage",
+   "exit": 0,
+   "secs": 0.09,
+   "ok": true
+  },
+  {
+   "id": "tilemap_stats",
+   "tool": "tilemap-stats",
+   "exit": 0,
+   "secs": 0.11,
+   "ok": true
+  },
+  {
+   "id": "tilemap_stats_empty_layer",
+   "tool": "tilemap-stats",
+   "exit": 1,
+   "secs": 0.09,
+   "ok": true
+  },
+  {
+   "id": "tmx_objects_csv",
+   "tool": "tmx-objects-csv",
+   "exit": 0,
+   "secs": 0.1,
+   "ok": true
+  },
+  {
+   "id": "tmx_to_json",
+   "tool": "tmx-to-json",
+   "exit": 0,
+   "secs": 0.09,
+   "ok": true
+  },
+  {
+   "id": "map_auto_layer_sample_rules",
+   "tool": "map-auto-layer",
+   "exit": 0,
+   "secs": 0.11,
+   "ok": true
+  },
+  {
+   "id": "level_budget_sample",
+   "tool": "level-budget",
+   "exit": 0,
+   "secs": 0.09,
+   "ok": true
+  },
+  {
+   "id": "tmx_props_lint_sample",
+   "tool": "tmx-props-lint",
+   "exit": 0,
+   "secs": 0.11,
+   "ok": true
+  },
+  {
+   "id": "godot_res_lint_clean",
+   "tool": "godot-res-lint",
+   "exit": 0,
+   "secs": 0.08,
+   "ok": true
+  },
+  {
+   "id": "godot_res_lint_missing",
+   "tool": "godot-res-lint",
+   "exit": 1,
+   "secs": 0.07,
+   "ok": true
+  },
+  {
+   "id": "asset_unused",
+   "tool": "asset-unused",
+   "exit": 0,
+   "secs": 0.08,
+   "ok": true
+  },
+  {
+   "id": "asset_unused_strict",
+   "tool": "asset-unused",
+   "exit": 1,
+   "secs": 0.08,
+   "ok": true
+  },
+  {
+   "id": "input_map_lint",
+   "tool": "input-map-lint",
+   "exit": 1,
+   "secs": 0.08,
+   "ok": true
+  },
+  {
+   "id": "import_presets_snippet",
+   "tool": "godot-import-presets",
+   "exit": 0,
+   "secs": 0.09,
+   "ok": true
+  },
+  {
+   "id": "data_to_godot",
+   "tool": "data-to-godot",
+   "exit": 0,
+   "secs": 0.07,
+   "ok": true
+  },
+  {
+   "id": "texture_budget",
+   "tool": "texture-budget",
+   "exit": 0,
+   "secs": 0.09,
+   "ok": true
+  },
+  {
+   "id": "texture_budget_over",
+   "tool": "texture-budget",
+   "exit": 1,
+   "secs": 0.1,
+   "ok": true
+  },
+  {
+   "id": "asset_manifest_verify",
+   "tool": "asset-manifest",
+   "exit": 0,
+   "secs": 0.19,
+   "ok": true
+  },
+  {
+   "id": "asset_manifest_detects_change",
+   "tool": "asset-manifest",
+   "exit": 1,
+   "secs": 0.1,
+   "ok": true
+  },
+  {
+   "id": "asset_rename_apply",
+   "tool": "asset-rename",
+   "exit": 0,
+   "secs": 0.1,
+   "ok": true
+  },
+  {
+   "id": "asset_rename_dry_run",
+   "tool": "asset-rename",
+   "exit": 0,
+   "secs": 0.08,
+   "ok": true
+  },
+  {
+   "id": "game_data_lint_sample",
+   "tool": "game-data-lint",
+   "exit": 0,
+   "secs": 0.07,
+   "ok": true
+  },
+  {
+   "id": "drop_sim_expect_pass",
+   "tool": "drop-sim",
+   "exit": 0,
+   "secs": 0.09,
+   "ok": true
+  },
+  {
+   "id": "drop_sim_expect_fail",
+   "tool": "drop-sim",
+   "exit": 1,
+   "secs": 0.09,
+   "ok": true
+  },
+  {
+   "id": "loc_check",
+   "tool": "loc-check",
+   "exit": 0,
+   "secs": 0.09,
+   "ok": true
+  },
+  {
+   "id": "loc_placeholder_ok",
+   "tool": "loc-placeholder-lint",
+   "exit": 0,
+   "secs": 0.08,
+   "ok": true
+  },
+  {
+   "id": "loc_placeholder_missing",
+   "tool": "loc-placeholder-lint",
+   "exit": 1,
+   "secs": 0.08,
+   "ok": true
+  },
+  {
+   "id": "loc_key_lint",
+   "tool": "loc-key-lint",
+   "exit": 0,
+   "secs": 0.08,
+   "ok": true
+  },
+  {
+   "id": "loc_stats",
+   "tool": "loc-stats",
+   "exit": 0,
+   "secs": 0.1,
+   "ok": true
+  },
+  {
+   "id": "pseudoloc",
+   "tool": "pseudoloc",
+   "exit": 0,
+   "secs": 0.08,
+   "ok": true
+  },
+  {
+   "id": "loc_sort",
+   "tool": "loc-sort",
+   "exit": 0,
+   "secs": 0.08,
+   "ok": true
+  },
+  {
+   "id": "loc_merge",
+   "tool": "loc-merge",
+   "exit": 0,
+   "secs": 0.1,
+   "ok": true
+  },
+  {
+   "id": "loc_merge_missing_keys_exit",
+   "tool": "loc-merge",
+   "exit": 1,
+   "secs": 0.09,
+   "ok": true
+  },
+  {
+   "id": "loc_to_godot",
+   "tool": "loc-to-godot",
+   "exit": 0,
+   "secs": 0.07,
+   "ok": true
+  },
+  {
+   "id": "loc_fit_ok",
+   "tool": "loc-fit",
+   "exit": 0,
+   "secs": 0.08,
+   "ok": true
+  },
+  {
+   "id": "loc_fit_too_narrow",
+   "tool": "loc-fit",
+   "exit": 1,
+   "secs": 0.08,
+   "ok": true
+  },
+  {
+   "id": "font_subset",
+   "tool": "font-subset",
+   "exit": 0,
+   "secs": 0.96,
+   "ok": true
+  },
+  {
+   "id": "font_check_ok",
+   "tool": "font-check",
+   "exit": 0,
+   "secs": 0.2,
+   "ok": true
+  },
+  {
+   "id": "font_check_missing",
+   "tool": "font-check",
+   "exit": 1,
+   "secs": 0.49,
+   "ok": true
+  },
+  {
+   "id": "bmfont_gen",
+   "tool": "bmfont-gen",
+   "exit": 0,
+   "secs": 0.12,
+   "ok": true
+  },
+  {
+   "id": "font_to_godot",
+   "tool": "font-to-godot",
+   "exit": 0,
+   "secs": 0.28,
+   "ok": true
+  },
+  {
+   "id": "font_preview",
+   "tool": "font-preview",
+   "exit": 0,
+   "secs": 0.45,
+   "ok": true
+  },
+  {
+   "id": "sfx_gen_count",
+   "tool": "sfx-gen",
+   "exit": 0,
+   "secs": 0.32,
+   "ok": true
+  },
+  {
+   "id": "sfx_gen_deterministic",
+   "tool": "sfx-gen",
+   "exit": 0,
+   "secs": 0.64,
+   "ok": true
+  },
+  {
+   "id": "sfx_pitch_octave",
+   "tool": "sfx-pitch",
+   "exit": 0,
+   "secs": 0.32,
+   "ok": true
+  },
+  {
+   "id": "sfx_pitch_ratio",
+   "tool": "sfx-pitch",
+   "exit": 0,
+   "secs": 0.33,
+   "ok": true
+  },
+  {
+   "id": "sfx_reverse",
+   "tool": "sfx-reverse",
+   "exit": 0,
+   "secs": 0.36,
+   "ok": false,
+   "why": "r.wav is not tone.wav reversed",
+   "output": "reversed 22050 frames @ 44100 Hz -> r.wav\n"
+  },
+  {
+   "id": "sfx_normalize_peak",
+   "tool": "sfx-normalize",
+   "exit": 0,
+   "secs": 0.23,
+   "ok": true
+  },
+  {
+   "id": "wav_gain",
+   "tool": "wav-gain",
+   "exit": 0,
+   "secs": 0.37,
+   "ok": true
+  },
+  {
+   "id": "wav_mono",
+   "tool": "wav-mono",
+   "exit": 0,
+   "secs": 0.29,
+   "ok": true
+  },
+  {
+   "id": "wav_resample",
+   "tool": "wav-resample",
+   "exit": 0,
+   "secs": 0.3,
+   "ok": true
+  },
+  {
+   "id": "wav_pad_head_tail",
+   "tool": "wav-pad",
+   "exit": 0,
+   "secs": 0.32,
+   "ok": true
+  },
+  {
+   "id": "wav_pad_to_duration",
+   "tool": "wav-pad",
+   "exit": 0,
+   "secs": 0.28,
+   "ok": true
+  },
+  {
+   "id": "wav_trim_silence",
+   "tool": "wav-trim",
+   "exit": 0,
+   "secs": 0.34,
+   "ok": true
+  },
+  {
+   "id": "wav_fade",
+   "tool": "wav-fade",
+   "exit": 0,
+   "secs": 0.27,
+   "ok": true
+  },
+  {
+   "id": "wav_loop_meta_roundtrip",
+   "tool": "wav-loop-meta",
+   "exit": 0,
+   "secs": 0.49,
+   "ok": true
+  },
+  {
+   "id": "wav_loop_snap",
+   "tool": "wav-loop-snap",
+   "exit": 0,
+   "secs": 0.34,
+   "ok": true
+  },
+  {
+   "id": "wav_loud_apply",
+   "tool": "wav-loud-apply",
+   "exit": 0,
+   "secs": 0.39,
+   "ok": true
+  },
+  {
+   "id": "wav_batch_meta",
+   "tool": "wav-batch-meta",
+   "exit": 0,
+   "secs": 0.51,
+   "ok": true
+  },
+  {
+   "id": "cue_sheet",
+   "tool": "cue-sheet",
+   "exit": 0,
+   "secs": 0.42,
+   "ok": true
+  },
+  {
+   "id": "sfx_envelope",
+   "tool": "sfx-envelope",
+   "exit": 0,
+   "secs": 0.35,
+   "ok": true
+  },
+  {
+   "id": "sfx_variants",
+   "tool": "sfx-variants",
+   "exit": 0,
+   "secs": 0.21,
+   "ok": true
+  },
+  {
+   "id": "sfx_mix",
+   "tool": "sfx-mix",
+   "exit": 0,
+   "secs": 0.23,
+   "ok": true
+  },
+  {
+   "id": "sfx_mix_peak_ceiling",
+   "tool": "sfx-mix",
+   "exit": 0,
+   "secs": 0.24,
+   "ok": true
+  },
+  {
+   "id": "sfx_bank_pack",
+   "tool": "sfx-bank",
+   "exit": 0,
+   "secs": 0.27,
+   "ok": true
+  },
+  {
+   "id": "sfx_spectrogram",
+   "tool": "sfx-spectrogram",
+   "exit": 0,
+   "secs": 0.48,
+   "ok": true
+  },
+  {
+   "id": "obj_validate",
+   "tool": "obj-validate",
+   "exit": 0,
+   "secs": 0.34,
+   "ok": true
+  },
+  {
+   "id": "obj_triangulate",
+   "tool": "obj-triangulate",
+   "exit": 0,
+   "secs": 0.25,
+   "ok": true
+  },
+  {
+   "id": "obj_bounds_box",
+   "tool": "obj-bounds",
+   "exit": 0,
+   "secs": 0.37,
+   "ok": true
+  },
+  {
+   "id": "obj_to_glb",
+   "tool": "obj-to-glb",
+   "exit": 0,
+   "secs": 0.35,
+   "ok": true
+  },
+  {
+   "id": "gltf_inspect",
+   "tool": "gltf-inspect",
+   "exit": 0,
+   "secs": 0.08,
+   "ok": true
+  }
+ ]
+}

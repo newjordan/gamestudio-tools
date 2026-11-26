@@ -1,0 +1,3 @@
+id,en,fr,de
+hello,Hello {name},Bonjour {name},Hallo {name}
+bye,Bye,Au revoir,Tschüss

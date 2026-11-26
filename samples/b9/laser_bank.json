@@ -1,0 +1,31 @@
+{
+ "sample_rate": 44100,
+ "channels": 1,
+ "frames": 45726,
+ "clips": {
+  "laser_0000": {
+   "start": 0,
+   "end": 9863,
+   "start_s": 0.0,
+   "end_s": 0.223651
+  },
+  "laser_0001": {
+   "start": 12068,
+   "end": 22725,
+   "start_s": 0.273651,
+   "end_s": 0.515306
+  },
+  "laser_0002": {
+   "start": 24930,
+   "end": 33716,
+   "start_s": 0.565306,
+   "end_s": 0.764535
+  },
+  "laser_0003": {
+   "start": 35921,
+   "end": 43521,
+   "start_s": 0.814535,
+   "end_s": 0.986871
+  }
+ }
+}

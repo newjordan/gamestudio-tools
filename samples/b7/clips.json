@@ -1,0 +1,22 @@
+{
+ "clips": {
+  "orb": {
+   "frames": [
+    "orb_0",
+    "orb_1",
+    "orb_2",
+    "orb_3",
+    "orb_4",
+    "orb_5",
+    "orb_6",
+    "orb_7",
+    "orb_8",
+    "orb_9"
+   ],
+   "fps": 12.0,
+   "loop": true,
+   "duration": 0.8333
+  }
+ },
+ "single_frames": []
+}

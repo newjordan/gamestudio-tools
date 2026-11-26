@@ -10,6 +10,9 @@ python3 anim-from-folder/anim_from_folder.py frames/ -o clips.json --pattern '{c
 
 Run `python3 anim-from-folder/anim_from_folder.py --help` (or `gst anim-from-folder --help`) for every option. Requires Python 3.10+.
 
+Since 2.5.0 `--fps` and `--once` keys may be globs (`--fps 'walk-*=10'`, `--once 'idle*'`), exact clip
+names win over globs, and both flags can be repeated (2.4.0 kept only the last one).
+
 ## Inspiration (catalogue entry)
 
 None (new). Complements `anim-meta`, which groups frames with a fixed prefix-plus-number regex.

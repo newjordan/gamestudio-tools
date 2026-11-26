@@ -1,0 +1,52 @@
+{
+  "schema": "omnispace.fleet-job/1",
+  "id": "image-893ed8199f",
+  "kind": "image.qwen-image",
+  "model": "Qwen-Image 2.1",
+  "target": "turbo",
+  "status": "queued-not-launched",
+  "constraints": {
+    "download_models": false,
+    "huggingface_pull": false,
+    "gpu_host": "turbo",
+    "never_on": [
+      "atlas",
+      "sparky"
+    ],
+    "launch": "manual-approval-only"
+  },
+  "outputs": {
+    "dir": "outputs/pending"
+  },
+  "items": [
+    {
+      "name": "knight_v1",
+      "prompt": "knight in blue armor, pixel art",
+      "negative_prompt": "",
+      "width": 512,
+      "height": 512,
+      "seed": 1000
+    },
+    {
+      "name": "knight_v2",
+      "prompt": "knight in blue armor, pixel art",
+      "negative_prompt": "",
+      "width": 512,
+      "height": 512,
+      "seed": 1001
+    },
+    {
+      "name": "slime_v1",
+      "prompt": "green slime, pixel art",
+      "negative_prompt": "",
+      "width": 1024,
+      "height": 1024,
+      "seed": 1100
+    }
+  ],
+  "post": [
+    "pixelize",
+    "palette-swap",
+    "atlas-pack"
+  ]
+}

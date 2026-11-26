@@ -1,0 +1,20 @@
+# pipeline prop
+mtllib prop.mtl
+o Prop
+v 10 4 0
+v 14 4 0
+v 14 8 0
+v 10 8 0
+v 10 4 4
+v 14 4 4
+v 14 8 4
+v 10 8 4
+usemtl wood
+g body
+s 1
+f 1 2 3 4
+f 5 8 7 6
+f 1 5 6 2
+f 4 3 7 8
+f 1 4 8 5
+f 2 6 7 3

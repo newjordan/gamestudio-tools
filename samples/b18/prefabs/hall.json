@@ -1,0 +1,39 @@
+{
+  "type": "map",
+  "width": 4,
+  "height": 2,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "name": "hall",
+  "tilesets": [
+    {
+      "name": "dungeon",
+      "firstgid": 1,
+      "tilecount": 8
+    }
+  ],
+  "layers": [
+    {
+      "type": "tilelayer",
+      "name": "floor",
+      "width": 4,
+      "height": 2,
+      "data": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "biome",
+      "value": "cave"
+    }
+  ]
+}

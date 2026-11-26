@@ -1,0 +1,9 @@
+bsp 34x22 seed=701: 8 rooms, 1 connected region(s) -> f1.txt/.png/.json
+tilesets: null
+layers: ['dungeon']
+1 layer(s), 0 cell(s) -> f1.tscn
+start (4, 2): 352 of 352 walkable tiles reachable, 0 cut-off area(s)
+0 of 0 object(s) reachable
+start (4, 2): 748 of 748 walkable tiles reachable, 0 cut-off area(s)
+0 of 0 object(s) reachable
+exit=0

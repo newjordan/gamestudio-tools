@@ -1,0 +1,5 @@
+2 walkable region(s) -> p/nav.tscn
+vertices = PackedVector2Array(0, 0, 64, 0, 64, 16, 16, 16, 0, 16, 16, 64, 0, 64)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(4, 3, 5, 6)])
+path from (56,8) to (8,56) ends at (8.0, 56.0)
+exit=0

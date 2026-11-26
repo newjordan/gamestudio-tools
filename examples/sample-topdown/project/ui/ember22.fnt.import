@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://bcc0n1ugaehut"
+path="res://.godot/imported/ember22.fnt-fe8ab26f593337908a4c440300e4622e.fontdata"
+
+[deps]
+
+source_file="res://ui/ember22.fnt"
+dest_files=["res://.godot/imported/ember22.fnt-fe8ab26f593337908a4c440300e4622e.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

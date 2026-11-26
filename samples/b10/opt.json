@@ -1,0 +1,203 @@
+{
+  "frames": {
+    "orb_0": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 4,
+        "w": 41,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_1": {
+      "frame": {
+        "x": 42,
+        "y": 0,
+        "w": 39,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 4,
+        "w": 39,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_2": {
+      "frame": {
+        "x": 82,
+        "y": 0,
+        "w": 37,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 4,
+        "w": 37,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_3": {
+      "frame": {
+        "x": 120,
+        "y": 0,
+        "w": 35,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 4,
+        "w": 35,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_4": {
+      "frame": {
+        "x": 156,
+        "y": 0,
+        "w": 33,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 4,
+        "w": 33,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_5": {
+      "frame": {
+        "x": 190,
+        "y": 0,
+        "w": 31,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 4,
+        "w": 31,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_6": {
+      "frame": {
+        "x": 222,
+        "y": 0,
+        "w": 29,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 4,
+        "w": 29,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_7": {
+      "frame": {
+        "x": 252,
+        "y": 0,
+        "w": 27,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 4,
+        "w": 27,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_8": {
+      "frame": {
+        "x": 280,
+        "y": 0,
+        "w": 25,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 4,
+        "w": 25,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_9": {
+      "frame": {
+        "x": 306,
+        "y": 0,
+        "w": 23,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 13,
+        "y": 4,
+        "w": 23,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    }
+  },
+  "meta": {
+    "image": "opt.png",
+    "size": {
+      "w": 329,
+      "h": 41
+    },
+    "app": "gst sprite-sheet-optimize",
+    "format": "RGBA8888"
+  }
+}

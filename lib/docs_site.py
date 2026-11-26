@@ -93,6 +93,23 @@ SHOWCASES = [
         },
         "gif": "gameplay.gif",
     },
+    {
+        "id": "sample-topdown",
+        "title": "Ember Crypt (top-down roguelite sample)",
+        "lede": "A complete Godot 4.7 top-down roguelite. Two seeded dungeon-gen floors autotiled with a 47-tile blob set, a stamped boss arena, five enemy kinds with chase, shoot and boss behaviours, loot tables, save/load, en/de/fr text, keyboard and gamepad input, 12 SFX and a mixed music loop. 86 gst tools made every asset; a seeded autoplay run clears both floors and the boss.",
+        "src": ("examples", "sample-topdown", "media"),
+        "asset_dir": "sample-topdown",
+        "files": ("gameplay.gif", "shot_title.png", "shot_floor1.png", "shot_floor2.png", "shot_boss.png", "shot_win.png"),
+        "labels": {
+            "gameplay.gif": "Gameplay GIF (35 s of a 73.6 s autoplay)",
+            "shot_title.png": "Title",
+            "shot_floor1.png": "Floor 1 (seed 701)",
+            "shot_floor2.png": "Floor 2 (seed 702)",
+            "shot_boss.png": "Boss arena",
+            "shot_win.png": "Win screen",
+        },
+        "gif": "gameplay.gif",
+    },
 ]
 # Back-compat alias used only if a caller still iterates the first showcase.
 SHOWCASE_FILES = SHOWCASES[0]["files"]

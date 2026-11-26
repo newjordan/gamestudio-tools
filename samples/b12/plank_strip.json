@@ -1,0 +1,40 @@
+{
+ "before": {
+  "arrays": {
+   "nodes": 1,
+   "meshes": 1,
+   "materials": 0,
+   "textures": 0,
+   "images": 0,
+   "samplers": 0,
+   "cameras": 0,
+   "skins": 0,
+   "accessors": 2,
+   "bufferViews": 2,
+   "animations": 0,
+   "lights": 0
+  },
+  "json_bytes": 555,
+  "bin_bytes": 112,
+  "file_bytes": 696
+ },
+ "after": {
+  "arrays": {
+   "nodes": 1,
+   "meshes": 1,
+   "materials": 0,
+   "textures": 0,
+   "images": 0,
+   "samplers": 0,
+   "cameras": 0,
+   "skins": 0,
+   "accessors": 2,
+   "bufferViews": 2,
+   "animations": 0,
+   "lights": 0
+  },
+  "json_bytes": 584,
+  "bin_bytes": 112,
+  "file_bytes": 724
+ }
+}

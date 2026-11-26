@@ -1,0 +1,26 @@
+[
+ {
+  "file": "laser_0000_v01.wav",
+  "seconds": 0.2403,
+  "semitones": -1.243,
+  "gain_db": -1.053
+ },
+ {
+  "file": "laser_0000_v02.wav",
+  "seconds": 0.2071,
+  "semitones": 1.329,
+  "gain_db": 0.045
+ },
+ {
+  "file": "laser_0000_v03.wav",
+  "seconds": 0.2121,
+  "semitones": 0.915,
+  "gain_db": 1.232
+ },
+ {
+  "file": "laser_0000_v04.wav",
+  "seconds": 0.2222,
+  "semitones": 0.114,
+  "gain_db": -0.627
+ }
+]

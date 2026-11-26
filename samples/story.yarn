@@ -1,0 +1,22 @@
+title: Start
+---
+Ava: Hi.
+-> Go left
+    <<jump Left>>
+-> Go right
+    <<jump Right>>
+===
+title: Left
+---
+Ava: Left.
+<<jump Nowhere>>
+===
+title: Right
+---
+Ava: Right.
+===
+title: Secret
+---
+Ava: Nobody finds me.
+<<jump Start>>
+===

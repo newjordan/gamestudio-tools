@@ -1,0 +1,203 @@
+{
+  "frames": {
+    "orb_0": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 4,
+        "w": 41,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_1": {
+      "frame": {
+        "x": 0,
+        "y": 43,
+        "w": 39,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 4,
+        "w": 39,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_2": {
+      "frame": {
+        "x": 0,
+        "y": 86,
+        "w": 37,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 4,
+        "w": 37,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_3": {
+      "frame": {
+        "x": 0,
+        "y": 129,
+        "w": 35,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 4,
+        "w": 35,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_4": {
+      "frame": {
+        "x": 0,
+        "y": 172,
+        "w": 33,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 4,
+        "w": 33,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_5": {
+      "frame": {
+        "x": 35,
+        "y": 172,
+        "w": 31,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 4,
+        "w": 31,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_6": {
+      "frame": {
+        "x": 37,
+        "y": 129,
+        "w": 29,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 4,
+        "w": 29,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_7": {
+      "frame": {
+        "x": 39,
+        "y": 86,
+        "w": 27,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 4,
+        "w": 27,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_8": {
+      "frame": {
+        "x": 41,
+        "y": 43,
+        "w": 25,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 4,
+        "w": 25,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    },
+    "orb_9": {
+      "frame": {
+        "x": 43,
+        "y": 0,
+        "w": 23,
+        "h": 41
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 13,
+        "y": 4,
+        "w": 23,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 48
+      }
+    }
+  },
+  "meta": {
+    "image": "atlas.png",
+    "size": {
+      "w": 256,
+      "h": 256
+    },
+    "app": "omnispace atlas-pack",
+    "format": "RGBA8888"
+  }
+}
