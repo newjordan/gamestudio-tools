@@ -197,6 +197,19 @@ def test_atlas_validate(tmp_path):
     bad = json.loads(json.dumps(meta))
     bad["frames"]["s0"]["frame"]["x"] = bad["frames"]["s1"]["frame"]["x"]; bad["frames"]["s0"]["frame"]["y"] = bad["frames"]["s1"]["frame"]["y"]
     assert any("overlaps" in x["msg"] for x in atlas_validate.validate(bad, atlas))
+    # sprite-sheet-optimize stores a repeated frame once and points the copy at it with alias_of
+    shared = json.loads(json.dumps(meta))
+    shared["frames"]["s0"]["frame"] = dict(shared["frames"]["s1"]["frame"])
+    shared["frames"]["s0"]["alias_of"] = "s1"
+    assert not any("overlaps" in x["msg"] for x in atlas_validate.validate(shared, atlas))
+    sib = json.loads(json.dumps(meta))
+    sib["frames"]["s0"]["frame"] = dict(sib["frames"]["s2"]["frame"])
+    sib["frames"]["s1"]["frame"] = dict(sib["frames"]["s2"]["frame"])
+    sib["frames"]["s0"]["alias_of"] = "s2"
+    sib["frames"]["s1"]["alias_of"] = "s2"
+    assert not any("overlaps" in x["msg"] for x in atlas_validate.validate(sib, atlas))
+    bare = json.loads(json.dumps(shared)); del bare["frames"]["s0"]["alias_of"]
+    assert any("overlaps" in x["msg"] for x in atlas_validate.validate(bare, atlas))
     bad = json.loads(json.dumps(meta)); bad["frames"]["s2"]["frame"]["x"] = atlas.width - 3
     assert any("outside" in x["msg"] for x in atlas_validate.validate(bad, atlas))
     # tight frames -> padding warning; transparent -> warning; array layout works

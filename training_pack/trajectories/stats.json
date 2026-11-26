@@ -1,0 +1,1185 @@
+{
+  "by_family": {
+    "animation": {
+      "steps": 49,
+      "trajectories": 21
+    },
+    "audio": {
+      "steps": 97,
+      "trajectories": 46
+    },
+    "data": {
+      "steps": 47,
+      "trajectories": 27
+    },
+    "dialogue": {
+      "steps": 29,
+      "trajectories": 12
+    },
+    "fonts": {
+      "steps": 14,
+      "trajectories": 8
+    },
+    "godot": {
+      "steps": 57,
+      "trajectories": 32
+    },
+    "images": {
+      "steps": 134,
+      "trajectories": 90
+    },
+    "loc": {
+      "steps": 44,
+      "trajectories": 21
+    },
+    "maps": {
+      "steps": 146,
+      "trajectories": 71
+    },
+    "mesh": {
+      "steps": 98,
+      "trajectories": 38
+    },
+    "sprites": {
+      "steps": 77,
+      "trajectories": 51
+    },
+    "terrain": {
+      "steps": 21,
+      "trajectories": 12
+    }
+  },
+  "by_tool": {
+    "alpha-bleed": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "anim-from-folder": {
+      "steps": 17,
+      "trajectories": 16
+    },
+    "anim-hold": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "anim-meta": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "anim-pingpong": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "anim-rename": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "anim-retarget-fps": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "anim-reverse": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "anim-splice": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "anim-to-godot": {
+      "steps": 5,
+      "trajectories": 5
+    },
+    "ase-decode": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "ase-json-import": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "ase-to-godot": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "asset-lint": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "asset-manifest": {
+      "steps": 7,
+      "trajectories": 4
+    },
+    "asset-rename": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "asset-unused": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "asset-viewer": {
+      "steps": 3,
+      "trajectories": 3
+    },
+    "atlas-convert": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "atlas-pack": {
+      "steps": 11,
+      "trajectories": 11
+    },
+    "atlas-rename": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "atlas-sort": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "atlas-to-godot": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "atlas-unpack": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "atlas-validate": {
+      "steps": 9,
+      "trajectories": 9
+    },
+    "audio-concat": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "audio-convert": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "audio-tidy": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "autotile-gen": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "bmfont-gen": {
+      "steps": 3,
+      "trajectories": 2
+    },
+    "build-report": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "channel-pack": {
+      "steps": 3,
+      "trajectories": 1
+    },
+    "collider-preview": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "colorblind-sim": {
+      "steps": 5,
+      "trajectories": 4
+    },
+    "contact-sheet": {
+      "steps": 3,
+      "trajectories": 2
+    },
+    "credits-roll": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "cubemap-pack": {
+      "steps": 3,
+      "trajectories": 1
+    },
+    "cue-sheet": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "curve-gen": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "curve-trace": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "data-diff": {
+      "steps": 7,
+      "trajectories": 7
+    },
+    "data-to-godot": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "dialogue-extract": {
+      "steps": 6,
+      "trajectories": 6
+    },
+    "dialogue-graph": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "dialogue-lint": {
+      "steps": 13,
+      "trajectories": 11
+    },
+    "dialogue-stats": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "dialogue-to-ink": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "dialogue-to-yarn": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "drop-sim": {
+      "steps": 3,
+      "trajectories": 1
+    },
+    "dungeon-gen": {
+      "steps": 10,
+      "trajectories": 9
+    },
+    "fleet-jobs": {
+      "steps": 7,
+      "trajectories": 3
+    },
+    "font-check": {
+      "steps": 5,
+      "trajectories": 4
+    },
+    "font-preview": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "font-subset": {
+      "steps": 3,
+      "trajectories": 2
+    },
+    "font-to-godot": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "frame-timing-check": {
+      "steps": 16,
+      "trajectories": 16
+    },
+    "frames-to-sheet": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "game-data-lint": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "gif-optimize": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "gif-to-frames": {
+      "steps": 4,
+      "trajectories": 3
+    },
+    "glb-attr-drop": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "glb-attr-rename": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "glb-center": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "glb-diff": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "glb-extras-strip": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "glb-lod": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "glb-merge": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "glb-quantize": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "glb-rename-nodes": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "glb-split": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "glb-uv-transform": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "glb-weld": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "gltf-inspect": {
+      "steps": 17,
+      "trajectories": 16
+    },
+    "gltf-strip": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "godot-import-presets": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "godot-res-lint": {
+      "steps": 26,
+      "trajectories": 24
+    },
+    "godot-tileset": {
+      "steps": 10,
+      "trajectories": 10
+    },
+    "heightmap-tools": {
+      "steps": 12,
+      "trajectories": 7
+    },
+    "hitbox-gen": {
+      "steps": 3,
+      "trajectories": 2
+    },
+    "hitbox-to-godot": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "icon-gen": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "image-diff": {
+      "steps": 81,
+      "trajectories": 79
+    },
+    "input-map-lint": {
+      "steps": 4,
+      "trajectories": 2
+    },
+    "jump-arc": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "level-budget": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "level-curve": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "lit-preview": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "loc-check": {
+      "steps": 20,
+      "trajectories": 18
+    },
+    "loc-convert": {
+      "steps": 3,
+      "trajectories": 2
+    },
+    "loc-diff": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "loc-fill": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "loc-fit": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "loc-icu-extract": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "loc-join": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "loc-key-lint": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "loc-merge": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "loc-missing": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "loc-placeholder-lint": {
+      "steps": 3,
+      "trajectories": 3
+    },
+    "loc-plurals": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "loc-rename": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "loc-sort": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "loc-split": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "loc-stats": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "loc-to-godot": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "loop-finder": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "loop-xfade": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "lut-tool": {
+      "steps": 7,
+      "trajectories": 3
+    },
+    "map-auto-layer": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-blank": {
+      "steps": 4,
+      "trajectories": 3
+    },
+    "map-chunk": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-clean": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-crop": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-fill": {
+      "steps": 7,
+      "trajectories": 5
+    },
+    "map-layer-merge": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-layer-rename": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-layer-split": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-merge": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-mirror": {
+      "steps": 3,
+      "trajectories": 2
+    },
+    "map-objects-to-godot": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-outline": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-pad": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-path": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-reach": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-reorder": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-rotate": {
+      "steps": 4,
+      "trajectories": 3
+    },
+    "map-scale": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-shift": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "map-stamp": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "map-to-godot": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "material-audit": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "mesh-colliders": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "mesh-pivot-fix": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "nav-grid": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "nav-to-godot": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "nine-slice": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "nine-slice-to-godot": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "normal-bake": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "normal-fix": {
+      "steps": 3,
+      "trajectories": 2
+    },
+    "obj-bounds": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "obj-clean-uv": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "obj-decimate": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "obj-drop-unused": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "obj-flip": {
+      "steps": 3,
+      "trajectories": 3
+    },
+    "obj-merge": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "obj-normals": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "obj-recenter": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "obj-split": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "obj-subdivide": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "obj-to-glb": {
+      "steps": 20,
+      "trajectories": 17
+    },
+    "obj-transform": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "obj-triangulate": {
+      "steps": 6,
+      "trajectories": 5
+    },
+    "obj-uv-unwrap": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "obj-validate": {
+      "steps": 19,
+      "trajectories": 19
+    },
+    "obj-weld": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "onion-skin": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "palette-apply": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "palette-extract": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "palette-swap": {
+      "steps": 3,
+      "trajectories": 3
+    },
+    "parallax-preview": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "particle-preview": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "patch-pack": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "pixel-lint": {
+      "steps": 4,
+      "trajectories": 4
+    },
+    "pixelize": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "prefab-index": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "pseudoloc": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "room-graph": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sfx-bank": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "sfx-envelope": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sfx-gen": {
+      "steps": 8,
+      "trajectories": 7
+    },
+    "sfx-mix": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sfx-normalize": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sfx-pitch": {
+      "steps": 5,
+      "trajectories": 4
+    },
+    "sfx-reverse": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sfx-spectrogram": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sfx-variants": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sheet-pad": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sprite-align": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sprite-angles": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sprite-canvas": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sprite-flip-sheet": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sprite-fx": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sprite-outline-gen": {
+      "steps": 3,
+      "trajectories": 2
+    },
+    "sprite-pad": {
+      "steps": 3,
+      "trajectories": 3
+    },
+    "sprite-pivot": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sprite-recolor": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sprite-reframe": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sprite-rotate": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sprite-scale": {
+      "steps": 8,
+      "trajectories": 7
+    },
+    "sprite-shadow": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sprite-sheet-optimize": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sprite-slice": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sprite-stack": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "sprite-trim": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "sprite-unpad": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "spritesheet-gif": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "subtitle-timing": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "team-outline": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "terrain-erode": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "terrain-mesh": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "terrain-noise": {
+      "steps": 6,
+      "trajectories": 5
+    },
+    "tex-gen": {
+      "steps": 14,
+      "trajectories": 10
+    },
+    "text-wrap-bake": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "texture-budget": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "texture-resize": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "texture-seamless": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tile-anim-gif": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tile-colliders": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "tile-colliders-to-godot": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tile-dedupe": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "tile-extrude": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tile-preview": {
+      "steps": 10,
+      "trajectories": 10
+    },
+    "tile-replace": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tilemap-stats": {
+      "steps": 49,
+      "trajectories": 49
+    },
+    "tileset-from-image": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tileset-gen": {
+      "steps": 10,
+      "trajectories": 9
+    },
+    "tileset-merge": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tileset-renumber": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tileset-split": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tileset-wang": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tmx-anim-list": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tmx-decode": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tmx-encode": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tmx-gid-usage": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tmx-infinite-to-finite": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tmx-layer-filter": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tmx-layer-opacity": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tmx-objects-csv": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tmx-props-lint": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tmx-tileset-list": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tmx-to-json": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "tmx-world": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "uv-check": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "vo-diff": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "voice-slate": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "wav-batch-meta": {
+      "steps": 43,
+      "trajectories": 43
+    },
+    "wav-chan-split": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "wav-chan-swap": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "wav-dc-remove": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "wav-fade": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "wav-gain": {
+      "steps": 4,
+      "trajectories": 3
+    },
+    "wav-gap-squeeze": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "wav-gate": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "wav-invert": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "wav-limit": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "wav-loop-meta": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "wav-loop-snap": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "wav-loud-apply": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "wav-mono": {
+      "steps": 2,
+      "trajectories": 1
+    },
+    "wav-pad": {
+      "steps": 3,
+      "trajectories": 2
+    },
+    "wav-resample": {
+      "steps": 2,
+      "trajectories": 2
+    },
+    "wav-silence": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "wav-split-silence": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "wav-trim": {
+      "steps": 1,
+      "trajectories": 1
+    },
+    "wfc-tiles": {
+      "steps": 2,
+      "trajectories": 1
+    }
+  },
+  "dropped_count": 0,
+  "families_covered": [
+    "animation",
+    "audio",
+    "data",
+    "dialogue",
+    "fonts",
+    "godot",
+    "images",
+    "loc",
+    "maps",
+    "mesh",
+    "sprites",
+    "terrain"
+  ],
+  "kit_version": "2.5.0",
+  "notes": {
+    "dropped": "dropped.jsonl lists trajectories whose measured exit did not match the catalog",
+    "path_rewrite": "absolute temp directory -> {project}; kit root -> {kit}",
+    "recovery": "a recovery trajectory's first gst command fails, the next step is the correction",
+    "sha256": "file bytes after that same path rewrite, so a report that stores an absolute path still matches"
+  },
+  "primary_family": {
+    "animation": 21,
+    "audio": 46,
+    "data": 21,
+    "dialogue": 12,
+    "fonts": 7,
+    "godot": 14,
+    "images": 31,
+    "loc": 19,
+    "maps": 71,
+    "mesh": 35,
+    "sprites": 43,
+    "terrain": 12
+  },
+  "recovery_count": 48,
+  "recovery_fraction": 0.1446,
+  "shards": [
+    {
+      "bytes": 38672,
+      "file": "shards/trajectories-animation.jsonl",
+      "primary_family": "animation",
+      "trajectories": 21
+    },
+    {
+      "bytes": 56270,
+      "file": "shards/trajectories-audio.jsonl",
+      "primary_family": "audio",
+      "trajectories": 46
+    },
+    {
+      "bytes": 31132,
+      "file": "shards/trajectories-data.jsonl",
+      "primary_family": "data",
+      "trajectories": 21
+    },
+    {
+      "bytes": 16099,
+      "file": "shards/trajectories-dialogue.jsonl",
+      "primary_family": "dialogue",
+      "trajectories": 12
+    },
+    {
+      "bytes": 9568,
+      "file": "shards/trajectories-fonts.jsonl",
+      "primary_family": "fonts",
+      "trajectories": 7
+    },
+    {
+      "bytes": 21225,
+      "file": "shards/trajectories-godot.jsonl",
+      "primary_family": "godot",
+      "trajectories": 14
+    },
+    {
+      "bytes": 50403,
+      "file": "shards/trajectories-images.jsonl",
+      "primary_family": "images",
+      "trajectories": 31
+    },
+    {
+      "bytes": 22403,
+      "file": "shards/trajectories-loc.jsonl",
+      "primary_family": "loc",
+      "trajectories": 19
+    },
+    {
+      "bytes": 124979,
+      "file": "shards/trajectories-maps.jsonl",
+      "primary_family": "maps",
+      "trajectories": 71
+    },
+    {
+      "bytes": 53159,
+      "file": "shards/trajectories-mesh.jsonl",
+      "primary_family": "mesh",
+      "trajectories": 35
+    },
+    {
+      "bytes": 64699,
+      "file": "shards/trajectories-sprites.jsonl",
+      "primary_family": "sprites",
+      "trajectories": 43
+    },
+    {
+      "bytes": 17321,
+      "file": "shards/trajectories-terrain.jsonl",
+      "primary_family": "terrain",
+      "trajectories": 12
+    }
+  ],
+  "step_count": 813,
+  "tools_covered": 254,
+  "trajectory_count": 332
+}

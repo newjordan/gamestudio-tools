@@ -60,6 +60,16 @@ def flash(img, amount=0.85, color=(255, 255, 255)):
     return Image.fromarray(a.round().astype(np.uint8), "RGBA")
 
 
+def parse_color(s):
+    """#rrggbb, #rrggbbaa, or the same without a hash. Matches sprite-outline-gen."""
+    s = str(s).lstrip("#")
+    if len(s) == 6:
+        return tuple(int(s[i:i + 2], 16) for i in (0, 2, 4)) + (255,)
+    if len(s) == 8:
+        return tuple(int(s[i:i + 2], 16) for i in (0, 2, 4, 6))
+    raise SystemExit("colour %r must be #rrggbb or #rrggbbaa" % s)
+
+
 def parse_shadow(s):
     if not s:
         return None
@@ -90,7 +100,7 @@ def main(argv=None):
             files += sorted(glob.glob(p)) or [p]
     os.makedirs(a.outdir, exist_ok=True)
     sh = parse_shadow(a.shadow)
-    oc = tuple(int(a.outline_color[i:i + 2], 16) for i in (0, 2, 4)) + (255,)
+    oc = parse_color(a.outline_color)
     pad = pad_for(a.outline, sh)
     for f in files:
         out = bake(Image.open(f), a.outline, oc, sh, pad, not a.four)

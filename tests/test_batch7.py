@@ -156,6 +156,9 @@ def test_patch_pack(tmp_path):
     _tree(new, {"a.txt": b"a" * 100, "b.txt": b"B" * 120, "c/same.bin": b"s" * 50, "new/n.bin": b"n" * 10, "moved/move_me.dat": b"m" * 200})
     man = asset_manifest.build(str(old)); z = tmp_path / "p.zip"
     patch, size = patch_pack.make(man, str(new), str(z))
+    z2 = tmp_path / "p2.zip"
+    patch_pack.make(man, str(new), str(z2))
+    assert z.read_bytes() == z2.read_bytes()  # zip timestamps must not depend on the clock
     assert patch["ops"]["add"] == ["new/n.bin"] and patch["ops"]["change"] == ["b.txt"] and patch["ops"]["remove"] == ["c/gone.bin"] and patch["ops"]["rename"] == [["move_me.dat", "moved/move_me.dat"]]
     names = zipfile.ZipFile(z).namelist(); assert "files/b.txt" in names and "files/moved/move_me.dat" not in names and "files/a.txt" not in names     # renames cost nothing
     r = patch_pack.apply(str(z), str(old), dry_run=True); assert r["ok"] and r["written"] == 0 and not (old / "new").exists()

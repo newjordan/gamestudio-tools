@@ -46,6 +46,15 @@ def test_anim_retarget_fps(tmp_path):
     assert out["clips"][0]["fps"] == 12 and abs(sum(durs) - 400) <= 1000 / 12 + 1
     assert all(d > 0 for d in durs)
     with pytest.raises(SystemExit): anim_retarget_fps.main([str(tmp_path / "in.json"), "-o", str(tmp_path / "in.json"), "--fps", "12"])
+    # anim-from-folder / anim-meta store clips as a name -> object map, not a list
+    named = {"clips": {"walk": {"frames": ["a", "b", "c", "d"], "fps": 10, "loop": True, "duration": 0.4}}}
+    json.dump(named, open(tmp_path / "named.json", "w"))
+    assert anim_retarget_fps.main([str(tmp_path / "named.json"), "-o", str(tmp_path / "named_out.json"), "--fps", "8"]) == 0
+    out = json.load(open(tmp_path / "named_out.json"))
+    assert isinstance(out["clips"], dict) and out["clips"]["walk"]["fps"] == 8
+    assert abs(sum(out["clips"]["walk"]["durations"]) - 400) <= 1000 / 8 + 1
+    json.dump({"clips": "walk"}, open(tmp_path / "bad.json", "w"))
+    with pytest.raises(SystemExit): anim_retarget_fps.main([str(tmp_path / "bad.json"), "-o", str(tmp_path / "nope.json"), "--fps", "8"])
 
 
 def test_credits_roll(tmp_path):
