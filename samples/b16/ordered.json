@@ -1,0 +1,137 @@
+{
+  "type": "map",
+  "width": 8,
+  "height": 4,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "tilesets": [
+    {
+      "name": "spare",
+      "firstgid": 1,
+      "tilecount": 4
+    },
+    {
+      "name": "used",
+      "firstgid": 10,
+      "tilecount": 8
+    }
+  ],
+  "layers": [
+    {
+      "type": "tilelayer",
+      "name": "fg",
+      "width": 8,
+      "height": 4,
+      "data": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "tilelayer",
+      "name": "ground",
+      "width": 8,
+      "height": 4,
+      "data": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        10,
+        11,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "objectgroup",
+      "name": "mobs",
+      "objects": [
+        {
+          "id": 1,
+          "name": "gob",
+          "type": "enemy",
+          "x": 32,
+          "y": 16,
+          "width": 16,
+          "height": 16,
+          "properties": [
+            {
+              "name": "hp",
+              "type": "int",
+              "value": 8
+            },
+            {
+              "name": "speed",
+              "type": "float",
+              "value": 1.2
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "door",
+          "type": "door",
+          "x": 48,
+          "y": 16,
+          "width": 16,
+          "height": 16
+        }
+      ]
+    }
+  ]
+}

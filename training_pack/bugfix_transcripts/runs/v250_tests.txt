@@ -1,0 +1,15 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.7.0 -- /usr/bin/python3
+rootdir: /workspace/gamestudio-tools
+collecting ... collected 11 items / 3 deselected / 8 selected
+
+tests/test_v25.py::test_dungeon_gen_json_is_a_usable_tiled_map PASSED    [ 12%]
+tests/test_v25.py::test_atlas_to_godot_restores_trimmed_canvas PASSED    [ 25%]
+tests/test_v25.py::test_atlas_to_godot_trimmed_frame_keeps_source_size_in_godot PASSED [ 37%]
+tests/test_v25.py::test_anim_from_folder_fps_accepts_globs_and_repeats PASSED [ 50%]
+tests/test_v25.py::test_asset_unused_reads_project_godot_and_bmfont_pages PASSED [ 62%]
+tests/test_v25.py::test_nav_to_godot_welds_t_junctions PASSED            [ 75%]
+tests/test_v25.py::test_nav_to_godot_t_junction_path_in_godot PASSED     [ 87%]
+tests/test_v25.py::test_bundle_skips_example_work_dirs PASSED            [100%]
+
+======================= 8 passed, 3 deselected in 9.70s ========================

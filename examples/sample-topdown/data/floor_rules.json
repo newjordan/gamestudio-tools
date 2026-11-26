@@ -1,0 +1,10 @@
+{
+  "source": "dungeon",
+  "name": "floor",
+  "match": "gid",
+  "rules": [
+    {"center": [1], "n": [2], "w": [2], "e": [1], "s": [1], "gid": 52},
+    {"center": [1], "n": [2], "gid": 50},
+    {"center": [1], "gid": 49}
+  ]
+}

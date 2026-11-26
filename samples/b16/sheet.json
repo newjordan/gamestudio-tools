@@ -1,0 +1,27 @@
+{
+ "frames": {
+  "red.png": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 8,
+    "h": 8
+   }
+  },
+  "green.png": {
+   "frame": {
+    "x": 8,
+    "y": 0,
+    "w": 8,
+    "h": 8
+   }
+  }
+ },
+ "meta": {
+  "size": {
+   "w": 16,
+   "h": 8
+  },
+  "image": "sheet.png"
+ }
+}

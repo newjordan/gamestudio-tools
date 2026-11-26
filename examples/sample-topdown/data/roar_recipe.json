@@ -1,0 +1,6 @@
+{"sample_rate": 44100, "channels": 2, "peak_db": -1.0, "tail_ms": 100,
+ "layers": [
+  {"file": "explosion.wav", "offset_ms": 0, "pitch_semitones": -12, "gain_db": 0, "fade_out_ms": 200, "pan": 0},
+  {"file": "laser.wav", "offset_ms": 40, "pitch_semitones": -14, "gain_db": -6, "fade_out_ms": 80, "pan": -0.3},
+  {"file": "laser.wav", "offset_ms": 90, "pitch_semitones": -17, "gain_db": -6, "fade_out_ms": 80, "pan": 0.3}
+ ]}

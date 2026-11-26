@@ -507,6 +507,8 @@ def cmd_bundle(args):
     name = f"gamestudio-tools-{version()}"; path = os.path.join(out, name + ".tar.gz"); files = []
     for dp, dn, fn in os.walk(ROOT):
         dn[:] = sorted(d for d in dn if d not in BUNDLE_SKIP_DIRS)
+        if os.path.dirname(os.path.relpath(dp, ROOT)) == "examples":
+            dn[:] = [d for d in dn if d != "work"]     # examples/<game>/work is build.sh scratch (gitignored, rebuildable)
         for f in sorted(fn):
             if f in BUNDLE_SKIP_FILES or f.endswith((".pyc", ".tar.gz", ".sha256", ".uid")): continue
             files.append(os.path.join(dp, f))

@@ -1,0 +1,39 @@
+{
+  "schema": "omnispace.fleet-job/1",
+  "id": "audio-79b5edac89",
+  "kind": "audio.minimax-music",
+  "model": "MiniMax Music",
+  "target": "turbo",
+  "status": "queued-not-launched",
+  "constraints": {
+    "download_models": false,
+    "huggingface_pull": false,
+    "gpu_host": "turbo",
+    "never_on": [
+      "atlas",
+      "sparky"
+    ],
+    "launch": "manual-approval-only"
+  },
+  "outputs": {
+    "dir": "outputs/pending"
+  },
+  "items": [
+    {
+      "name": "town",
+      "prompt": "warm folk, 90 bpm, lute, seamless loop, no fade-out ending",
+      "duration_s": 60.0,
+      "loop": true
+    },
+    {
+      "name": "boss",
+      "prompt": "tense, 150 bpm, drums",
+      "duration_s": 90.0,
+      "loop": false
+    }
+  ],
+  "post": [
+    "loop-finder",
+    "audio-tidy"
+  ]
+}

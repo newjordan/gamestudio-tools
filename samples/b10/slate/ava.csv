@@ -1,0 +1,7 @@
+session,take_id,line_id,file,node,direction,text,est_seconds,budget_seconds,target,take_no,notes
+1,ava-001,L854e366d,story.yarn,Start,,Hi.,0.8,8.4,ava_L854e366d.wav,,
+1,ava-002,L54a92bab,story.yarn,Left,,Left.,0.8,8.4,ava_L54a92bab.wav,,
+1,ava-003,L1e0bc666,story.yarn,Right,,Right.,0.8,8.4,ava_L1e0bc666.wav,,
+1,ava-004,L0b12d036,story.yarn,Secret,,Nobody finds me.,1.2,9.6,ava_L0b12d036.wav,,
+1,ava-005,L2e602027,intro.yarn,Start,,Welcome to the station.,1.6,10.8,ava_L2e602027.wav,,
+1,ava-006,L321d60dc,intro.yarn,Start,,Just the night shift.,1.6,10.8,ava_L321d60dc.wav,,

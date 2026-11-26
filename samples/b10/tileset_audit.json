@@ -1,0 +1,29 @@
+{
+ "image": "samples/tileset.png",
+ "tile": [
+  16,
+  16
+ ],
+ "cols": 4,
+ "rows": 1,
+ "tiles": 4,
+ "empty": [],
+ "duplicates": {},
+ "uses": [
+  2293,
+  2827,
+  0,
+  0
+ ],
+ "per_map": {
+  "cave_ts.json": 2560,
+  "bsp_ts.json": 2560
+ },
+ "warnings": [],
+ "unused": [
+  2,
+  3
+ ],
+ "maps": 2,
+ "matched_maps": 2
+}

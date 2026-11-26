@@ -1,0 +1,15 @@
+# sample prop
+mtllib prop.mtl
+o Prop
+v 10 4 0
+v 14 4 0
+v 14 8 0
+v 10 8 0
+vt 0 0
+vt 1 0
+vt 1 1
+vt 0 1
+usemtl wood
+g body
+s 1
+f 1/1 2/2 3/3 4/4

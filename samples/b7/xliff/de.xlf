@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="strings" source-language="en" target-language="de" datatype="plaintext">
+    <body>
+      <trans-unit id="greet"><source>Hello {name}, you have %d &lt;b&gt;gold&lt;/b&gt;.</source><target>Hallo {nam}, du hast %d Gold.</target></trans-unit>
+      <trans-unit id="save"><source>Save</source><target>Speichern</target></trans-unit>
+      <trans-unit id="quit"><source>Quit game</source><target>Quit game</target></trans-unit>
+    </body>
+  </file>
+</xliff>

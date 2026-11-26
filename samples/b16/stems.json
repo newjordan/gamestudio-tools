@@ -1,0 +1,21 @@
+[
+ {
+  "file": "samples/b16/bus.wav",
+  "rate": 8000,
+  "channels": 2,
+  "frames": 2400,
+  "duration_s": 0.3,
+  "stems": [
+   {
+    "channel": 0,
+    "name": "L",
+    "out": "samples/b16/stems/bus_L.wav"
+   },
+   {
+    "channel": 1,
+    "name": "R",
+    "out": "samples/b16/stems/bus_R.wav"
+   }
+  ]
+ }
+]

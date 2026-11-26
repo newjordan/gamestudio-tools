@@ -1,0 +1,8 @@
+idle: 2 frames @ 4 fps, loop, 0.5s
+walk-down: 2 frames @ 8 fps, loop, 0.25s
+walk-up: 2 frames @ 8 fps, loop, 0.25s
+WARN override for unknown clip 'idl*'
+idle fps=4.0 loop=True
+walk-down fps=8.0 loop=True
+walk-up fps=8.0 loop=True
+exit=0

@@ -1,0 +1,55 @@
+{
+  "type": "map",
+  "width": 4,
+  "height": 2,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "name": "room",
+  "tilesets": [
+    {
+      "name": "dungeon",
+      "firstgid": 1,
+      "tilecount": 8
+    }
+  ],
+  "layers": [
+    {
+      "type": "tilelayer",
+      "name": "fg_ground",
+      "width": 4,
+      "height": 2,
+      "data": [
+        1,
+        2,
+        0,
+        3,
+        1,
+        0,
+        4,
+        2
+      ]
+    },
+    {
+      "type": "objectgroup",
+      "name": "objs",
+      "objects": [
+        {
+          "id": 1,
+          "name": "Spn_door",
+          "type": "Door",
+          "gid": 3,
+          "x": 16,
+          "y": 16,
+          "width": 16,
+          "height": 16
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "biome",
+      "value": "cave"
+    }
+  ]
+}

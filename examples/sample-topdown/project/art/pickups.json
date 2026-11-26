@@ -1,0 +1,127 @@
+{
+  "frames": {
+    "key-idle_0": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 11,
+        "h": 8
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1,
+        "w": 11,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 12
+      }
+    },
+    "coin-spin_0": {
+      "frame": {
+        "x": 12,
+        "y": 0,
+        "w": 10,
+        "h": 10
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1,
+        "w": 10,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 12
+      }
+    },
+    "coin-spin_1": {
+      "frame": {
+        "x": 0,
+        "y": 9,
+        "w": 8,
+        "h": 10
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 1,
+        "w": 8,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 12
+      }
+    },
+    "coin-spin_2": {
+      "frame": {
+        "x": 0,
+        "y": 20,
+        "w": 4,
+        "h": 10
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 1,
+        "w": 4,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 12
+      }
+    },
+    "coin-spin_3": {
+      "frame": {
+        "x": 0,
+        "y": 31,
+        "w": 8,
+        "h": 10
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 1,
+        "w": 8,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 12
+      }
+    },
+    "heart-idle_0": {
+      "frame": {
+        "x": 5,
+        "y": 20,
+        "w": 10,
+        "h": 8
+      },
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1,
+        "w": 10,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 12,
+        "h": 12
+      }
+    }
+  },
+  "meta": {
+    "image": "pickups.png",
+    "size": {
+      "w": 23,
+      "h": 42
+    },
+    "app": "omnispace atlas-pack",
+    "format": "RGBA8888"
+  }
+}

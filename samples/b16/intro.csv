@@ -1,0 +1,4 @@
+id,file,line,node,kind,speaker,text,tags,words,est_seconds
+l1,intro.yarn,3,Intro,line,Ava,Hello.,,1,0.8
+l2,intro.yarn,4,Intro,choice,,Stay.,,1,0.8
+l3,intro.yarn,5,Intro,line,Ben,I will.,,2,0.8

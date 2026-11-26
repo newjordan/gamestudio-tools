@@ -1,0 +1,80 @@
+diff --git a/dungeon-gen/dungeon_gen.py b/dungeon-gen/dungeon_gen.py
+index df534e4..92858a0 100755
+--- a/dungeon-gen/dungeon_gen.py
++++ b/dungeon-gen/dungeon_gen.py
+@@ -2,7 +2,9 @@
+ """dungeon-gen: seeded roguelike layouts (BSP rooms+corridors or cellular-automata caves).
+ 
+ Exports ASCII preview, PNG, and a Tiled-compatible JSON map (tile ids: 1 floor, 2 wall) so it drops
+-straight into Tiled, LDtk import, or a Godot TileMap importer.
++straight into Tiled, LDtk import, or a Godot TileMap importer. The JSON embeds a two-tile tileset
++(<out>_tiles.png: floor, wall; the wall tile carries a solid=true property) and, in BSP mode, a "rooms"
++object layer with one rectangle per room (index, centre and size properties).
+ """
+ import argparse, json, random
+ from PIL import Image
+@@ -106,12 +108,39 @@ def to_ascii(g):
+     return "\n".join("".join("#" if c == WALL else "." for c in row) for row in g)
+ 
+ 
+-def to_tiled(g, tile=16):
++FLOOR_RGB, WALL_RGB = (200, 196, 180), (52, 48, 64)
++
++
++def tiles_image(tile=16):
++    im = Image.new("RGBA", (tile * 2, tile), FLOOR_RGB + (255,))
++    im.paste(WALL_RGB + (255,), (tile, 0, tile * 2, tile))
++    return im
++
++
++def to_tiled(g, tile=16, rooms=(), image="dungeon_tiles.png"):
+     h, w = len(g), len(g[0])
++    layers = [{"id": 1, "name": "dungeon", "type": "tilelayer", "width": w, "height": h, "x": 0, "y": 0,
++               "opacity": 1, "visible": True, "data": [2 if c == WALL else 1 for row in g for c in row]}]
++    objs = []
++    for i, (rx, ry, rw, rh) in enumerate(rooms):
++        objs.append({"id": i + 1, "name": f"room{i}", "type": "room", "x": rx * tile, "y": ry * tile,
++                     "width": rw * tile, "height": rh * tile, "rotation": 0, "visible": True,
++                     "properties": [{"name": "index", "type": "int", "value": i},
++                                    {"name": "cx", "type": "int", "value": rx + rw // 2},
++                                    {"name": "cy", "type": "int", "value": ry + rh // 2},
++                                    {"name": "w", "type": "int", "value": rw},
++                                    {"name": "h", "type": "int", "value": rh}]})
++    if rooms:
++        layers.append({"id": 2, "name": "rooms", "type": "objectgroup", "x": 0, "y": 0, "opacity": 1,
++                       "visible": True, "draworder": "topdown", "objects": objs})
++    ts = {"firstgid": 1, "name": "dungeon", "image": image, "imagewidth": tile * 2, "imageheight": tile,
++          "tilewidth": tile, "tileheight": tile, "tilecount": 2, "columns": 2, "margin": 0, "spacing": 0,
++          "tiles": [{"id": 0, "type": "floor"},
++                    {"id": 1, "type": "wall", "properties": [{"name": "solid", "type": "bool", "value": True}]}]}
+     return {"width": w, "height": h, "tilewidth": tile, "tileheight": tile, "orientation": "orthogonal",
+-            "type": "map", "infinite": False, "renderorder": "right-down",
+-            "layers": [{"name": "dungeon", "type": "tilelayer", "width": w, "height": h, "x": 0, "y": 0,
+-                        "opacity": 1, "visible": True, "data": [2 if c == WALL else 1 for row in g for c in row]}]}
++            "type": "map", "version": "1.10", "tiledversion": "1.10.2", "infinite": False,
++            "renderorder": "right-down", "nextlayerid": len(layers) + 1, "nextobjectid": len(objs) + 1,
++            "tilesets": [ts], "layers": layers}
+ 
+ 
+ def main(argv=None):
+@@ -121,15 +150,18 @@ def main(argv=None):
+     ap.add_argument("--seed", type=int)
+     ap.add_argument("-o", "--out", default="dungeon", help="basename; writes .txt .png .json")
+     ap.add_argument("--scale", type=int, default=8)
++    ap.add_argument("--tile", type=int, default=16, help="tile size in pixels for the JSON map and its tileset image")
+     a = ap.parse_args(argv)
+     w, h = (int(v) for v in a.size.lower().split("x"))
+     g, rooms = bsp(w, h, a.seed) if a.mode == "bsp" else caves(w, h, a.seed)
+     open(a.out + ".txt", "w").write(to_ascii(g) + "\n")
+-    json.dump(to_tiled(g), open(a.out + ".json", "w"))
++    ap_tiles = a.out + "_tiles.png"
++    tiles_image(a.tile).save(ap_tiles)
++    json.dump(to_tiled(g, a.tile, rooms, os.path.basename(ap_tiles)), open(a.out + ".json", "w"))
+     im = Image.new("L", (w, h))
+     im.putdata([30 if c == WALL else 220 for row in g for c in row])
+     im.resize((w * a.scale, h * a.scale), Image.Resampling.NEAREST).save(a.out + ".png")
+-    print(f"{a.mode} {w}x{h} seed={a.seed}: {len(rooms)} rooms, {len(regions(g))} connected region(s) -> {a.out}.txt/.png/.json")
++    print(f"{a.mode} {w}x{h} seed={a.seed}: {len(rooms)} rooms, {len(regions(g))} connected region(s) -> {a.out}.txt/.png/.json (+ {os.path.basename(a.out)}_tiles.png)")
+     return 0
+ 
+ 

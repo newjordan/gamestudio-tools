@@ -1,0 +1,6 @@
+1 texture(s), 1 animation(s) -> f.tres
+[sub_resource type="AtlasTexture" id="AtlasTexture_0"]
+atlas = ExtResource("1_tex")
+region = Rect2(0, 0, 6, 4)
+margin = Rect2(5, 9, 10, 12)
+exit=0

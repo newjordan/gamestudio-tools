@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0"]
+size = Vector2(352, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(16, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2"]
+size = Vector2(16, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7"]
+size = Vector2(352, 16)
+
+[node name="Colliders" type="StaticBody2D"]
+
+[node name="R0" type="CollisionShape2D" parent="."]
+position = Vector2(176, 8)
+shape = SubResource("RectangleShape2D_0")
+
+[node name="R1" type="CollisionShape2D" parent="."]
+position = Vector2(8, 112)
+shape = SubResource("RectangleShape2D_1")
+
+[node name="R2" type="CollisionShape2D" parent="."]
+position = Vector2(344, 112)
+shape = SubResource("RectangleShape2D_2")
+
+[node name="R3" type="CollisionShape2D" parent="."]
+position = Vector2(96, 80)
+shape = SubResource("RectangleShape2D_3")
+
+[node name="R4" type="CollisionShape2D" parent="."]
+position = Vector2(256, 80)
+shape = SubResource("RectangleShape2D_4")
+
+[node name="R5" type="CollisionShape2D" parent="."]
+position = Vector2(96, 144)
+shape = SubResource("RectangleShape2D_5")
+
+[node name="R6" type="CollisionShape2D" parent="."]
+position = Vector2(256, 144)
+shape = SubResource("RectangleShape2D_6")
+
+[node name="R7" type="CollisionShape2D" parent="."]
+position = Vector2(176, 216)
+shape = SubResource("RectangleShape2D_7")
+

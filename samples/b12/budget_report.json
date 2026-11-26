@@ -1,0 +1,88 @@
+[
+ {
+  "file": "cave_obj.json",
+  "counts": {
+   "exit": 1
+  },
+  "rows": [
+   {
+    "key": "enemy",
+    "count": 0,
+    "budget": 8,
+    "status": "under"
+   },
+   {
+    "key": "exit",
+    "count": 1,
+    "budget": 1,
+    "status": "ok"
+   },
+   {
+    "key": "pickup",
+    "count": 0,
+    "budget": 12,
+    "status": "under"
+   }
+  ],
+  "over": [],
+  "under": [
+   {
+    "key": "enemy",
+    "count": 0,
+    "budget": 8,
+    "status": "under"
+   },
+   {
+    "key": "pickup",
+    "count": 0,
+    "budget": 12,
+    "status": "under"
+   }
+  ]
+ },
+ {
+  "file": "cave_v2.json",
+  "counts": {},
+  "rows": [
+   {
+    "key": "enemy",
+    "count": 0,
+    "budget": 8,
+    "status": "under"
+   },
+   {
+    "key": "exit",
+    "count": 0,
+    "budget": 1,
+    "status": "under"
+   },
+   {
+    "key": "pickup",
+    "count": 0,
+    "budget": 12,
+    "status": "under"
+   }
+  ],
+  "over": [],
+  "under": [
+   {
+    "key": "enemy",
+    "count": 0,
+    "budget": 8,
+    "status": "under"
+   },
+   {
+    "key": "exit",
+    "count": 0,
+    "budget": 1,
+    "status": "under"
+   },
+   {
+    "key": "pickup",
+    "count": 0,
+    "budget": 12,
+    "status": "under"
+   }
+  ]
+ }
+]

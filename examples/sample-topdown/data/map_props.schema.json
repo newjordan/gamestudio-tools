@@ -1,0 +1,1 @@
+{"objects": {"enemy": {"required": ["kind"], "types": {"kind": "string"}}}}

@@ -1,0 +1,4 @@
+UNUSED  art/orphan.png
+9 file(s) scanned, 8 referenced, 1 unused
+unused: ['art/orphan.png']
+exit=0

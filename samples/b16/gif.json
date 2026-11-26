@@ -1,0 +1,14 @@
+{
+ "file": "samples/b16/preview.gif",
+ "out": "samples/b16/preview_sm.gif",
+ "frames": 5,
+ "size": [
+  48,
+  24
+ ],
+ "colors": 16,
+ "scale": 1.0,
+ "bytes_before": 380,
+ "bytes_after": 380,
+ "ratio": 1.0
+}

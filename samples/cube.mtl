@@ -1,0 +1,4 @@
+newmtl red
+Kd 0.9 0.1 0.1
+newmtl tex
+Kd 1 1 1

@@ -1,0 +1,10 @@
+flowchart LR
+  Start["Start (1)"]
+  Left["Left (1)"]
+  Right["Right (1)"]
+  Secret["Secret (1)"]
+  Start --> Left
+  Start --> Right
+  Left --> Nowhere["Nowhere (MISSING)"]
+  Secret --> Start
+  style Secret fill:#f8b4b4

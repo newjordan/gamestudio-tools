@@ -1,0 +1,11 @@
+digraph dialogue {
+  rankdir=LR; node [shape=box, style=rounded];
+  "Start" [label="Start\n1 lines", style="rounded,filled", fillcolor=palegreen];
+  "Left" [label="Left\n1 lines", style="rounded,filled", fillcolor=white];
+  "Right" [label="Right\n1 lines", style="rounded,filled", fillcolor=white];
+  "Secret" [label="Secret\n1 lines", style="rounded,filled", fillcolor=lightcoral];
+  "Start" -> "Left";
+  "Start" -> "Right";
+  "Left" -> "Nowhere" [color=red, style=dashed];
+  "Secret" -> "Start";
+}

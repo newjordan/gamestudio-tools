@@ -1,0 +1,50 @@
+[
+ {
+  "file": "samples/sfx/laser_0000.wav",
+  "sr": 44100,
+  "channels": 1,
+  "seconds": 0.224,
+  "peak_db": -6.02,
+  "rms_db": -13.18,
+  "out": "samples/sfx_tidy/laser_0000.wav",
+  "out_seconds": 0.22,
+  "out_peak_db": -1.0,
+  "out_rms_db": -8.25
+ },
+ {
+  "file": "samples/sfx/laser_0001.wav",
+  "sr": 44100,
+  "channels": 1,
+  "seconds": 0.242,
+  "peak_db": -6.02,
+  "rms_db": -12.47,
+  "out": "samples/sfx_tidy/laser_0001.wav",
+  "out_seconds": 0.242,
+  "out_peak_db": -1.0,
+  "out_rms_db": -7.54
+ },
+ {
+  "file": "samples/sfx/laser_0002.wav",
+  "sr": 44100,
+  "channels": 1,
+  "seconds": 0.199,
+  "peak_db": -6.02,
+  "rms_db": -12.62,
+  "out": "samples/sfx_tidy/laser_0002.wav",
+  "out_seconds": 0.198,
+  "out_peak_db": -1.0,
+  "out_rms_db": -7.74
+ },
+ {
+  "file": "samples/sfx/laser_0003.wav",
+  "sr": 44100,
+  "channels": 1,
+  "seconds": 0.172,
+  "peak_db": -6.02,
+  "rms_db": -10.57,
+  "out": "samples/sfx_tidy/laser_0003.wav",
+  "out_seconds": 0.172,
+  "out_peak_db": -1.0,
+  "out_rms_db": -5.67
+ }
+]

@@ -31,6 +31,10 @@ The `--json` report records `colliders` (the file used) and `colliders_source` (
 
 Run `python3 nav-to-godot/nav-to-godot.py --help` (or `gst nav-to-godot --help`) for every option. Requires Python 3.10+. Optional Godot verification uses `GODOT_BIN`.
 
+Since 2.5.0 all polygons share one welded vertex list and every rectangle corner that lies inside another
+rectangle's side is inserted into that side. Godot links navigation polygons only across identical edges, so in
+2.4.0 rooms that met a corridor at a T-junction were separate islands and `map_get_path` returned an empty path.
+
 ## Inspiration (catalogue entry)
 
 None (new).

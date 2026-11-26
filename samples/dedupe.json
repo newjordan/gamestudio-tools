@@ -1,0 +1,34 @@
+{
+ "tile": [
+  20,
+  20
+ ],
+ "original_count": 4,
+ "unique_count": 4,
+ "remap": [
+  {
+   "old": 0,
+   "new": 0,
+   "xf": "none",
+   "reason": "unique"
+  },
+  {
+   "old": 1,
+   "new": 1,
+   "xf": "none",
+   "reason": "unique"
+  },
+  {
+   "old": 2,
+   "new": 2,
+   "xf": "none",
+   "reason": "unique"
+  },
+  {
+   "old": 3,
+   "new": 3,
+   "xf": "none",
+   "reason": "unique"
+  }
+ ]
+}

@@ -1,0 +1,4 @@
+id,en,fr,de
+greet,"Hello {name}, you have %d <b>gold</b>.","Bonjour {name}, vous avez %d <b>or</b>.","Hallo {nam}, du hast %d Gold."
+save,Save,Sauvegarder la partie en cours,Speichern
+quit,Quit game,,Quit game

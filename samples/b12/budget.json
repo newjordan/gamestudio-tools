@@ -1,0 +1,11 @@
+{
+ "count": "type",
+ "defaults": {
+  "exit": 1,
+  "enemy": 8,
+  "pickup": 12
+ },
+ "ignore": [
+  "spawn"
+ ]
+}

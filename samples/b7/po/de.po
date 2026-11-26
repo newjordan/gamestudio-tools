@@ -1,0 +1,20 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+
+#: greet
+msgctxt "greet"
+msgid "Hello {name}, you have %d <b>gold</b>."
+msgstr "Hallo {nam}, du hast %d Gold."
+
+#: save
+msgctxt "save"
+msgid "Save"
+msgstr "Speichern"
+
+#: quit
+msgctxt "quit"
+msgid "Quit game"
+msgstr "Quit game"

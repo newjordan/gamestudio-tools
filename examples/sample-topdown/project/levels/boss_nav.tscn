@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0"]
+vertices = PackedVector2Array(16, 16, 336, 16, 336, 64, 272, 64, 240, 64, 112, 64, 80, 64, 16, 64, 80, 96, 16, 96, 240, 96, 112, 96, 336, 96, 272, 96, 336, 128, 272, 128, 240, 128, 112, 128, 80, 128, 16, 128, 80, 160, 16, 160, 240, 160, 112, 160, 336, 160, 272, 160, 336, 208, 16, 208)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7), PackedInt32Array(7, 6, 8, 9), PackedInt32Array(5, 4, 10, 11), PackedInt32Array(3, 2, 12, 13), PackedInt32Array(9, 8, 11, 10, 13, 12, 14, 15, 16, 17, 18, 19), PackedInt32Array(19, 18, 20, 21), PackedInt32Array(17, 16, 22, 23), PackedInt32Array(15, 14, 24, 25), PackedInt32Array(21, 20, 23, 22, 25, 24, 26, 27)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(16, 16, 336, 16, 336, 64, 16, 64), PackedVector2Array(16, 64, 80, 64, 80, 96, 16, 96), PackedVector2Array(112, 64, 240, 64, 240, 96, 112, 96), PackedVector2Array(272, 64, 336, 64, 336, 96, 272, 96), PackedVector2Array(16, 96, 336, 96, 336, 128, 16, 128), PackedVector2Array(16, 128, 80, 128, 80, 160, 16, 160), PackedVector2Array(112, 128, 240, 128, 240, 160, 112, 160), PackedVector2Array(272, 128, 336, 128, 336, 160, 272, 160), PackedVector2Array(16, 160, 336, 160, 336, 208, 16, 208)])
+
+[node name="Nav" type="NavigationRegion2D"]
+navigation_polygon = SubResource("NavigationPolygon_0")

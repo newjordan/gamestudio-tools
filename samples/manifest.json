@@ -1,0 +1,67 @@
+{
+ "count": 10,
+ "files": {
+  "orb_0.png": {
+   "bytes": 298,
+   "h": 48,
+   "sha256": "bd8787b18f1714a537b83a99b0a3507dae5bb24531208454809426ac1a599622",
+   "w": 48
+  },
+  "orb_1.png": {
+   "bytes": 294,
+   "h": 48,
+   "sha256": "f3dea842df880ed1037fdcffc82878a093366dcb249a739cea171faf043e9cc2",
+   "w": 48
+  },
+  "orb_2.png": {
+   "bytes": 292,
+   "h": 48,
+   "sha256": "64036869895cf1ecb2bf81b2f7a8a632385139d65c19fdc1bd12134e76b1b008",
+   "w": 48
+  },
+  "orb_3.png": {
+   "bytes": 287,
+   "h": 48,
+   "sha256": "a80f22e502e86246aee962b0637ad0eab62d99b592a147be7f9602e16fe7c083",
+   "w": 48
+  },
+  "orb_4.png": {
+   "bytes": 277,
+   "h": 48,
+   "sha256": "1542baf0843309c010e3ccbca4f5f63481111b72a5a99c5b2a3b68809b45b09b",
+   "w": 48
+  },
+  "orb_5.png": {
+   "bytes": 278,
+   "h": 48,
+   "sha256": "35e6faa317ba08df7d72f3014e1d82b640e061ddf20cb32012a193db202df94e",
+   "w": 48
+  },
+  "orb_6.png": {
+   "bytes": 277,
+   "h": 48,
+   "sha256": "8ef3146d0832ada9f40f008a087245121fc86abba5012cf31e708e673dff3b6a",
+   "w": 48
+  },
+  "orb_7.png": {
+   "bytes": 260,
+   "h": 48,
+   "sha256": "ba1942300984b2c6bd21a6db32c5ee0e696ca3f9fa2ba89d6a6818acb23894af",
+   "w": 48
+  },
+  "orb_8.png": {
+   "bytes": 268,
+   "h": 48,
+   "sha256": "2468f114e3603dcfe316ffd121fd472b538fc76104418b85fc1c2c18c498d4b8",
+   "w": 48
+  },
+  "orb_9.png": {
+   "bytes": 257,
+   "h": 48,
+   "sha256": "2f7711f95c4ad3ef40d1abb9768321bf18e748c6b2d5830f6018e39235035f78",
+   "w": 48
+  }
+ },
+ "schema": "omnispace.asset-manifest/1",
+ "total_bytes": 2788
+}

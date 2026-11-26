@@ -1,0 +1,27 @@
+[gd_scene load_steps=1 format=3]
+
+[node name="MapObjects" type="Node2D"]
+
+[node name="objects" type="Node2D" parent="."]
+
+[node name="spawn" type="Marker2D" parent="objects"]
+position = Vector2(184, 184)
+metadata/tiled_type = "spawn"
+metadata/tiled_id = 1
+
+[node name="boss" type="Marker2D" parent="objects"]
+position = Vector2(184, 56)
+metadata/tiled_type = "enemy"
+metadata/tiled_id = 2
+metadata/kind = "boss"
+
+[node name="portal" type="Marker2D" parent="objects"]
+position = Vector2(184, 120)
+metadata/tiled_type = "portal"
+metadata/tiled_id = 3
+
+[node name="heart0" type="Marker2D" parent="objects"]
+position = Vector2(40, 184)
+metadata/tiled_type = "heart"
+metadata/tiled_id = 4
+

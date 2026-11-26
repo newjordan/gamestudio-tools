@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://art/props.png" id="tex_1"]
+
+[node name="MapObjects" type="Node2D"]
+
+[node name="objects" type="Node2D" parent="."]
+
+[node name="spawn" type="Marker2D" parent="objects"]
+position = Vector2(88, 88)
+metadata/tiled_type = "spawn"
+metadata/tiled_id = 1
+
+[node name="stairs" type="Sprite2D" parent="objects"]
+position = Vector2(464, 288)
+texture = ExtResource("tex_1")
+centered = false
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+metadata/tiled_type = "stairs"
+metadata/gid = 51
+metadata/tiled_id = 2
+
+[node name="key" type="Marker2D" parent="objects"]
+position = Vector2(328, 312)
+metadata/tiled_type = "key"
+metadata/tiled_id = 3
+
+[node name="enemy0" type="Marker2D" parent="objects"]
+position = Vector2(216, 40)
+metadata/tiled_type = "enemy"
+metadata/tiled_id = 4
+metadata/kind = "wizard"
+
+[node name="enemy1" type="Marker2D" parent="objects"]
+position = Vector2(56, 312)
+metadata/tiled_type = "enemy"
+metadata/tiled_id = 5
+metadata/kind = "bat"
+
+[node name="enemy2" type="Marker2D" parent="objects"]
+position = Vector2(216, 312)
+metadata/tiled_type = "enemy"
+metadata/tiled_id = 6
+metadata/kind = "bat"
+
+[node name="enemy3" type="Marker2D" parent="objects"]
+position = Vector2(328, 168)
+metadata/tiled_type = "enemy"
+metadata/tiled_id = 7
+metadata/kind = "bat"
+
+[node name="coin0" type="Marker2D" parent="objects"]
+position = Vector2(72, 72)
+metadata/tiled_type = "coin"
+metadata/tiled_id = 8
+
+[node name="coin1" type="Marker2D" parent="objects"]
+position = Vector2(72, 280)
+metadata/tiled_type = "coin"
+metadata/tiled_id = 9
+

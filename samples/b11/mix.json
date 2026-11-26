@@ -1,0 +1,4 @@
+{"sample_rate": 44100, "peak_db": -1, "tail_ms": 100,
+ "layers": [{"file": "../sfx/laser_0000.wav", "gain_db": 0, "fade_out_ms": 30},
+            {"file": "../sfx/laser_0002.wav", "offset_ms": 40, "pitch_semitones": -7, "gain_db": -4, "lowpass_hz": 2500, "pan": 0.4},
+            {"file": "../sfx/laser_0003.wav", "offset_ms": 90, "pitch_semitones": 5, "gain_db": -8, "highpass_hz": 600, "pan": -0.4}]}

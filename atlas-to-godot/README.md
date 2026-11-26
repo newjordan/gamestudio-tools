@@ -14,6 +14,10 @@ python3 atlas-to-godot/atlas_to_godot.py atlas.json -o hero.tres --sheet hero.pn
 
 Run `python3 atlas-to-godot/atlas_to_godot.py --help` (or `gst atlas-to-godot --help`) for every option. Requires Python 3.10+ (Pillow when rotated frames must be unpacked).
 
+Since 2.5.0 trimmed frames (atlas-pack's default) keep their original canvas: each AtlasTexture gets
+`margin = Rect2(offset x, offset y, extra width, extra height)` from `spriteSourceSize` / `sourceSize`, so
+animations no longer jitter or lose their pivot. Unpacked rotated frames are padded back to `sourceSize` too.
+
 ## Inspiration (catalogue entry)
 
 None (new). Complements godot-tileset, godot-import-presets, atlas-pack and anim-meta.

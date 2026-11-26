@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://art/props.png" id="tex_1"]
+
+[node name="MapObjects" type="Node2D"]
+
+[node name="objects" type="Node2D" parent="."]
+
+[node name="spawn" type="Marker2D" parent="objects"]
+position = Vector2(72, 88)
+metadata/tiled_type = "spawn"
+metadata/tiled_id = 1
+
+[node name="stairs" type="Sprite2D" parent="objects"]
+position = Vector2(416, 272)
+texture = ExtResource("tex_1")
+centered = false
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+metadata/tiled_type = "stairs"
+metadata/gid = 51
+metadata/tiled_id = 2
+
+[node name="key" type="Marker2D" parent="objects"]
+position = Vector2(424, 120)
+metadata/tiled_type = "key"
+metadata/tiled_id = 3
+
+[node name="enemy0" type="Marker2D" parent="objects"]
+position = Vector2(88, 200)
+metadata/tiled_type = "enemy"
+metadata/tiled_id = 4
+metadata/kind = "bat_red"
+
+[node name="enemy1" type="Marker2D" parent="objects"]
+position = Vector2(280, 152)
+metadata/tiled_type = "enemy"
+metadata/tiled_id = 5
+metadata/kind = "bat_red"
+
+[node name="enemy2" type="Marker2D" parent="objects"]
+position = Vector2(376, 136)
+metadata/tiled_type = "enemy"
+metadata/tiled_id = 6
+metadata/kind = "warlock"
+
+[node name="enemy3" type="Marker2D" parent="objects"]
+position = Vector2(248, 296)
+metadata/tiled_type = "enemy"
+metadata/tiled_id = 7
+metadata/kind = "bat_red"
+
+[node name="enemy4" type="Marker2D" parent="objects"]
+position = Vector2(488, 312)
+metadata/tiled_type = "enemy"
+metadata/tiled_id = 8
+metadata/kind = "warlock"
+
+[node name="coin0" type="Marker2D" parent="objects"]
+position = Vector2(456, 136)
+metadata/tiled_type = "coin"
+metadata/tiled_id = 9
+
+[node name="coin1" type="Marker2D" parent="objects"]
+position = Vector2(216, 280)
+metadata/tiled_type = "coin"
+metadata/tiled_id = 10
+
+[node name="heart0" type="Marker2D" parent="objects"]
+position = Vector2(56, 232)
+metadata/tiled_type = "heart"
+metadata/tiled_id = 11
+

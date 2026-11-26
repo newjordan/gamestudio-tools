@@ -1,0 +1,60 @@
+diff --git a/asset-unused/asset_unused.py b/asset-unused/asset_unused.py
+index aa4fe20..c9cfe06 100644
+--- a/asset-unused/asset_unused.py
++++ b/asset-unused/asset_unused.py
+@@ -3,8 +3,9 @@
+ 
+ Walks `--root` and collects outgoing references from Tiled JSON/TMX/TSX
+ (image and tileset `source`), atlas-pack JSON (`meta.image`), Godot
+-`.tscn` / `.tres` / `.gd` (`res://` paths), and glTF / GLB image and
+-buffer URIs. A file that is only a sidecar of a used file (`.import`,
++`.tscn` / `.tres` / `.gd` and `project.godot` / `.cfg` (`res://` paths:
++main scene, icon, autoloads, translations), BMFont `.fnt` page images
++(text and XML), and glTF / GLB image and buffer URIs. A file that is only a sidecar of a used file (`.import`,
+ `.uid`, `.md5`) is not reported. Exit 1 with `--strict` when unused
+ files remain. Does not delete anything.
+ """
+@@ -108,6 +109,25 @@ def refs_from_godot(path, text, refs, project):
+         add(refs, os.path.join(project, rel.lstrip("/")))
+ 
+ 
++FNT_PAGE_RE = re.compile(r'^page\b.*?\bfile="?([^"\r\n]+?)"?\s*$', re.M)
++
++
++def refs_from_fnt(path, text, refs):
++    """BMFont page images: text format `page id=0 file="font.png"`, or XML `<page file="..."/>`."""
++    base = os.path.dirname(path)
++    if text.lstrip().startswith("<"):
++        refs_from_xml(path, refs)
++        try:
++            root = gst_read.parse_xml(path, "XML").getroot()
++        except GstInputError:
++            return
++        for el in root.iter("page"):
++            add(refs, maybe_join(base, el.get("file")))
++        return
++    for f in FNT_PAGE_RE.findall(text):
++        add(refs, maybe_join(base, f.strip()))
++
++
+ def collect_refs(files, root, project):
+     refs = set()
+     # a file always "references" itself when it is a source of refs
+@@ -122,10 +142,16 @@ def collect_refs(files, root, project):
+             elif ext in {".tmx", ".tsx", ".xml"}:
+                 refs_from_xml(path, refs)
+                 add(refs, path)
+-            elif ext in {".tscn", ".tres", ".gd", ".shader", ".gdshader"}:
++            elif ext in {".tscn", ".tres", ".gd", ".shader", ".gdshader", ".godot", ".cfg"}:
+                 text = gst_read.open_text(path, errors="replace")
+                 refs_from_godot(path, text, refs, project)
+                 add(refs, path)
++            elif ext == ".fnt":
++                with open(path, "rb") as fh:
++                    head = fh.read(3)
++                if head != b"BMF":  # binary BMFont pages are not parsed
++                    refs_from_fnt(path, gst_read.open_text(path, errors="replace"), refs)
++                add(refs, path)
+             elif ext == ".glb":
+                 add(refs, path)
+         except GstInputError:

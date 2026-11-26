@@ -1,0 +1,31 @@
+# bash examples/sample-topdown/build.sh --verify  (GODOT_BIN=Godot 4.7.2, run 2026-11-25 18:29 CST)
+== 1. tiles: tex-gen -> tileset-gen 47-tile blob sheet; props via lut-tool + frames-to-sheet ==
+== 2. levels: dungeon-gen BSP floors + map-blank/map-fill/map-stamp boss arena ==
+== 3. level checks: paths, reachability, props, budget, stats ==
+== 4. levels -> Godot: TileMapLayer + TileSet, colliders, navigation, object markers ==
+== 5. actors: team-outline / palette-swap variants, asset-rename, scale, palette, outline, shadow, atlas ==
+== 6. pickups, HUD icons, portal, title backdrop, app icon ==
+== 7. UI + localisation: loc lints, font subset -> bmfont-gen -> font-to-godot, nine-slice, loc-to-godot ==
+== 8. data: schema lint, loot simulation, enemy table -> Godot Resource ==
+== common (20000 kills)
+== elite (20000 kills)
+== boss (20000 kills)
+== 9. audio: sfx-gen one-shots -> pitch/variants/envelope/reverse/mix -> normalize; music via sfx-mix ==
+== 10. Godot import presets, input map, project audits, previews ==
+== 11. Godot headless import ==
+import clean (128 log lines)
+== 12. autoplay: seeded run, title locales, input check, 2 floors + boss, save/load ==
+TOPDOWN_BOOT seed=7 locale=en enemies=5 loot=3 music_loop=1 en=Ember Crypt|Key found! de=Glutgruft|Schlüssel gefunden! fr=Crypte des Braises|Clé trouvée !
+INPUT_OK true actions=8 with_gamepad=8
+SAVE_OK floor=2 hp=6 coins=2 path=/tmp/gst-sample-topdown.eyAc0l/.local/share/godot/app_userdata/Ember Crypt/ember_autoplay.json
+LOAD_OK floor=2 hp=6 coins=2 locale=en
+SAVE_OK floor=3 hp=6 coins=8 path=/tmp/gst-sample-topdown.eyAc0l/.local/share/godot/app_userdata/Ember Crypt/ember_autoplay.json
+LOAD_OK floor=3 hp=6 coins=8 locale=en
+BOSS_DEAD t=63.5
+TOPDOWN_WIN time=68.4 coins=12 hp=6
+TOPDOWN_DONE coins=12 time=68.4 save=/tmp/gst-sample-topdown.eyAc0l/.local/share/godot/app_userdata/Ember Crypt/ember_autoplay.json
+== 13. lint the save file the game wrote against data/save_schema.json ==
+build.sh: done
+real	0m34.608s
+exit=0
+git status after build: 0 changed tracked files (build is byte-reproducible)

@@ -1,0 +1,38 @@
+{
+ "clips": {
+  "idle": {
+   "frames": [
+    "hero_0",
+    "hero_1"
+   ],
+   "durations_ms": [
+    100,
+    100
+   ],
+   "fps": 10.0,
+   "loop": true,
+   "duration": 0.2
+  },
+  "run": {
+   "frames": [
+    "hero_2",
+    "hero_3",
+    "hero_4",
+    "hero_5",
+    "hero_4",
+    "hero_3"
+   ],
+   "durations_ms": [
+    80,
+    80,
+    120,
+    120,
+    120,
+    80
+   ],
+   "fps": 10.0,
+   "loop": true,
+   "duration": 0.6
+  }
+ }
+}

@@ -1,0 +1,6 @@
+id,name_key,behaviour,hp,speed,damage,aggro,fire_cd,shot_speed,drop,anim
+bat,enemy_bat,chase,2,44,1,120,0,0,common,bat-fly
+bat_red,enemy_bat_red,chase,3,60,1,140,0,0,elite,batred-fly
+wizard,enemy_wizard,shoot,2,28,1,150,1.7,85,common,wizard
+warlock,enemy_warlock,shoot,3,32,1,160,1.2,100,elite,warlock
+boss,enemy_boss,boss,14,42,1,400,2.4,90,boss,boss

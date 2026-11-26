@@ -1,0 +1,23 @@
+{
+ "song.wav": {
+  "seconds": 17.3,
+  "sample_rate": 22050,
+  "peak": 0.4,
+  "clipped_ranges_s": [],
+  "silent_ranges_s": []
+ },
+ "laser_0000.wav": {
+  "seconds": 0.224,
+  "sample_rate": 44100,
+  "peak": 0.5,
+  "clipped_ranges_s": [],
+  "silent_ranges_s": []
+ },
+ "laser_0001.wav": {
+  "seconds": 0.242,
+  "sample_rate": 44100,
+  "peak": 0.4998,
+  "clipped_ranges_s": [],
+  "silent_ranges_s": []
+ }
+}

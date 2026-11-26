@@ -1,0 +1,132 @@
+[
+ {
+  "file": "cave.json",
+  "width": 64,
+  "height": 40,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "orientation": "orthogonal",
+  "infinite": false,
+  "cells": 2560,
+  "tile_layers": [
+   {
+    "name": "dungeon",
+    "type": "tilelayer",
+    "visible": true,
+    "opacity": 1,
+    "cells": 2560,
+    "empty": 0,
+    "empty_ratio": 0.0,
+    "unique_tiles": 2,
+    "flipped": 0,
+    "most_used": [
+     [
+      2,
+      1524
+     ],
+     [
+      1,
+      1036
+     ]
+    ]
+   }
+  ],
+  "object_layers": [],
+  "tilesets": [],
+  "empty_layers": [],
+  "hidden_layers": [],
+  "unused_tilesets": [],
+  "objects": 0
+ },
+ {
+  "file": "bsp.json",
+  "width": 64,
+  "height": 40,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "orientation": "orthogonal",
+  "infinite": false,
+  "cells": 2560,
+  "tile_layers": [
+   {
+    "name": "dungeon",
+    "type": "tilelayer",
+    "visible": true,
+    "opacity": 1,
+    "cells": 2560,
+    "empty": 0,
+    "empty_ratio": 0.0,
+    "unique_tiles": 2,
+    "flipped": 0,
+    "most_used": [
+     [
+      2,
+      1303
+     ],
+     [
+      1,
+      1257
+     ]
+    ]
+   }
+  ],
+  "object_layers": [],
+  "tilesets": [],
+  "empty_layers": [],
+  "hidden_layers": [],
+  "unused_tilesets": [],
+  "objects": 0
+ },
+ {
+  "file": "cave_v2.json",
+  "width": 64,
+  "height": 40,
+  "tilewidth": 16,
+  "tileheight": 16,
+  "orientation": "orthogonal",
+  "infinite": false,
+  "cells": 2560,
+  "tile_layers": [
+   {
+    "name": "dungeon",
+    "type": "tilelayer",
+    "visible": true,
+    "opacity": 1,
+    "cells": 2560,
+    "empty": 4,
+    "empty_ratio": 0.0016,
+    "unique_tiles": 2,
+    "flipped": 0,
+    "most_used": [
+     [
+      2,
+      1520
+     ],
+     [
+      1,
+      1036
+     ]
+    ]
+   }
+  ],
+  "object_layers": [
+   {
+    "name": "mobs",
+    "type": "objectgroup",
+    "visible": true,
+    "objects": 1,
+    "by_type": {
+     "": 1
+    },
+    "by_name": {
+     "bat": 1
+    }
+   }
+  ],
+  "tilesets": [],
+  "empty_layers": [],
+  "hidden_layers": [],
+  "unused_tilesets": [],
+  "objects": 1
+ }
+]

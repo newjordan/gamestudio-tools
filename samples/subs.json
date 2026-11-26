@@ -1,0 +1,35 @@
+{
+ "cues": [
+  {
+   "id": "L09ad93c9",
+   "speaker": "Ava",
+   "start": 0.0,
+   "end": 1.0,
+   "lines": [
+    "Welcome aboard."
+   ],
+   "duration_source": "estimate"
+  },
+  {
+   "id": "Leaa3f1ce",
+   "speaker": "",
+   "start": 1.3,
+   "end": 2.65,
+   "lines": [
+    "Who are you?"
+   ],
+   "duration_source": "estimate"
+  },
+  {
+   "id": "L46825a5c",
+   "speaker": "Ava",
+   "start": 2.95,
+   "end": 4.7,
+   "lines": [
+    "Just the graveyard shift."
+   ],
+   "duration_source": "estimate"
+  }
+ ],
+ "warnings": []
+}

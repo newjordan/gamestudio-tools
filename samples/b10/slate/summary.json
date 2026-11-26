@@ -1,0 +1,9 @@
+{
+ "Ava": {
+  "lines": 6,
+  "words": 14,
+  "read_min": 0.1,
+  "budget_min": 0.9,
+  "sessions": 1
+ }
+}

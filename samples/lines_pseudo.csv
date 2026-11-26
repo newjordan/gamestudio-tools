@@ -1,0 +1,4 @@
+id,file,line,node,kind,speaker,text,tags,words,est_seconds,pseudo
+L2e602027,intro.yarn,3,Start,line,Ava,Welcome to the station.,,4,1.6,[Ŵéłçöṁé ţö ţħé šţåţīöñ. ·ƒıḷḷ ē]
+Lde2a8f87,intro.yarn,4,Start,choice,,Who are you?,,3,1.2,[Ŵħö åřé ýöü? ·ƒı]
+L321d60dc,intro.yarn,5,Start,line,Ava,Just the night shift.,,4,1.6,[Ĵüšţ ţħé ñīģħţ šħīƒţ. ·ƒıḷḷ ]

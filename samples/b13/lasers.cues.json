@@ -1,0 +1,30 @@
+[
+ {
+  "file": "samples/sfx/laser_0000.wav",
+  "rel": "laser_0000.wav",
+  "start_s": 0.08,
+  "end_s": 0.3037,
+  "duration_s": 0.2237
+ },
+ {
+  "file": "samples/sfx/laser_0001.wav",
+  "rel": "laser_0001.wav",
+  "start_s": 0.4637,
+  "end_s": 0.7053,
+  "duration_s": 0.2417
+ },
+ {
+  "file": "samples/sfx/laser_0002.wav",
+  "rel": "laser_0002.wav",
+  "start_s": 0.8653,
+  "end_s": 1.0645,
+  "duration_s": 0.1992
+ },
+ {
+  "file": "samples/sfx/laser_0003.wav",
+  "rel": "laser_0003.wav",
+  "start_s": 1.2245,
+  "end_s": 1.3969,
+  "duration_s": 0.1723
+ }
+]

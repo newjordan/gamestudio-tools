@@ -179,6 +179,20 @@ seamless), font-to-godot (glyph rectangles checked against the real page image, 
 and a real install.sh --venv run into a temp prefix (with --with-tests it also installs pytest). Cut as 2.2.0
 (262 tools).
 
+## 2.5.0: done 25 Nov 2026. Second sample game (top-down roguelite)
+examples/sample-topdown (Ember Crypt): seeded dungeon-gen floors autotiled by
+map-auto-layer with a tileset-gen blob sheet, a map-stamp boss arena, five enemy
+kinds (chase/shoot/boss) on a generated navmesh, drop-sim loot, save/load with a
+linted save file, en/de/fr text through the loc and font tools, keyboard and
+gamepad input checked by input-map-lint, SFX and music from the sfx/wav tools.
+86 gst tools (61 new to the samples). Imports in official Godot 4.7.2 with zero
+errors; a seeded autoplay clears the run; a 73.6 s software-GL GIF/MP4 was
+captured. Six kit bugs fixed with regression tests: dungeon-gen tileset,
+atlas-to-godot trim margins, anim-from-folder fps globs, asset-unused
+project.godot/.fnt references, nav-to-godot T-junction islands (platformer
+level2_nav.tscn regenerated), and gst bundle shipping examples/*/work scratch.
+Cut as 2.5.0 (262 tools).
+
 ## 2.4.0: done 25 Nov 2026. Complete sample game
 examples/sample-game-full (Gem Runner): a playable action-platformer with 3
 Tiled levels (flips, object layers, colliders, navmesh), Aseprite player and

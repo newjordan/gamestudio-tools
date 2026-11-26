@@ -1,0 +1,62 @@
+diff --git a/nav-to-godot/nav_to_godot.py b/nav-to-godot/nav_to_godot.py
+index ccfe4aa..55afa4e 100644
+--- a/nav-to-godot/nav_to_godot.py
++++ b/nav-to-godot/nav_to_godot.py
+@@ -236,17 +236,49 @@ def outlines_from_walk(walk, tw, th):
+     return outs
+ 
+ 
++def weld_polygons(rects, eps=1e-6):
++    """Shared vertex list + one polygon per rectangle, with T-junctions split.
++
++    Godot links navigation polygons of one region only across edges whose two end
++    vertices coincide, so a rectangle whose side touches part of a neighbour's side
++    (a T-junction) would be an island. Every rectangle corner that lies inside
++    another rectangle's side is inserted into that side (collinear points keep the
++    polygon convex), and equal positions share one vertex index.
++    """
++    corners = sorted({(x, y) for x0, y0, x1, y1 in rects for x, y in ((x0, y0), (x1, y0), (x1, y1), (x0, y1))})
++    index, verts, polys = {}, [], []
++
++    def vid(pt):
++        key = (round(pt[0] / eps), round(pt[1] / eps))
++        if key not in index:
++            index[key] = len(verts)
++            verts.append(pt)
++        return index[key]
++
++    for x0, y0, x1, y1 in rects:
++        ring = []
++        sides = (((x0, y0), (x1, y0)), ((x1, y0), (x1, y1)), ((x1, y1), (x0, y1)), ((x0, y1), (x0, y0)))
++        for (ax, ay), (bx, by) in sides:
++            ring.append((ax, ay))
++            if ay == by:  # horizontal side
++                lo, hi = sorted((ax, bx))
++                mids = sorted((x for x, y in corners if abs(y - ay) <= eps and lo + eps < x < hi - eps),
++                              reverse=bx < ax)
++                ring.extend((x, ay) for x in mids)
++            else:  # vertical side
++                lo, hi = sorted((ay, by))
++                mids = sorted((y for x, y in corners if abs(x - ax) <= eps and lo + eps < y < hi - eps),
++                              reverse=by < ay)
++                ring.extend((ax, y) for y in mids)
++        polys.append(tuple(vid(pt) for pt in ring))
++    return verts, polys, None
++
++
+ def write_scene(path, rects):
+     if not rects:
+         raise GstInputError("Tiled map has no walkable tiles")
+-    verts = []
+-    polys = []
+-    outlines = []
+-    for x0, y0, x1, y1 in rects:
+-        base = len(verts)
+-        verts.extend([(x0, y0), (x1, y0), (x1, y1), (x0, y1)])
+-        polys.append((base, base + 1, base + 2, base + 3))
+-        outlines.append((x0, y0, x1, y0, x1, y1, x0, y1))
++    verts, polys, outlines = weld_polygons(rects)
++    outlines = [(x0, y0, x1, y0, x1, y1, x0, y1) for x0, y0, x1, y1 in rects]
+     def _n(v):
+         v = float(v)
+         return str(int(v)) if v == int(v) else ("%.9f" % v).rstrip("0").rstrip(".")

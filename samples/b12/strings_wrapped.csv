@@ -1,0 +1,9 @@
+id,en,fr,de
+greet,"Hello 0000, you
+have 0000 gold.","Bonjour 0000,
+vous avez 0000
+or.","Hallo 0000, du
+hast 0000 Gold."
+save,Save,"Sauvegarder la
+partie en cours",Speichern
+quit,Quit game,,Quit game

@@ -1,0 +1,191 @@
+{
+ "frames": {
+  "orb_0_000": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "sourceSize": {
+    "w": 70,
+    "h": 70
+   },
+   "angle": 0.0
+  },
+  "orb_0_001": {
+   "frame": {
+    "x": 71,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "sourceSize": {
+    "w": 70,
+    "h": 70
+   },
+   "angle": 45.0
+  },
+  "orb_0_002": {
+   "frame": {
+    "x": 142,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "sourceSize": {
+    "w": 70,
+    "h": 70
+   },
+   "angle": 90.0
+  },
+  "orb_0_003": {
+   "frame": {
+    "x": 213,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "sourceSize": {
+    "w": 70,
+    "h": 70
+   },
+   "angle": 135.0
+  },
+  "orb_0_004": {
+   "frame": {
+    "x": 284,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "sourceSize": {
+    "w": 70,
+    "h": 70
+   },
+   "angle": 180.0
+  },
+  "orb_0_005": {
+   "frame": {
+    "x": 355,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "sourceSize": {
+    "w": 70,
+    "h": 70
+   },
+   "angle": 225.0
+  },
+  "orb_0_006": {
+   "frame": {
+    "x": 426,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "sourceSize": {
+    "w": 70,
+    "h": 70
+   },
+   "angle": 270.0
+  },
+  "orb_0_007": {
+   "frame": {
+    "x": 497,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 70,
+    "h": 70
+   },
+   "sourceSize": {
+    "w": 70,
+    "h": 70
+   },
+   "angle": 315.0
+  }
+ },
+ "meta": {
+  "image": "orb_8.png",
+  "size": {
+   "w": 567,
+   "h": 70
+  },
+  "angles": [
+   0.0,
+   45.0,
+   90.0,
+   135.0,
+   180.0,
+   225.0,
+   270.0,
+   315.0
+  ],
+  "pivot": "centre",
+  "scale": "1"
+ }
+}

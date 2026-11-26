@@ -1,0 +1,41 @@
+{
+  "schema": "omnispace.fleet-job/1",
+  "id": "video-55adad45fe",
+  "kind": "video.h3",
+  "model": "H3 video",
+  "target": "turbo",
+  "status": "queued-not-launched",
+  "constraints": {
+    "download_models": false,
+    "huggingface_pull": false,
+    "gpu_host": "turbo",
+    "never_on": [
+      "atlas",
+      "sparky"
+    ],
+    "launch": "manual-approval-only"
+  },
+  "outputs": {
+    "dir": "outputs/pending"
+  },
+  "items": [
+    {
+      "name": "treasure_chest_orbit_000",
+      "prompt": "treasure_chest, studio turntable, camera orbit starting at 0 degrees, neutral backdrop",
+      "duration_s": 4.0,
+      "seed": 7
+    },
+    {
+      "name": "treasure_chest_orbit_120",
+      "prompt": "treasure_chest, studio turntable, camera orbit starting at 120 degrees, neutral backdrop",
+      "duration_s": 4.0,
+      "seed": 8
+    },
+    {
+      "name": "treasure_chest_orbit_240",
+      "prompt": "treasure_chest, studio turntable, camera orbit starting at 240 degrees, neutral backdrop",
+      "duration_s": 4.0,
+      "seed": 9
+    }
+  ]
+}
