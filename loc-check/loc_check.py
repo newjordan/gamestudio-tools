@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """loc-check: validate a multi-language strings CSV (columns: id, <source lang>, <other langs>...).
 
-Errors: duplicate ids, missing/empty translation, placeholder mismatch ({name}, %s, %d, %1$s, $var$),
+Errors: duplicate ids, missing/empty translation, placeholder mismatch ({name}, %s, %d, %1$s, $var$).
+ICU `{var, plural|select, ...}` counts as `{var}`; `{# words}` inside a branch is translated text, not a placeholder.
 tag mismatch (<b>, [color]), escape mismatch (\\n). Warnings: translation identical to source (maybe
 untranslated), length over --max-ratio of the source and at least 6 characters longer (UI overflow risk; languages with CJK get a separate
 --max-ratio-cjk because they are naturally shorter in characters), leading/trailing whitespace changes.
@@ -20,8 +21,11 @@ CJK = re.compile(r"[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]")
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
 from gst_errors import GstInputError  # noqa: E402
 import gst_read  # noqa: E402
+from icu_text import placeholder_view  # noqa: E402
 
 def multiset(rx, s):
+    if rx is PH:
+        s = placeholder_view(s)
     return Counter(rx.findall(s))
 
 

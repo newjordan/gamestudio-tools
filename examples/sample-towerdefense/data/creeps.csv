@@ -1,0 +1,4 @@
+id,hp,speed,gold,leak
+grub,40,58.0,6,1
+runner,26,96.0,7,1
+brute,90,40.0,12,2

@@ -1,0 +1,21 @@
+[gd_resource type="SpriteFrames" load_steps=13 format=3]
+
+[ext_resource type="Texture2D" path="res://art/creeps/brute_0.png" id="1_tex"]
+[ext_resource type="Texture2D" path="res://art/creeps/brute_1.png" id="2_tex"]
+[ext_resource type="Texture2D" path="res://art/creeps/brute_2.png" id="3_tex"]
+[ext_resource type="Texture2D" path="res://art/creeps/brute_3.png" id="4_tex"]
+[ext_resource type="Texture2D" path="res://art/creeps/grub_0.png" id="5_tex"]
+[ext_resource type="Texture2D" path="res://art/creeps/grub_1.png" id="6_tex"]
+[ext_resource type="Texture2D" path="res://art/creeps/grub_2.png" id="7_tex"]
+[ext_resource type="Texture2D" path="res://art/creeps/grub_3.png" id="8_tex"]
+[ext_resource type="Texture2D" path="res://art/creeps/runner_0.png" id="9_tex"]
+[ext_resource type="Texture2D" path="res://art/creeps/runner_1.png" id="10_tex"]
+[ext_resource type="Texture2D" path="res://art/creeps/runner_2.png" id="11_tex"]
+[ext_resource type="Texture2D" path="res://art/creeps/runner_3.png" id="12_tex"]
+
+[resource]
+animations = [
+  { "frames": [{ "duration": 1.0, "texture": ExtResource("1_tex") }, { "duration": 1.0, "texture": ExtResource("2_tex") }, { "duration": 1.0, "texture": ExtResource("3_tex") }, { "duration": 1.0, "texture": ExtResource("4_tex") }, { "duration": 1.0, "texture": ExtResource("3_tex") }, { "duration": 1.0, "texture": ExtResource("2_tex") }], "loop": true, "name": &"brute", "speed": 8.0 },
+  { "frames": [{ "duration": 1.0, "texture": ExtResource("5_tex") }, { "duration": 1.0, "texture": ExtResource("6_tex") }, { "duration": 1.0, "texture": ExtResource("7_tex") }, { "duration": 1.0, "texture": ExtResource("8_tex") }, { "duration": 1.0, "texture": ExtResource("7_tex") }, { "duration": 1.0, "texture": ExtResource("6_tex") }], "loop": true, "name": &"grub", "speed": 8.0 },
+  { "frames": [{ "duration": 1.0, "texture": ExtResource("9_tex") }, { "duration": 1.0, "texture": ExtResource("10_tex") }, { "duration": 1.0, "texture": ExtResource("11_tex") }, { "duration": 1.0, "texture": ExtResource("12_tex") }, { "duration": 1.0, "texture": ExtResource("11_tex") }, { "duration": 1.0, "texture": ExtResource("10_tex") }], "loop": true, "name": &"runner", "speed": 8.0 }
+]

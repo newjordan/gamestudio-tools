@@ -56,3 +56,4 @@ secrets.json
 # sample game intermediates (rebuilt by examples/sample-game-full/build.sh)
 examples/sample-game-full/work/
 examples/sample-topdown/work/
+examples/sample-towerdefense/work/

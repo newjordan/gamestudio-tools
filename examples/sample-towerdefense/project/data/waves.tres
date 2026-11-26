@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/waves.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+columns = PackedStringArray("wave", "seq", "kind", "count", "gap")
+rows = Array[Dictionary]([{ "wave": 1, "seq": 1, "kind": "grub", "count": 8, "gap": 0.5 }, { "wave": 2, "seq": 1, "kind": "grub", "count": 5, "gap": 0.45 }, { "wave": 2, "seq": 2, "kind": "runner", "count": 4, "gap": 0.4 }, { "wave": 3, "seq": 1, "kind": "brute", "count": 5, "gap": 0.7 }, { "wave": 4, "seq": 1, "kind": "grub", "count": 6, "gap": 0.4 }, { "wave": 4, "seq": 2, "kind": "runner", "count": 4, "gap": 0.35 }, { "wave": 4, "seq": 3, "kind": "brute", "count": 2, "gap": 0.6 }])

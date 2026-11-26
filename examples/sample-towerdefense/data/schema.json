@@ -1,0 +1,34 @@
+{
+  "tables": {
+    "towers": {"file": "towers.csv", "key": "id", "fields": {
+      "id": {"type": "str", "pattern": "^[a-z_]+$", "unique": true},
+      "cost": {"type": "int", "min": 1},
+      "range": {"type": "float", "min": 1},
+      "dmg": {"type": "int", "min": 1},
+      "cd": {"type": "float", "min": 0.05},
+      "slow": {"type": "float", "min": 0.1, "max": 1},
+      "slow_time": {"type": "float", "min": 0},
+      "splash": {"type": "float", "min": 0}
+    }},
+    "creeps": {"file": "creeps.csv", "key": "id", "fields": {
+      "id": {"type": "str", "pattern": "^[a-z_]+$", "unique": true},
+      "hp": {"type": "int", "min": 1},
+      "speed": {"type": "float", "min": 1},
+      "gold": {"type": "int", "min": 0},
+      "leak": {"type": "int", "min": 1}
+    }},
+    "waves": {"file": "waves.csv", "fields": {
+      "wave": {"type": "int", "min": 1},
+      "seq": {"type": "int", "min": 1},
+      "kind": {"type": "ref", "table": "creeps"},
+      "count": {"type": "int", "min": 1},
+      "gap": {"type": "float", "min": 0.05}
+    }},
+    "build": {"file": "build.csv", "fields": {
+      "seq": {"type": "int", "min": 1, "unique": true},
+      "kind": {"type": "ref", "table": "towers"},
+      "x": {"type": "int", "min": 0},
+      "y": {"type": "int", "min": 0}
+    }}
+  }
+}

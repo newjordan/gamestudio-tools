@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/creeps.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+columns = PackedStringArray("id", "hp", "speed", "gold", "leak")
+rows = Array[Dictionary]([{ "id": "grub", "hp": 40, "speed": 58.0, "gold": 6, "leak": 1 }, { "id": "runner", "hp": 26, "speed": 96.0, "gold": 7, "leak": 1 }, { "id": "brute", "hp": 90, "speed": 40.0, "gold": 12, "leak": 2 }])

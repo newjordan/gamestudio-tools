@@ -1,0 +1,70 @@
+{
+  "frames": {
+    "arrow": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 16,
+        "h": 16
+      }
+    },
+    "frost": {
+      "frame": {
+        "x": 17,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 16,
+        "h": 16
+      }
+    },
+    "mortar": {
+      "frame": {
+        "x": 34,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 16,
+        "h": 16
+      }
+    }
+  },
+  "meta": {
+    "image": "towers.png",
+    "size": {
+      "w": 51,
+      "h": 17
+    },
+    "app": "omnispace atlas-pack",
+    "format": "RGBA8888"
+  }
+}

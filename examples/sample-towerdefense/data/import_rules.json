@@ -1,0 +1,10 @@
+{
+  "rules": [
+    {"glob": "art/*.png", "preset": "pixel"},
+    {"glob": "art/creeps/*.png", "preset": "pixel"},
+    {"glob": "art/puff/*.png", "preset": "pixel"},
+    {"glob": "ui/*.png", "preset": "pixel"},
+    {"glob": "audio/sfx/*.wav", "preset": "wav-oneshot"},
+    {"glob": "audio/music.wav", "preset": "wav-loop"}
+  ]
+}

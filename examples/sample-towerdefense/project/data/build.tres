@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/build.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+columns = PackedStringArray("seq", "kind", "x", "y")
+rows = Array[Dictionary]([{ "seq": 1, "kind": "arrow", "x": 6, "y": 1 }, { "seq": 2, "kind": "arrow", "x": 12, "y": 1 }, { "seq": 3, "kind": "frost", "x": 16, "y": 4 }, { "seq": 4, "kind": "arrow", "x": 9, "y": 5 }, { "seq": 5, "kind": "arrow", "x": 3, "y": 7 }, { "seq": 6, "kind": "mortar", "x": 8, "y": 8 }, { "seq": 7, "kind": "arrow", "x": 12, "y": 10 }, { "seq": 8, "kind": "arrow", "x": 17, "y": 10 }])

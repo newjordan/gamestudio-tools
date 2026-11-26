@@ -1,0 +1,16 @@
+{
+  "tables": {
+    "save": {"file": "save.json", "fields": {
+      "version": {"type": "int", "min": 1, "max": 1},
+      "seed": {"type": "int", "min": 11, "max": 11},
+      "waves": {"type": "int", "min": 4, "max": 4},
+      "core": {"type": "int", "min": 1, "max": 16},
+      "gold": {"type": "int", "min": 0},
+      "leaks": {"type": "int", "min": 0, "max": 0},
+      "towers": {"type": "int", "min": 8, "max": 8},
+      "kills": {"type": "int", "min": 34, "max": 34},
+      "locale": {"type": "enum", "values": ["en", "de", "fr"]},
+      "time": {"type": "float", "min": 0}
+    }}
+  }
+}

@@ -3,6 +3,41 @@
 All notable changes to gamestudio-tools are recorded here. The kit is versioned
 with a `VERSION` file and a reproducible `gst bundle` tarball.
 
+## 2.6.0 — 2026-11-26
+
+Adds a third complete sample game, a tower defense that exercises 52 tools
+neither Ember Crypt nor the platformer calls, and fixes two kit bugs exposed
+by that pipeline. No new tools (262).
+
+### Added
+
+- `examples/sample-towerdefense/`: *Reed Causeway*, a marsh tower defense for
+  Godot 4.7. A 20×12 map painted with `map-blank` and `map-fill`, a creep route
+  from `curve-gen`, three tower kinds stacked with `sprite-stack`, creeps
+  recolored and animated through `anim-pingpong`, `anim-retarget-fps` and
+  `anim-to-godot`, en/de/fr text including an ICU plural (`loc-plurals`), a
+  Yarn briefing, eight SFX and an 8 s music loop joined with `loop-xfade`.
+  `build.sh` runs 120 gst tools (52 not used by the other two samples) and the
+  README maps every generated file to its command. A seeded autoplay places all
+  eight towers and clears every wave with zero leaks; `build.sh --movie`
+  records that run to `media/gameplay.gif`.
+- `tests/test_v26.py`: regressions for the two bugs below, plus the sample
+  checks: the README maps every generated asset and tool, the asset build is
+  reproducible byte for byte, and (with `GODOT_BIN`) the project imports with
+  zero errors and the autoplay wins in two locales with identical combat.
+
+### Fixed
+
+- `anim-retarget-fps` only accepted a list of clips. `anim-from-folder`,
+  `anim-pingpong` and `anim-meta` write a `clips` object keyed by name, so a
+  pipeline of those tools exited before retargeting. The dict form is accepted
+  and durations are written back onto the same clips.
+- `loc-check` and `loc-placeholder-lint` treated `{# wave}` inside an ICU
+  `{var, plural, ...}` branch as a named placeholder, so translated branch
+  wording failed the lint. The argument name is the placeholder; `{# words}`
+  is translated text. Nested `{name}` tokens are still compared
+  (`lib/icu_text.py`).
+
 ## 2.5.0 — 2026-11-25
 
 Adds a second complete sample game, a top-down roguelite that exercises 61 tools

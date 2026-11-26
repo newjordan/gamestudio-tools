@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/towers.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+columns = PackedStringArray("id", "cost", "range", "dmg", "cd", "slow", "slow_time", "splash")
+rows = Array[Dictionary]([{ "id": "arrow", "cost": 40, "range": 72.0, "dmg": 14, "cd": 0.28, "slow": 1.0, "slow_time": 0.0, "splash": 0.0 }, { "id": "frost", "cost": 55, "range": 64.0, "dmg": 5, "cd": 0.4, "slow": 0.55, "slow_time": 1.4, "splash": 0.0 }, { "id": "mortar", "cost": 80, "range": 88.0, "dmg": 18, "cd": 0.95, "slow": 1.0, "slow_time": 0.0, "splash": 28.0 }])

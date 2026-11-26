@@ -1,0 +1,9 @@
+title: Briefing
+---
+Warden: The reeds are moving. Hold the causeway.
+<<jump Road>>
+===
+title: Road
+---
+Warden: Never build on the road.
+===

@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """loc-placeholder-lint: check that placeholder tokens stay consistent across languages in a loc CSV.
 Tokens recognised: {name} and {name:fmt}, printf %s %d %i %f %x (and %% as an escape, not a token),
-numbered printf %1$s, and $var$. Named placeholders are compared as a multiset (order does not matter);
+numbered printf %1$s, and $var$. ICU `{var, plural|select, ...}` counts as `{var}`; `{# words}`
+inside a branch is translated text. Named placeholders are compared as a multiset (order does not matter);
 unnumbered printf tokens are compared in order. Numbered printf tokens are compared by index and type.
 JSON and text reports; exit 1 on any mismatch. Complements loc-check (which also looks at tags, escapes and length).
 """
 import os
 import argparse, csv, json, re, sys
 from collections import Counter
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
+from icu_text import placeholder_view  # noqa: E402
 
 # named {foo} or {foo:bar} — but not ${foo} ICU-ish starting with $ already handled separately
 NAMED = re.compile(r"(?<!\$)\{([^{}]+)\}")
@@ -19,6 +23,7 @@ DOLLAR = re.compile(r"\$([A-Za-z_][A-Za-z0-9_]*)\$")
 
 def tokens(s):
     """Return a dict describing placeholders in s."""
+    s = placeholder_view(s)
     named = NAMED.findall(s)
     numbered = NUMBERED.findall(s)
     # strip numbered and escaped %% before looking for unnumbered
